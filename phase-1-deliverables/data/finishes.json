@@ -1,0 +1,675 @@
+{
+  "module": "finishes",
+  "version": "1.0.0",
+  "description": "Surface Finishes data \u2014 Sheet Finishes (Laminate, Acrylic), Paint Finishes (DUCO, PU), Specialty Finishes (Lacquered Glass, Rattan), and Cost Hierarchy",
+  "sections": {
+    "sheetFinishes": {
+      "id": "sheet-finishes",
+      "slug": "/finishes/sheet-finishes",
+      "title": "Sheet Finishes",
+      "summary": "Sheet finishes are thin decorative layers applied on top of base boards (plywood, MDF, HDHMR, particle board) to create the visible surface of furniture.",
+      "finishes": [
+        {
+          "id": "laminate",
+          "name": "Laminate Sheets",
+          "type": "Sheet Finish",
+          "definition": "Laminate sheets are thin decorative layers made from paper and resin, used to finish and protect furniture surfaces.",
+          "simpleExplanation": "They are like a decorative skin pasted on top of plywood, MDF, HDHMR, or particle board.",
+          "properties": {
+            "appearance": "Wide range of colours and textures \u2014 matte to high-gloss",
+            "durability": "Good durability and everyday performance",
+            "scratchResistance": "Moderate \u2014 may show scratches more readily in high-use areas",
+            "cleanability": "Easy to clean",
+            "jointVisibility": "Slightly more visible joints compared to acrylic",
+            "waterResistance": "Depends on base board \u2014 laminate itself is moisture-resistant",
+            "cost": "Budget-friendly overall"
+          },
+          "types": [
+            {
+              "name": "Matte Laminate",
+              "description": "Subtle, non-shiny finish; hides fingerprints well",
+              "bestFor": "Busy kitchens, long-term use, low maintenance",
+              "fingerprintResistance": "Excellent",
+              "look": "Subtle, elegant, modern",
+              "media": {
+                "card_image": "/images/finishes/laminate-matte-laminate.jpg",
+                "icon": "/images/finishes/icon-laminate-subtype.svg"
+              }
+            },
+            {
+              "name": "Glossy Laminate",
+              "description": "Shiny surface that adds brightness",
+              "bestFor": "Areas where regular cleaning is acceptable",
+              "fingerprintResistance": "Poor \u2014 shows fingerprints, scratches, smudges easily",
+              "look": "Bright, reflective, makes spaces look larger",
+              "media": {
+                "card_image": "/images/finishes/laminate-glossy-laminate.jpg",
+                "icon": "/images/finishes/icon-laminate-subtype.svg"
+              }
+            },
+            {
+              "name": "Textured / Wood-Finish Laminate",
+              "description": "Feels and looks like real wood",
+              "bestFor": "Natural aesthetic furniture",
+              "media": {
+                "card_image": "/images/finishes/laminate-textured---wood-finish-laminate.jpg",
+                "icon": "/images/finishes/icon-laminate-subtype.svg"
+              }
+            },
+            {
+              "name": "High-Gloss Laminate",
+              "description": "Mirror-like finish (acrylic look)",
+              "bestFor": "Premium look on laminate budget",
+              "media": {
+                "card_image": "/images/finishes/laminate-high-gloss-laminate.jpg",
+                "icon": "/images/finishes/icon-laminate-subtype.svg"
+              }
+            },
+            {
+              "name": "Exterior Laminate",
+              "description": "Designed for high moisture and heat resistance",
+              "bestFor": "Outdoor or semi-outdoor furniture",
+              "media": {
+                "card_image": "/images/finishes/laminate-exterior-laminate.jpg",
+                "icon": "/images/finishes/icon-laminate-subtype.svg"
+              }
+            },
+            {
+              "name": "Anti-Finger / Soft-Touch Laminate",
+              "description": "Smooth feel with minimal smudges",
+              "bestFor": "High-touch surfaces, kitchen cabinets",
+              "media": {
+                "card_image": "/images/finishes/laminate-anti-finger---soft-touch-laminate.jpg",
+                "icon": "/images/finishes/icon-laminate-subtype.svg"
+              }
+            }
+          ],
+          "matteVsGlossy": {
+            "matte": {
+              "description": "Subtle, elegant, and modern look. Less reflection; hides fingerprints and smudges better.",
+              "maintenance": "Easy to maintain for daily use",
+              "bestFor": "Busy kitchens and long-term use",
+              "recommendation": "Choose matte laminate for low maintenance and practicality.",
+              "media": {
+                "card_image": "/images/finishes/laminate-matte.jpg",
+                "icon": "/images/finishes/icon-matte.svg"
+              }
+            },
+            "glossy": {
+              "description": "Bright, reflective finish that makes spaces look larger. Enhances light and colour vibrancy.",
+              "maintenance": "Shows fingerprints, scratches, and smudges more easily. Requires more frequent cleaning.",
+              "bestFor": "Premium look areas where regular cleaning is not an issue",
+              "recommendation": "Choose glossy laminate for a bright, premium look if regular cleaning is not an issue.",
+              "media": {
+                "card_image": "/images/finishes/laminate-glossy.jpg",
+                "icon": "/images/finishes/icon-glossy.svg"
+              }
+            }
+          },
+          "applications": [
+            "Wardrobes",
+            "Kitchen cabinets",
+            "Beds",
+            "TV units",
+            "Office furniture",
+            "All furniture types"
+          ],
+          "limitations": [
+            "Cannot be used without a base board",
+            "Slightly more visible joints compared to acrylic",
+            "May show scratches more readily in high-use areas"
+          ],
+          "costTier": 2,
+          "costLabel": "Budget-Friendly",
+          "budgetFit": {
+            "rental": "recommended",
+            "personal": "recommended",
+            "villa": "optional"
+          },
+          "takeaway": "Budget-friendly & durable finish. Wide design options. Cannot be used without a base board. Matte recommended for low maintenance.",
+          "media": {
+            "card_image": "/images/finishes/laminate-sheets.jpg",
+            "card_video": null,
+            "icon": "/images/finishes/icon-laminate.svg",
+            "diagram": "/images/finishes/laminate-application-diagram.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideInLeft",
+              "delay": 150,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "tooltip"
+            },
+            "scroll": {
+              "parallax": false,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            },
+            "microInteraction": {
+              "type": "badgeFlip",
+              "repeatable": true
+            }
+          }
+        },
+        {
+          "id": "acrylic",
+          "name": "Acrylic Sheets",
+          "type": "Sheet Finish",
+          "definition": "Acrylic sheets are high-gloss plastic sheets used on furniture to create a shiny, glass-like finish.",
+          "simpleExplanation": "They are a very glossy surface pasted on plywood, MDF, or HDHMR to give a modern, premium look.",
+          "properties": {
+            "appearance": "High-gloss, premium look with rich depth and shine \u2014 mirror-like with excellent reflection",
+            "durability": "Good",
+            "scratchResistance": "More scratch-resistant than laminate",
+            "cleanability": "Easy to clean",
+            "jointVisibility": "Seamless finish with minimal joints",
+            "fingerprintResistance": "Shows fingerprints less than gloss-laminate",
+            "waterResistance": "Moisture resistant",
+            "cost": "Higher cost compared to laminate"
+          },
+          "types": [
+            {
+              "name": "High-Gloss Acrylic",
+              "description": "Mirror-like shine, most commonly used",
+              "bestFor": "Kitchen cabinets, modern furniture",
+              "media": {
+                "card_image": "/images/finishes/acrylic-high-gloss-acrylic.jpg",
+                "icon": "/images/finishes/icon-acrylic-subtype.svg"
+              }
+            },
+            {
+              "name": "Matte Acrylic",
+              "description": "Smooth, non-shiny, premium subtle finish",
+              "bestFor": "Contemporary minimal interiors",
+              "media": {
+                "card_image": "/images/finishes/acrylic-matte-acrylic.jpg",
+                "icon": "/images/finishes/icon-acrylic-subtype.svg"
+              }
+            },
+            {
+              "name": "Solid Acrylic",
+              "description": "Same colour throughout, more durable",
+              "bestFor": "High-wear areas",
+              "media": {
+                "card_image": "/images/finishes/acrylic-solid-acrylic.jpg",
+                "icon": "/images/finishes/icon-acrylic-subtype.svg"
+              }
+            },
+            {
+              "name": "Acrylic Laminated Sheet",
+              "description": "Acrylic layer bonded on a base sheet",
+              "bestFor": "Cost-effective acrylic look",
+              "media": {
+                "card_image": "/images/finishes/acrylic-acrylic-laminated-sheet.jpg",
+                "icon": "/images/finishes/icon-acrylic-subtype.svg"
+              }
+            },
+            {
+              "name": "Metallic Acrylic",
+              "description": "Gloss finish with metallic effect",
+              "bestFor": "Statement furniture pieces",
+              "media": {
+                "card_image": "/images/finishes/acrylic-metallic-acrylic.jpg",
+                "icon": "/images/finishes/icon-acrylic-subtype.svg"
+              }
+            }
+          ],
+          "applications": [
+            "Kitchen cabinets (especially recommended)",
+            "Wardrobes",
+            "TV units",
+            "Modern premium furniture"
+          ],
+          "limitations": [
+            "Shows fingerprints and scratches",
+            "Needs careful handling",
+            "Higher cost than laminate"
+          ],
+          "acrylicVsLaminate": {
+            "acrylicAdvantages": [
+              "High-gloss, premium look with rich depth and shine",
+              "Seamless finish with minimal joints",
+              "More scratch-resistant and easier to clean",
+              "Glass-like look with excellent reflection and smooth, seamless appearance",
+              "Shows fingerprints less than gloss-laminate"
+            ],
+            "laminateAdvantages": [
+              "Wide range of colours and textures",
+              "Good durability and everyday performance",
+              "More budget-friendly overall",
+              "Some laminates (digital-print or special textured, depending on thickness and finish) can be as expensive as acrylic"
+            ]
+          },
+          "costTier": 3,
+          "costLabel": "Mid-Range Premium",
+          "budgetFit": {
+            "rental": "not-recommended",
+            "personal": "recommended",
+            "villa": "recommended"
+          },
+          "takeaway": "Acrylic finish is recommended for kitchens as it is easy to clean and has better scratch resistance. Laminate finish is ideal for other furniture due to its durability, low maintenance, and cost-effectiveness.",
+          "media": {
+            "card_image": "/images/finishes/acrylic-sheets.jpg",
+            "card_video": null,
+            "icon": "/images/finishes/icon-acrylic.svg",
+            "diagram": "/images/finishes/acrylic-application-diagram.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideInRight",
+              "delay": 150,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "glow",
+              "target": "card",
+              "feedback": "tooltip"
+            },
+            "scroll": {
+              "parallax": false,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            },
+            "microInteraction": {
+              "type": "badgeFlip",
+              "repeatable": true
+            }
+          }
+        }
+      ]
+    },
+    "paintFinishes": {
+      "id": "paint-finishes",
+      "slug": "/finishes/paint-finishes",
+      "title": "Paint Finishes",
+      "summary": "Paint finishes offer seamless, custom-colour surfaces applied directly to furniture. DUCO is the budget-friendly option; PU is the premium long-term choice.",
+      "finishes": [
+        {
+          "id": "duco",
+          "name": "DUCO Paint",
+          "type": "Paint Finish",
+          "definition": "DUCO paint is a smooth, solid-colour paint finish used on furniture to give a premium, factory-like look.",
+          "simpleExplanation": "It's like car paint for furniture \u2014 even, smooth, and without any wood texture.",
+          "properties": {
+            "appearance": "Clean, contemporary look \u2014 seamless matte or semi-gloss",
+            "availableFinishes": [
+              "Matte",
+              "Satin",
+              "Gloss"
+            ],
+            "durability": "Less durable than PU in high-usage areas",
+            "scratchResistance": "Can scratch",
+            "moistureResistance": "Moderate",
+            "heatResistance": "Moderate",
+            "customColors": true,
+            "application": "Spray-paint \u2014 multiple coats needed, longer application time",
+            "cost": "More budget-friendly than PU"
+          },
+          "applications": [
+            "Kitchen cabinets",
+            "Wardrobes",
+            "TV units",
+            "Doors",
+            "Custom furniture",
+            "Modern, minimal interiors"
+          ],
+          "limitations": [
+            "Costs more than laminates",
+            "Can scratch",
+            "Takes longer due to multiple coats",
+            "Less durable than PU in high-usage areas"
+          ],
+          "costTier": 4,
+          "costLabel": "Mid-Premium",
+          "budgetFit": {
+            "rental": "not-recommended",
+            "personal": "recommended",
+            "villa": "recommended"
+          },
+          "takeaway": "Premium painted finish with custom colours. Clean, modern look. Choose DUCO for a clean look on a controlled budget.",
+          "media": {
+            "card_image": "/images/finishes/duco-paint.jpg",
+            "card_video": null,
+            "icon": "/images/finishes/icon-duco.svg",
+            "diagram": "/images/finishes/duco-layer-diagram.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideUp",
+              "delay": 150,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "tooltip"
+            },
+            "microInteraction": {
+              "type": "badgeFlip",
+              "repeatable": true
+            }
+          }
+        },
+        {
+          "id": "pu",
+          "name": "PU (Polyurethane) Paint",
+          "type": "Paint Finish",
+          "definition": "PU (Polyurethane) paint is a premium paint finish used on furniture for a smooth, durable, and long-lasting surface.",
+          "simpleExplanation": "It's a strong protective coating that gives furniture a rich, showroom-quality finish.",
+          "properties": {
+            "appearance": "Rich, showroom-quality \u2014 multi-layer coating with superior smoothness",
+            "availableFinishes": [
+              "Matte",
+              "Satin",
+              "Gloss"
+            ],
+            "durability": "Highly durable and scratch-resistant",
+            "scratchResistance": "Excellent",
+            "moistureResistance": "Better moisture resistance",
+            "heatResistance": "Better heat resistance",
+            "customColors": true,
+            "application": "Multi-layer coating \u2014 needs skilled application",
+            "cost": "More expensive than DUCO \u2014 costliest finish option"
+          },
+          "applications": [
+            "Wardrobes",
+            "Kitchen shutters",
+            "Doors",
+            "TV units",
+            "Premium furniture",
+            "High-usage areas"
+          ],
+          "limitations": [
+            "Costlier than all other finishes",
+            "Needs skilled application",
+            "Touch-ups are difficult"
+          ],
+          "ducoVsPu": {
+            "ducoAdvantages": [
+              "More budget-friendly",
+              "Clean, contemporary look"
+            ],
+            "puAdvantages": [
+              "Superior smoothness (multi-layer)",
+              "Highly durable and scratch-resistant",
+              "Better moisture and heat resistance",
+              "Premium, long-lasting finish"
+            ]
+          },
+          "costTier": 6,
+          "costLabel": "Most Expensive Finish",
+          "budgetFit": {
+            "rental": "not-recommended",
+            "personal": "optional",
+            "villa": "recommended"
+          },
+          "takeaway": "Choose DUCO for a clean look on a controlled budget. Choose PU for premium durability and long-term performance.",
+          "media": {
+            "card_image": "/images/finishes/pu-paint.jpg",
+            "card_video": null,
+            "icon": "/images/finishes/icon-pu.svg",
+            "diagram": "/images/finishes/pu-layer-diagram.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideUp",
+              "delay": 150,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "glow",
+              "target": "card",
+              "feedback": "tooltip"
+            },
+            "microInteraction": {
+              "type": "badgeFlip",
+              "repeatable": true
+            }
+          }
+        }
+      ]
+    },
+    "specialtyFinishes": {
+      "id": "specialty-finishes",
+      "slug": "/finishes/specialty-finishes",
+      "title": "Specialty Finishes",
+      "summary": "Specialty finishes offer unique aesthetics beyond standard sheets and paint. Lacquered glass delivers ultra-premium gloss; rattan adds natural texture.",
+      "finishes": [
+        {
+          "id": "lacquered-glass",
+          "name": "Lacquered Glass",
+          "type": "Specialty Finish",
+          "definition": "Lacquered glass is a painted glass sheet with a glossy finish, used on furniture and wall panels for a sleek, premium look.",
+          "simpleExplanation": "It's coloured glass with paint sealed at the back, giving a smooth, shiny, and reflective surface.",
+          "properties": {
+            "appearance": "Luxurious, high-gloss, reflective",
+            "durability": "Good \u2014 but fragile",
+            "moistureResistance": "Excellent \u2014 moisture resistant",
+            "cleanability": "Easy to clean",
+            "weight": "Heavy",
+            "fragility": "Fragile \u2014 can break if impacted",
+            "cost": "More expensive than laminates or acrylic"
+          },
+          "applications": [
+            "Kitchen shutters",
+            "Wardrobes",
+            "Wall panels",
+            "TV units",
+            "Premium interiors"
+          ],
+          "limitations": [
+            "Fragile",
+            "Heavy",
+            "More expensive than laminates or acrylic",
+            "Requires professional installation"
+          ],
+          "costTier": 5,
+          "costLabel": "Ultra-Premium",
+          "budgetFit": {
+            "rental": "not-recommended",
+            "personal": "optional",
+            "villa": "recommended"
+          },
+          "takeaway": "Ultra-premium, glossy finish. Moisture resistant & elegant. Fragile and higher cost.",
+          "media": {
+            "card_image": "/images/finishes/lacquered-glass.jpg",
+            "card_video": "/videos/finishes/lacquered-glass-application.mp4",
+            "icon": "/images/finishes/icon-lacquered-glass.svg",
+            "diagram": "/images/finishes/lacquered-glass-texture-closeup.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "scaleIn",
+              "delay": 150,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "expand",
+              "target": "card",
+              "feedback": "overlay"
+            },
+            "scroll": {
+              "parallax": true,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            }
+          }
+        },
+        {
+          "id": "rattan",
+          "name": "Rattan",
+          "type": "Specialty Finish",
+          "definition": "Rattan is a natural woven material made from plant fibres, used in furniture for a warm, earthy look.",
+          "simpleExplanation": "It's a woven cane pattern added to furniture panels to create texture and a natural feel.",
+          "properties": {
+            "appearance": "Natural, textured, warm, earthy",
+            "durability": "Decorative \u2014 not structural",
+            "moistureResistance": "Not moisture friendly",
+            "maintenance": "Needs careful maintenance",
+            "style": "Modern-boho, European, natural aesthetic",
+            "cost": "Mid-premium \u2014 approximately equal to DUCO and Lacquered Glass"
+          },
+          "applications": [
+            "Wardrobe shutters",
+            "Crockery units",
+            "Shoe cabinets",
+            "Bed backs",
+            "Accent furniture"
+          ],
+          "limitations": [
+            "Not moisture friendly",
+            "Needs careful maintenance",
+            "Mostly decorative (not structural)",
+            "Avoid wet or humid areas"
+          ],
+          "costTier": 5,
+          "costLabel": "Mid-Premium (Parity with DUCO & Lacquered Glass)",
+          "budgetFit": {
+            "rental": "not-recommended",
+            "personal": "optional",
+            "villa": "recommended"
+          },
+          "takeaway": "Natural, textured & stylish. Great for accent panels. Avoid wet or humid areas.",
+          "media": {
+            "card_image": "/images/finishes/rattan.jpg",
+            "card_video": "/videos/finishes/rattan-application.mp4",
+            "icon": "/images/finishes/icon-rattan.svg",
+            "diagram": "/images/finishes/rattan-texture-closeup.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "scaleIn",
+              "delay": 150,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "expand",
+              "target": "card",
+              "feedback": "overlay"
+            },
+            "scroll": {
+              "parallax": true,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            }
+          }
+        }
+      ]
+    },
+    "costHierarchy": {
+      "id": "cost-hierarchy",
+      "title": "Finish Cost Hierarchy",
+      "description": "Costs vary based on design complexity, colour, texture, and detailing, but this is the general cost hierarchy followed in interiors.",
+      "source": "Different Themes, Different Costs",
+      "order": [
+        {
+          "rank": 1,
+          "finish": "Laminate",
+          "id": "laminate",
+          "costTier": 2,
+          "media": {
+            "icon": "/images/finishes/icon-tier-1.svg",
+            "card_image": "/images/finishes/laminate-tier.jpg"
+          }
+        },
+        {
+          "rank": 2,
+          "finish": "Acrylic",
+          "id": "acrylic",
+          "costTier": 3,
+          "media": {
+            "icon": "/images/finishes/icon-tier-2.svg",
+            "card_image": "/images/finishes/acrylic-tier.jpg"
+          }
+        },
+        {
+          "rank": 3,
+          "finish": "DUCO",
+          "id": "duco",
+          "costTier": 4,
+          "parityWith": [
+            "rattan",
+            "lacquered-glass"
+          ],
+          "media": {
+            "icon": "/images/finishes/icon-tier-3.svg",
+            "card_image": "/images/finishes/duco-tier.jpg"
+          }
+        },
+        {
+          "rank": 3,
+          "finish": "Rattan",
+          "id": "rattan",
+          "costTier": 5,
+          "parityWith": [
+            "duco",
+            "lacquered-glass"
+          ],
+          "media": {
+            "icon": "/images/finishes/icon-tier-3.svg",
+            "card_image": "/images/finishes/rattan-tier.jpg"
+          }
+        },
+        {
+          "rank": 3,
+          "finish": "Lacquered Glass",
+          "id": "lacquered-glass",
+          "costTier": 5,
+          "parityWith": [
+            "duco",
+            "rattan"
+          ],
+          "media": {
+            "icon": "/images/finishes/icon-tier-3.svg",
+            "card_image": "/images/finishes/lacquered-glass-tier.jpg"
+          }
+        },
+        {
+          "rank": 4,
+          "finish": "PU (Polyurethane)",
+          "id": "pu",
+          "costTier": 6,
+          "media": {
+            "icon": "/images/finishes/icon-tier-4.svg",
+            "card_image": "/images/finishes/pu-tier.jpg"
+          }
+        }
+      ],
+      "hierarchyString": "Laminate < Acrylic < DUCO \u2248 Rattan = Lacquered Glass < PU",
+      "note": "Costs vary based on design complexity, colour, texture, and detailing."
+    }
+  },
+  "media": {
+    "hero_image": "/images/finishes/hero.jpg",
+    "hero_video": null,
+    "thumbnail": "/images/finishes/thumbnail.jpg",
+    "icons": {
+      "default": "/images/finishes/icon-default.svg",
+      "active": "/images/finishes/icon-active.svg",
+      "hover": "/images/finishes/icon-hover.svg"
+    }
+  },
+  "animation": {
+    "enter": {
+      "type": "fadeIn",
+      "delay": 0,
+      "duration": 400,
+      "trigger": "onViewport"
+    },
+    "scroll": {
+      "parallax": false,
+      "progressBar": false,
+      "reveal": "lazyReveal"
+    }
+  }
+}

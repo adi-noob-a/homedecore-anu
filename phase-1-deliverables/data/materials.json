@@ -1,0 +1,660 @@
+{
+  "module": "materials",
+  "version": "1.0.0",
+  "description": "Core Materials data \u2014 Plywood Grades, Engineered Boards, and Thickness Guide",
+  "sections": {
+    "plywoodGrades": {
+      "id": "plywood-grades",
+      "slug": "/materials/plywood-grades",
+      "title": "Plywood Grades Explained",
+      "summary": "Plywood is made by bonding multiple thin wood layers together, making it stronger and more stable than MDF or particle board. Always ensure your interior uses the correct grade for each area.",
+      "overview": {
+        "definition": "Plywood is made by bonding multiple thin wood layers together, making it stronger and more stable than MDF or particle board.",
+        "whyCommonlyUsed": [
+          "High strength and durability",
+          "Better screw-holding capacity",
+          "Available in different grades for dry and wet areas"
+        ],
+        "coreGuideline": "Always ensure your interior uses MR Grade 303 for dry areas, BWR Grade 303 for moderate moisture zones, and BWP Grade 710 for kitchens and wet areas."
+      },
+      "grades": [
+        {
+          "id": "mr-grade",
+          "grade": "MR Grade 303",
+          "fullName": "Moisture Resistant Plywood",
+          "alsoKnownAs": "Commercial Plywood",
+          "moistureLevel": "Normal indoor moisture \u2014 NOT direct water contact",
+          "description": "MR plywood (also called commercial plywood) can handle normal indoor moisture, but not direct water.",
+          "properties": {
+            "waterResistance": "Low to moderate",
+            "strength": "Good for indoor use",
+            "durability": "Good in dry conditions",
+            "pestResistance": "Standard",
+            "adhesiveType": "Standard moisture-resistant adhesive"
+          },
+          "applications": [
+            "Wardrobes (dry areas)",
+            "Beds",
+            "Shelves",
+            "Indoor furniture",
+            "Wall paneling",
+            "Living room units",
+            "Dining room furniture",
+            "Bedroom units"
+          ],
+          "limitations": [
+            "Not suitable for kitchens",
+            "Not suitable for bathrooms",
+            "Can get damaged with water spills or leakage",
+            "Not for areas with direct water exposure"
+          ],
+          "costTier": 1,
+          "costLabel": "Most Economical",
+          "takeaway": "Good for dry indoor areas. Not for water exposure.",
+          "media": {
+            "card_image": "/images/materials/plywood-mr-grade.jpg",
+            "card_video": null,
+            "icon": "/images/materials/icon-mr-grade.svg",
+            "diagram": "/images/materials/plywood-mr-grade-cross-section.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideUp",
+              "delay": 100,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "scale up"
+            },
+            "scroll": {
+              "parallax": false,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            },
+            "microInteraction": {
+              "type": "badgeFlip",
+              "repeatable": true
+            }
+          }
+        },
+        {
+          "id": "bwr-grade",
+          "grade": "BWR Grade 303",
+          "fullName": "Boiling Water Resistant Plywood",
+          "moistureLevel": "Moderate moisture \u2014 occasional water exposure",
+          "description": "BWR plywood is more water-resistant than MR, but not as strong as BWP.",
+          "properties": {
+            "waterResistance": "Moderate \u2014 handles occasional water exposure",
+            "strength": "Better durability than MR plywood",
+            "durability": "Good for semi-wet areas",
+            "pestResistance": "Better than MR",
+            "adhesiveType": "Water-resistant adhesive"
+          },
+          "applications": [
+            "Kitchen dry zones",
+            "Utility areas",
+            "Semi-wet spaces",
+            "Kitchen wall units",
+            "Kitchen lofts"
+          ],
+          "limitations": [
+            "Not ideal for constant water contact",
+            "Not as strong as BWP grade",
+            "Not for sink areas or bathroom cabinets"
+          ],
+          "costTier": 2,
+          "costLabel": "Mid-Range",
+          "takeaway": "Suitable for moderate moisture. Not ideal for constant water contact.",
+          "media": {
+            "card_image": "/images/materials/plywood-bwr-grade.jpg",
+            "card_video": null,
+            "icon": "/images/materials/icon-bwr-grade.svg",
+            "diagram": "/images/materials/plywood-bwr-grade-cross-section.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideUp",
+              "delay": 100,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "scale up"
+            },
+            "scroll": {
+              "parallax": false,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            },
+            "microInteraction": {
+              "type": "badgeFlip",
+              "repeatable": true
+            }
+          }
+        },
+        {
+          "id": "bwp-grade",
+          "grade": "BWP Grade 710",
+          "fullName": "Boiling Water Proof Plywood",
+          "moistureLevel": "Continuous water exposure \u2014 highest moisture resistance",
+          "description": "BWP plywood is the highest grade of plywood, designed to withstand continuous water exposure.",
+          "properties": {
+            "waterResistance": "Excellent \u2014 designed for continuous water exposure",
+            "strength": "Highest structural strength",
+            "durability": "Highly durable and pest resistant",
+            "pestResistance": "Excellent",
+            "adhesiveType": "Waterproof adhesive",
+            "specialFeatures": [
+              "Does not swell, crack, or delaminate",
+              "Uses waterproof adhesive",
+              "Highly durable and pest resistant"
+            ]
+          },
+          "applications": [
+            "Kitchens",
+            "Bathrooms",
+            "Sink units",
+            "Utility areas",
+            "Outdoor furniture",
+            "All wet and water-exposed areas"
+          ],
+          "limitations": [
+            "Costs more than MR and BWR grades"
+          ],
+          "costTier": 3,
+          "costLabel": "Most Expensive",
+          "takeaway": "Best for wet and water-exposed areas. Long-lasting and durable. Costs more, but worth it.",
+          "media": {
+            "card_image": "/images/materials/plywood-bwp-grade.jpg",
+            "card_video": null,
+            "icon": "/images/materials/icon-bwp-grade.svg",
+            "diagram": "/images/materials/plywood-bwp-grade-cross-section.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideUp",
+              "delay": 100,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "scale up"
+            },
+            "scroll": {
+              "parallax": false,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            },
+            "microInteraction": {
+              "type": "badgeFlip",
+              "repeatable": true
+            }
+          }
+        }
+      ],
+      "usageGuide": {
+        "title": "Where to Use Each Grade \u2014 Quick Reference",
+        "rules": [
+          {
+            "area": "Wardrobes, Living & Dining Furniture, Bedroom Units",
+            "recommendedGrade": "MR Grade 303",
+            "note": "Use good brand MR plywood",
+            "media": {
+              "icon": "/images/materials/icon-usage-mr-grade-303.svg"
+            }
+          },
+          {
+            "area": "Kitchen Wall Units and Lofts",
+            "recommendedGrade": "BWR Grade 303 or BWP Grade 710",
+            "note": "For better moisture safety; avoid MR plywood in kitchens at most",
+            "media": {
+              "icon": "/images/materials/icon-usage-bwr-grade-303-or-bwp-grade-710.svg"
+            }
+          },
+          {
+            "area": "Kitchens, Utility Areas, Bathroom Units",
+            "recommendedGrade": "BWP Grade 710",
+            "note": "Use BWP plywood for all wet and water-exposed areas",
+            "media": {
+              "icon": "/images/materials/icon-usage-bwp-grade-710.svg"
+            }
+          }
+        ],
+        "criticalWarning": "Avoid MR plywood in kitchens. At most, it may be used in lofts, but BWR/BWP is always recommended."
+      }
+    },
+    "engineeredBoards": {
+      "id": "engineered-boards",
+      "slug": "/materials/engineered-boards",
+      "title": "Engineered Boards",
+      "summary": "Beyond plywood, several engineered wood boards are commonly used in interiors. Each has specific strengths, weaknesses, and ideal use cases.",
+      "boards": [
+        {
+          "id": "hdhmr",
+          "name": "HDHMR",
+          "fullName": "High Density High Moisture Resistant Board",
+          "type": "Engineered Board",
+          "definition": "HDHMR (High Density High Moisture Resistant) is a dense board made from tightly compressed wood fibers \u2014 stronger and tougher than MDF.",
+          "composition": "Tightly compressed wood fibers \u2014 denser than MDF",
+          "properties": {
+            "density": "High",
+            "moistureResistance": "Better than regular MDF; handles moisture well",
+            "strength": "Strong \u2014 doesn't bend easily",
+            "screwHolding": "Good",
+            "surface": "Smooth, uniform, paint-ready",
+            "pestResistance": "Termite resistant",
+            "durability": "Good \u2014 stronger than MDF"
+          },
+          "applications": [
+            "Kitchens",
+            "Bathroom vanities",
+            "Wardrobes",
+            "Furniture in humid areas",
+            "Shutters (smooth surface \u2014 no undulations or wavy laminate)",
+            "CNC designs",
+            "Painted/PU finishes"
+          ],
+          "limitations": [
+            "Not recommended for areas with continuous water exposure",
+            "Not for outdoor use",
+            "More expensive than MDF",
+            "Not as structurally strong as plywood for carcass work"
+          ],
+          "bestFor": "Shutters and CNC designs",
+          "costComparison": {
+            "vsPlywood": "Cost-effective compared to plywood",
+            "vsMDF": "More expensive than MDF"
+          },
+          "costTier": 3,
+          "takeaway": "Strong & moisture resistant. Good for kitchens & bathrooms. Not for outdoor use. Recommended for shutters due to smooth surface.",
+          "media": {
+            "card_image": "/images/materials/hdhmr-board.jpg",
+            "card_video": null,
+            "icon": "/images/materials/icon-hdhmr.svg",
+            "diagram": "/images/materials/hdhmr-cross-section.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideUp",
+              "delay": 100,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "scale up"
+            },
+            "scroll": {
+              "parallax": false,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            },
+            "microInteraction": {
+              "type": "badgeFlip",
+              "repeatable": true
+            }
+          }
+        },
+        {
+          "id": "mdf",
+          "name": "MDF",
+          "fullName": "Medium Density Fibreboard",
+          "type": "Engineered Board",
+          "definition": "MDF (Medium Density Fibreboard) is made from fine wood fibres compressed into smooth, uniform boards.",
+          "composition": "Fine wood fibres compressed into boards",
+          "properties": {
+            "density": "Medium",
+            "moistureResistance": "Low \u2014 swells if exposed to water",
+            "strength": "Weaker than plywood and HDHMR",
+            "screwHolding": "Poor \u2014 may cause shutter issues over time",
+            "surface": "Very smooth \u2014 ideal for paint and laminates",
+            "workability": "Easy to cut and shape",
+            "durability": "Low in moisture conditions"
+          },
+          "applications": [
+            "TV units",
+            "Wardrobes (DRY areas only)",
+            "Wall panels",
+            "Decorative designs",
+            "CNC work \u2014 jaali panels and cut designs",
+            "Painted furniture in dry areas"
+          ],
+          "limitations": [
+            "Swells with water",
+            "Weaker than plywood or HDHMR",
+            "Low moisture resistance",
+            "Poor screw-holding capacity",
+            "Not recommended for carcasses",
+            "May cause shutter issues over time",
+            "Avoid kitchens, bathrooms, and wet areas"
+          ],
+          "bestFor": "CNC decorative work (jaali panels) only",
+          "costComparison": {
+            "vsHDHMR": "More economical than HDHMR",
+            "vsPlywood": "Less expensive than plywood"
+          },
+          "costTier": 1,
+          "takeaway": "Use MDF only for CNC work such as jaali panels and cut designs. MDF has low moisture resistance and poor screw-holding capacity, so it is not recommended for carcasses and may cause shutter issues over time.",
+          "media": {
+            "card_image": "/images/materials/mdf-board.jpg",
+            "card_video": null,
+            "icon": "/images/materials/icon-mdf.svg",
+            "diagram": "/images/materials/mdf-cross-section.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideUp",
+              "delay": 100,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "scale up"
+            },
+            "scroll": {
+              "parallax": false,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            },
+            "microInteraction": {
+              "type": "badgeFlip",
+              "repeatable": true
+            }
+          }
+        },
+        {
+          "id": "particle-board",
+          "name": "Particle Board",
+          "fullName": "Particle Board",
+          "type": "Engineered Board",
+          "definition": "Made from compressed wood chips and sawdust bonded with glue.",
+          "composition": "Compressed wood chips and sawdust bonded with glue",
+          "properties": {
+            "density": "Low to medium",
+            "moistureResistance": "None \u2014 swells and gets damaged with moisture",
+            "strength": "Weak \u2014 weaker than plywood and MDF",
+            "screwHolding": "Poor",
+            "surface": "Smooth \u2014 ideal for laminates",
+            "durability": "Low"
+          },
+          "applications": [
+            "Dry areas only",
+            "Light-use furniture",
+            "Low-budget furniture"
+          ],
+          "limitations": [
+            "Not strong",
+            "Not water resistant \u2014 swells with moisture",
+            "Avoid kitchens",
+            "Avoid bathrooms",
+            "Avoid heavy-load furniture",
+            "Short lifespan"
+          ],
+          "bestFor": "Budget furniture in dry, light-use areas only",
+          "costComparison": {
+            "vsMDF": "Cheaper than MDF",
+            "vsPlywood": "Significantly cheaper than plywood"
+          },
+          "costTier": 0,
+          "takeaway": "Low cost and smooth surface ideal for laminates and budget furniture. Not strong, not water resistant. Avoid in kitchens, bathrooms, and heavy-load furniture.",
+          "media": {
+            "card_image": "/images/materials/particle-board-board.jpg",
+            "card_video": null,
+            "icon": "/images/materials/icon-particle-board.svg",
+            "diagram": "/images/materials/particle-board-cross-section.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideUp",
+              "delay": 100,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "scale up"
+            },
+            "scroll": {
+              "parallax": false,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            },
+            "microInteraction": {
+              "type": "badgeFlip",
+              "repeatable": true
+            }
+          }
+        },
+        {
+          "id": "blockboard",
+          "name": "Blockboard",
+          "fullName": "Blockboard",
+          "type": "Engineered Board",
+          "definition": "The blockboard is made with solid wooden strips inside, covered with plywood on both sides \u2014 making it light yet strong.",
+          "composition": "Solid wooden strips inside, covered with plywood on both sides",
+          "properties": {
+            "density": "Medium \u2014 lighter than plywood",
+            "moistureResistance": "Poor",
+            "strength": "Good \u2014 bends less",
+            "screwHolding": "Good",
+            "stability": "Good for large panels",
+            "durability": "Moderate \u2014 can warp if low quality"
+          },
+          "applications": [
+            "Doors",
+            "Long shelves",
+            "Shutters",
+            "Beds",
+            "Tables",
+            "Wardrobes (dry areas)"
+          ],
+          "limitations": [
+            "Poor moisture resistance",
+            "Can warp if low quality",
+            "Avoid kitchens",
+            "Avoid bathrooms",
+            "Avoid wet areas"
+          ],
+          "bestFor": "Doors and long spans in dry areas",
+          "costComparison": {
+            "vsPlywood": "Cost-effective for large panels"
+          },
+          "costTier": 2,
+          "takeaway": "Good for doors & long spans. Lightweight & stable. Avoid kitchens, bathrooms, and wet areas.",
+          "media": {
+            "card_image": "/images/materials/blockboard-board.jpg",
+            "card_video": null,
+            "icon": "/images/materials/icon-blockboard.svg",
+            "diagram": "/images/materials/blockboard-cross-section.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideUp",
+              "delay": 100,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "scale up"
+            },
+            "scroll": {
+              "parallax": false,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            },
+            "microInteraction": {
+              "type": "badgeFlip",
+              "repeatable": true
+            }
+          }
+        }
+      ],
+      "comparisonSummary": {
+        "hdhmrVsPlywood": {
+          "title": "HDHMR vs Plywood",
+          "verdict": "HDHMR is recommended for shutters as it provides a smooth surface with no undulations or wavy laminate. Plywood is ideal for the carcass due to its strong, multi-layered structure and better durability."
+        },
+        "mdfVsHdhmr": {
+          "title": "MDF vs HDHMR",
+          "verdict": "Use MDF only for CNC work such as jaali panels and cut designs. MDF has low moisture resistance and poor screw-holding capacity, so it is not recommended for carcasses and may cause shutter issues over time. HDHMR is a superior and more durable material and is recommended wherever possible."
+        }
+      }
+    },
+    "plywoodThickness": {
+      "id": "plywood-thickness",
+      "slug": "/materials/plywood-thickness",
+      "title": "Plywood Thickness Guide",
+      "summary": "Plywood thickness is selected based on load, usage, and durability requirements. 16-19mm is the standard for carcass and structural strength.",
+      "thicknesses": [
+        {
+          "thickness": "6 mm",
+          "applications": [
+            "Back panels",
+            "Drawer bottoms",
+            "Partitions"
+          ],
+          "loadRating": "Light",
+          "structural": false,
+          "media": {
+            "card_image": "/images/materials/thickness-6mm.jpg",
+            "icon": "/images/materials/icon-thickness-6mm.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 50,
+              "duration": 300,
+              "trigger": "onScroll"
+            }
+          }
+        },
+        {
+          "thickness": "9 mm",
+          "applications": [
+            "Shutters",
+            "Light panels",
+            "Wall cladding"
+          ],
+          "loadRating": "Light to medium",
+          "structural": false,
+          "media": {
+            "card_image": "/images/materials/thickness-9mm.jpg",
+            "icon": "/images/materials/icon-thickness-9mm.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 50,
+              "duration": 300,
+              "trigger": "onScroll"
+            }
+          }
+        },
+        {
+          "thickness": "12 mm",
+          "applications": [
+            "Shutters",
+            "Shelves (light to medium load)"
+          ],
+          "loadRating": "Medium",
+          "structural": true,
+          "media": {
+            "card_image": "/images/materials/thickness-12mm.jpg",
+            "icon": "/images/materials/icon-thickness-12mm.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 50,
+              "duration": 300,
+              "trigger": "onScroll"
+            }
+          }
+        },
+        {
+          "thickness": "16-19 mm",
+          "applications": [
+            "Carcass for kitchens",
+            "Wardrobes",
+            "Base units"
+          ],
+          "loadRating": "Heavy",
+          "structural": true,
+          "isStandard": true,
+          "note": "16-19 mm plywood is standard for carcass and structural strength",
+          "media": {
+            "card_image": "/images/materials/thickness-16_19mm.jpg",
+            "icon": "/images/materials/icon-thickness-16_19mm.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 50,
+              "duration": 300,
+              "trigger": "onScroll"
+            }
+          }
+        },
+        {
+          "thickness": "25 mm",
+          "applications": [
+            "Counter supports",
+            "Heavy-duty shelves",
+            "Loft bases"
+          ],
+          "loadRating": "Very heavy",
+          "structural": true,
+          "media": {
+            "card_image": "/images/materials/thickness-25mm.jpg",
+            "icon": "/images/materials/icon-thickness-25mm.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 50,
+              "duration": 300,
+              "trigger": "onScroll"
+            }
+          }
+        }
+      ],
+      "takeaway": "16-19 mm plywood is standard for carcass and structural strength. Thickness is selected based on load, usage, and durability requirements."
+    }
+  },
+  "media": {
+    "hero_image": "/images/materials/hero.jpg",
+    "hero_video": null,
+    "thumbnail": "/images/materials/thumbnail.jpg",
+    "icons": {
+      "default": "/images/materials/icon-default.svg",
+      "active": "/images/materials/icon-active.svg",
+      "hover": "/images/materials/icon-hover.svg"
+    }
+  },
+  "animation": {
+    "enter": {
+      "type": "fadeIn",
+      "delay": 0,
+      "duration": 400,
+      "trigger": "onViewport"
+    },
+    "scroll": {
+      "parallax": false,
+      "progressBar": false,
+      "reveal": "lazyReveal"
+    }
+  }
+}

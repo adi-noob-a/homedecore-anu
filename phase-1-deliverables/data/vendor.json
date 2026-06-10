@@ -1,0 +1,617 @@
+{
+  "module": "vendor",
+  "version": "1.0.0",
+  "description": "Vendor Selection data \u2014 Big vs Small Companies, Experience Centre Warnings, Site Visit Guide, and Red Flag Alerts",
+  "sections": {
+    "companyComparison": {
+      "id": "big-vs-small",
+      "slug": "/vendor-selection/big-vs-small",
+      "title": "Big vs Small Interior Companies",
+      "summary": "No company type is perfect. Transparency, clear scope, and asking the right questions matter more than company size.",
+      "opening": "Many interior companies focus on closing the deal first, rather than fully educating clients at the beginning. While this is understandable from a business point of view, there needs to be a balance between sales and genuinely helping homeowners build their dream home.",
+      "comparison": {
+        "large": {
+          "label": "Large, Established Companies",
+          "scale": "100-150 projects per month",
+          "advantages": [
+            "Smoother and more structured processes",
+            "Dedicated teams and clearer accountability"
+          ],
+          "disadvantages": [
+            "Personal attention to your budget and vision may be limited",
+            "Quote increases after design are still common",
+            "You may feel like just another project"
+          ],
+          "bestFor": "Homeowners who value structured processes and are comfortable advocating for themselves in a large system",
+          "riskLevel": "medium",
+          "keyQuestion": "Who will be my single point of contact throughout the project? How are change requests handled and priced?",
+          "media": {
+            "card_image": "/images/vendor/large-company.jpg",
+            "card_video": null,
+            "icon": "/images/vendor/icon-large.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideInLeft",
+              "delay": 200,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "scale up"
+            }
+          }
+        },
+        "small": {
+          "label": "Smaller Interior Companies",
+          "scale": "Fewer projects, growth-focused",
+          "advantages": [
+            "Care deeply about growth and reputation",
+            "More flexible with pricing and discounts",
+            "Allow clients to assert their requirements more strongly"
+          ],
+          "disadvantages": [
+            "Processes may not be fully streamlined",
+            "Accountability can be unclear",
+            "Higher risk if expectations aren't documented properly"
+          ],
+          "bestFor": "Homeowners who value personal attention and are willing to document every commitment in writing",
+          "riskLevel": "medium-to-high",
+          "keyQuestion": "Can you document every commitment \u2014 material brands, grades, thicknesses, and hardware types \u2014 in the contract?",
+          "media": {
+            "card_image": "/images/vendor/small-company.jpg",
+            "card_video": null,
+            "icon": "/images/vendor/icon-small.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideInRight",
+              "delay": 200,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "scale up"
+            }
+          }
+        }
+      },
+      "takeaway": "With the right questions and clarity, you will benefit but it requires being well-informed. Transparency, clear scope, and asking the right questions matter more than company size. Knowing how interiors work puts the control back in your hands regardless of Big or Small firm."
+    },
+    "experienceCentres": {
+      "id": "experience-centres",
+      "slug": "/vendor-selection/experience-centres",
+      "title": "What You Should Really Focus On (Not the Experience Centre)",
+      "summary": "Experience centres are designed to sell, not to educate. An experience centre is a display \u2014 not proof of execution quality.",
+      "content": {
+        "opening": "Experience centres can look impressive, but they often don't tell the full truth about what you'll get in your own home.",
+        "keyWarning": "In many showrooms, sales teams claim the furniture is made of plywood, while the actual core material used is often HDHMR or other boards. What's shown in the experience centre may not be the same material used for your project.",
+        "coreTruth": "An experience centre is a display \u2014 not proof of execution quality.",
+        "redFlags": [
+          {
+            "flag": "Material claims in showroom don't match site reality",
+            "detail": "Sales teams claim plywood; actual carcass material is often HDHMR or other boards",
+            "severity": "critical"
+          }
+        ]
+      },
+      "takeaway": "Experience centres are designed to sell, not to educate. Real clarity comes from site visits, factory checks, and asking the right questions. What you don't see in a showroom matters more than what you do.",
+      "media": {
+        "card_image": "/images/vendor/experience-centre.jpg",
+        "card_video": "/videos/vendor/experience-centre-tour.mp4",
+        "icon": "/images/vendor/icon-experience.svg",
+        "comparison": {
+          "type": "splitView",
+          "left": {
+            "label": "Experience Centre (Showroom)",
+            "image": "/images/vendor/experience-centre-showroom.jpg",
+            "video": "/videos/vendor/experience-centre-tour.mp4",
+            "animation": "panRightOnScroll"
+          },
+          "right": {
+            "label": "80% Completed Site (Real Execution)",
+            "image": "/images/vendor/80-percent-site-carcass.jpg",
+            "video": "/videos/vendor/80-percent-site-tour.mp4",
+            "animation": "panLeftOnScroll"
+          }
+        },
+        "callouts": [
+          {
+            "type": "misrepresentation",
+            "headline": "Sales claim: 'Made of plywood'",
+            "reality": "Often HDHMR or other boards",
+            "icon": "/images/vendor/icon-misrepresentation.svg"
+          },
+          {
+            "type": "hardware",
+            "headline": "Premium hinges in showroom",
+            "reality": "Low-cost channels in actual project",
+            "icon": "/images/vendor/icon-hardware-gap.svg"
+          },
+          {
+            "type": "finish",
+            "headline": "Flawless finish on display",
+            "reality": "Visible joints and gaps in execution",
+            "icon": "/images/vendor/icon-finish-gap.svg"
+          }
+        ]
+      }
+    },
+    "siteVisits": {
+      "id": "site-visits",
+      "slug": "/vendor-selection/site-visits",
+      "title": "Site Visit Guide: What to Check and Where to Go",
+      "summary": "Real clarity comes from site visits, factory checks, and asking the right questions. What you don't see in a showroom matters more than what you do.",
+      "visitTypes": [
+        {
+          "type": "Visit a Previous Client's Home",
+          "priority": "high",
+          "description": "Ask to see at least one completed project. This shows the finished quality and client relationship strength.",
+          "redFlag": {
+            "scenario": "Company says clients don't allow visits after handover",
+            "assessment": "Treat it as a red flag \u2014 not an instant rejection, but a sign of weak client relationships",
+            "severity": "warning",
+            "media": {
+              "icon": "/images/red-flags/icon-warning.svg"
+            }
+          },
+          "whatToCheck": [
+            "Overall finish quality after months of use",
+            "How joints and edges have held up",
+            "Hardware operation (hinges, channels, soft-close)",
+            "Any visible swelling, peeling, or warping"
+          ],
+          "media": {
+            "card_image": "/images/vendor/visit-a-previous-client's-home.jpg",
+            "card_video": null,
+            "icon": "/images/vendor/icon-visit-a-previous-client's-home.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 100,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "scale up"
+            }
+          }
+        },
+        {
+          "type": "Ask to See an 80% Completed Site",
+          "priority": "critical",
+          "description": "This is where you learn the most. An 80% completed site reveals the actual materials and hardware before the finishing layer hides everything.",
+          "whatToCheck": [
+            "Carcass material \u2014 is it actually plywood, or HDHMR/MDF?",
+            "Brands of plywood being used \u2014 check the stamp on the board",
+            "Hinges and channel brands \u2014 verify if reputed hardware brands are actually being used",
+            "Workmanship quality \u2014 joints, alignment, leveling",
+            "Electrical and plumbing rough-in quality"
+          ],
+          "whyThisMatters": "This stage reveals the real quality, not just the finished look. Once laminate/paint is applied, you can't see the core material.",
+          "media": {
+            "card_image": "/images/vendor/ask-to-see-an-80%-completed-site.jpg",
+            "card_video": null,
+            "icon": "/images/vendor/icon-ask-to-see-an-80%-completed-site.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 100,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "scale up"
+            }
+          }
+        },
+        {
+          "type": "Visit the Factory (If Possible)",
+          "priority": "medium",
+          "description": "If the factory is nearby, visit it. If not, site visits are more than sufficient.",
+          "whatToCheck": [
+            "Edge-banding machine quality",
+            "Material storage conditions",
+            "Assembly process and quality control"
+          ],
+          "media": {
+            "card_image": "/images/vendor/visit-the-factory-if-possible.jpg",
+            "card_video": null,
+            "icon": "/images/vendor/icon-visit-the-factory-if-possible.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 100,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "scale up"
+            }
+          }
+        }
+      ],
+      "priorityOrder": [
+        "1. 80% Completed Site Visit \u2014 CRITICAL (reveals real materials and hardware)",
+        "2. Previous Client's Home \u2014 HIGH (reveals long-term quality and client relationships)",
+        "3. Factory Visit \u2014 OPTIONAL (site visits are more than sufficient if factory is far)"
+      ],
+      "takeaway": "Real clarity comes from: \u2714 Site visits \u2714 Factory checks \u2714 Asking the right questions. What you don't see in a showroom matters more than what you do."
+    },
+    "redFlags": {
+      "id": "red-flags",
+      "title": "Red Flag Alert System",
+      "description": "Comprehensive warnings and alerts for homeowners navigating interior design vendor selection. Cards displayed on the Red Flag Alerts dashboard.",
+      "flags": [
+        {
+          "id": "experience-centre-material-mismatch",
+          "severity": "critical",
+          "icon": "\ud83d\udd34",
+          "headline": "What's shown in the experience centre may not be what you get.",
+          "detail": "Sales teams in showrooms often claim furniture is made of plywood, while the actual core material used is frequently HDHMR or other boards. An experience centre is a display \u2014 not proof of execution quality.",
+          "whatToDo": [
+            "Visit an 80% completed site to see the actual carcass material",
+            "Check brands of plywood, hinges, and channels on-site",
+            "Verify if reputed hardware brands are actually being used"
+          ],
+          "crossLink": "/vendor-selection/experience-centres",
+          "category": "vendor-transparency",
+          "media": {
+            "card_image": "/images/red-flags/experience-centre-material-mismatch.jpg",
+            "card_video": null,
+            "icon": "/images/red-flags/icon-critical.svg",
+            "icon_critical": "/images/red-flags/icon-critical.svg",
+            "icon_warning": "/images/red-flags/icon-warning.svg",
+            "icon_info": "/images/red-flags/icon-info.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "scaleIn",
+              "delay": 80,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "pulse",
+              "target": "card",
+              "feedback": "overlay"
+            },
+            "scroll": {
+              "parallax": false,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            },
+            "microInteraction": {
+              "type": "timelineProgress",
+              "repeatable": false
+            }
+          }
+        },
+        {
+          "id": "quote-escalation-after-design",
+          "severity": "critical",
+          "icon": "\ud83d\udd34",
+          "headline": "The quote increased significantly after the design phase.",
+          "detail": "This is the #1 complaint in online reviews of interior companies. Design additions can cause 30-50% cost rise. Basic vs premium material choices, size revisions, and additions like glass shutters and profiling all inflate the final bill.",
+          "whatToDo": [
+            "Always ask for a lump-sum estimate upfront",
+            "Ask: 'What costs are NOT included in this estimate?'",
+            "Ask: 'How much will this increase after the design phase?'",
+            "If the answer is 'nothing much' \u2014 be cautious"
+          ],
+          "crossLink": "/budget/quote-increases",
+          "category": "cost-transparency",
+          "media": {
+            "card_image": "/images/red-flags/quote-escalation-after-design.jpg",
+            "card_video": null,
+            "icon": "/images/red-flags/icon-critical.svg",
+            "icon_critical": "/images/red-flags/icon-critical.svg",
+            "icon_warning": "/images/red-flags/icon-warning.svg",
+            "icon_info": "/images/red-flags/icon-info.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "scaleIn",
+              "delay": 80,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "pulse",
+              "target": "card",
+              "feedback": "overlay"
+            },
+            "scroll": {
+              "parallax": false,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            },
+            "microInteraction": {
+              "type": "timelineProgress",
+              "repeatable": false
+            }
+          }
+        },
+        {
+          "id": "missing-deep-cleaning",
+          "severity": "warning",
+          "icon": "\ud83d\udfe1",
+          "headline": "Is deep cleaning included in your quote?",
+          "detail": "Deep cleaning is needed after painting to remove marks and dust. Many companies exclude this from initial quotes, leading to surprise charges at handover.",
+          "whatToAsk": "Does your quote include deep cleaning after painting and installation?",
+          "crossLink": "/budget/hidden-costs",
+          "category": "hidden-costs",
+          "media": {
+            "card_image": "/images/red-flags/missing-deep-cleaning.jpg",
+            "card_video": null,
+            "icon": "/images/red-flags/icon-warning.svg",
+            "icon_critical": "/images/red-flags/icon-critical.svg",
+            "icon_warning": "/images/red-flags/icon-warning.svg",
+            "icon_info": "/images/red-flags/icon-info.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 80,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "tooltip"
+            },
+            "scroll": {
+              "parallax": false,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            },
+            "microInteraction": {
+              "type": "timelineProgress",
+              "repeatable": false
+            }
+          }
+        },
+        {
+          "id": "no-floor-protection",
+          "severity": "warning",
+          "icon": "\ud83d\udfe1",
+          "headline": "Floor protection: if it's not in the quote, damage won't be covered.",
+          "detail": "Installation work can damage flooring. Most companies will NOT cover floor damage repair unless floor protection is explicitly included in the contract.",
+          "whatToAsk": "Is floor protection included? If my floor gets damaged during installation, who pays?",
+          "crossLink": "/budget/hidden-costs",
+          "category": "hidden-costs",
+          "media": {
+            "card_image": "/images/red-flags/no-floor-protection.jpg",
+            "card_video": null,
+            "icon": "/images/red-flags/icon-warning.svg",
+            "icon_critical": "/images/red-flags/icon-critical.svg",
+            "icon_warning": "/images/red-flags/icon-warning.svg",
+            "icon_info": "/images/red-flags/icon-info.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 80,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "tooltip"
+            },
+            "scroll": {
+              "parallax": false,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            },
+            "microInteraction": {
+              "type": "timelineProgress",
+              "repeatable": false
+            }
+          }
+        },
+        {
+          "id": "client-visit-denial",
+          "severity": "warning",
+          "icon": "\ud83d\udfe1",
+          "headline": "Company says clients don't allow visits after handover? Treat it as a red flag.",
+          "detail": "If a company claims previous clients don't permit site visits, it's not an instant rejection \u2014 but it IS a sign of weak client relationships and potentially hidden quality issues.",
+          "whatToDo": [
+            "Insist on seeing at least one completed project",
+            "Also ask to visit a site at 80% completion \u2014 this is where you learn the most about material and hardware quality"
+          ],
+          "crossLink": "/vendor-selection/site-visits",
+          "category": "vendor-accountability",
+          "media": {
+            "card_image": "/images/red-flags/client-visit-denial.jpg",
+            "card_video": null,
+            "icon": "/images/red-flags/icon-warning.svg",
+            "icon_critical": "/images/red-flags/icon-critical.svg",
+            "icon_warning": "/images/red-flags/icon-warning.svg",
+            "icon_info": "/images/red-flags/icon-info.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 80,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "tooltip"
+            },
+            "scroll": {
+              "parallax": false,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            },
+            "microInteraction": {
+              "type": "timelineProgress",
+              "repeatable": false
+            }
+          }
+        },
+        {
+          "id": "false-ceiling-scope-gap",
+          "severity": "info",
+          "icon": "\ud83d\udd35",
+          "headline": "Does the false ceiling quote include painting and electrical work?",
+          "detail": "False ceiling quotes often exclude the painting and electrical work needed to complete the ceiling. Ensure these are explicitly mentioned in the estimate.",
+          "whatToAsk": "Does your false ceiling estimate include painting and electrical point work?",
+          "crossLink": "/budget/hidden-costs",
+          "category": "scope-clarity",
+          "media": {
+            "card_image": "/images/red-flags/false-ceiling-scope-gap.jpg",
+            "card_video": null,
+            "icon": "/images/red-flags/icon-info.svg",
+            "icon_critical": "/images/red-flags/icon-critical.svg",
+            "icon_warning": "/images/red-flags/icon-warning.svg",
+            "icon_info": "/images/red-flags/icon-info.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 80,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "tooltip"
+            },
+            "scroll": {
+              "parallax": false,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            },
+            "microInteraction": {
+              "type": "timelineProgress",
+              "repeatable": false
+            }
+          }
+        },
+        {
+          "id": "small-firm-accountability-gap",
+          "severity": "info",
+          "icon": "\ud83d\udd35",
+          "headline": "Smaller firms offer flexibility, but accountability can be unclear.",
+          "detail": "Small interior companies often care deeply about reputation and offer flexible pricing. However, their processes may not be fully streamlined, and accountability can be unclear if expectations aren't documented.",
+          "whatToDo": "Document every commitment in writing. Specify material brands, grades, thicknesses, and hardware types in the contract.",
+          "crossLink": "/vendor-selection/big-vs-small",
+          "category": "vendor-accountability",
+          "media": {
+            "card_image": "/images/red-flags/small-firm-accountability-gap.jpg",
+            "card_video": null,
+            "icon": "/images/red-flags/icon-info.svg",
+            "icon_critical": "/images/red-flags/icon-critical.svg",
+            "icon_warning": "/images/red-flags/icon-warning.svg",
+            "icon_info": "/images/red-flags/icon-info.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 80,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "tooltip"
+            },
+            "scroll": {
+              "parallax": false,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            },
+            "microInteraction": {
+              "type": "timelineProgress",
+              "repeatable": false
+            }
+          }
+        },
+        {
+          "id": "large-firm-attention-gap",
+          "severity": "info",
+          "icon": "\ud83d\udd35",
+          "headline": "Handling 100-150 projects/month means you may feel like just another project.",
+          "detail": "Large established companies have smoother processes and dedicated teams, but personal attention to your specific budget and vision may be limited. Quote increases after design are still common even with large firms.",
+          "whatToDo": "Ask who your single point of contact will be. Ask how change requests are handled and priced.",
+          "crossLink": "/vendor-selection/big-vs-small",
+          "category": "vendor-accountability",
+          "media": {
+            "card_image": "/images/red-flags/large-firm-attention-gap.jpg",
+            "card_video": null,
+            "icon": "/images/red-flags/icon-info.svg",
+            "icon_critical": "/images/red-flags/icon-critical.svg",
+            "icon_warning": "/images/red-flags/icon-warning.svg",
+            "icon_info": "/images/red-flags/icon-info.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 80,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "tooltip"
+            },
+            "scroll": {
+              "parallax": false,
+              "progressBar": false,
+              "reveal": "lazyReveal"
+            },
+            "microInteraction": {
+              "type": "timelineProgress",
+              "repeatable": false
+            }
+          }
+        }
+      ]
+    }
+  },
+  "media": {
+    "hero_image": "/images/vendor/hero.jpg",
+    "hero_video": null,
+    "thumbnail": "/images/vendor/thumbnail.jpg",
+    "icons": {
+      "default": "/images/vendor/icon-default.svg",
+      "active": "/images/vendor/icon-active.svg",
+      "hover": "/images/vendor/icon-hover.svg"
+    }
+  },
+  "animation": {
+    "enter": {
+      "type": "fadeIn",
+      "delay": 0,
+      "duration": 400,
+      "trigger": "onViewport"
+    },
+    "scroll": {
+      "parallax": false,
+      "progressBar": false,
+      "reveal": "lazyReveal"
+    }
+  }
+}

@@ -1,0 +1,705 @@
+{
+  "module": "comparisons",
+  "version": "1.0.0",
+  "description": "Structured comparison data for the Side-by-Side Comparison Matrix interactive component. Five pre-configured comparisons with dimensions, verdicts, and context-dependent winner logic.",
+  "comparisons": [
+    {
+      "id": "granite-vs-quartz",
+      "title": "Granite vs Quartz",
+      "slug": "/countertops/granite-vs-quartz",
+      "source": "Granite vs Quartz FAQ section",
+      "contextQuestion": "What type of kitchen are you building?",
+      "dimensions": [
+        {
+          "label": "Type",
+          "leftValue": "Natural stone",
+          "rightValue": "Engineered stone",
+          "leftIsWinner": false,
+          "rightIsWinner": false,
+          "isDraw": true,
+          "media": {
+            "icon": "/images/comparisons/granite-vs-quartz/icon-type.svg"
+          }
+        },
+        {
+          "label": "Porosity",
+          "leftValue": "Porous \u2014 absorbs liquids slowly if sealer is not applied",
+          "rightValue": "Non-porous in good-quality brands; does not absorb liquids",
+          "leftIsWinner": false,
+          "rightIsWinner": true,
+          "rightCondition": "Only with reputed brands",
+          "rightCaution": "Low-quality quartz CAN absorb liquids",
+          "media": {
+            "icon": "/images/comparisons/granite-vs-quartz/icon-porosity.svg"
+          }
+        },
+        {
+          "label": "Colour Range",
+          "leftValue": "Commonly darker colours \u2014 especially black as it hides stains better",
+          "rightValue": "Wide range of colours and patterns",
+          "leftIsWinner": false,
+          "rightIsWinner": true,
+          "media": {
+            "icon": "/images/comparisons/granite-vs-quartz/icon-colour-range.svg"
+          }
+        },
+        {
+          "label": "Best For",
+          "leftValue": "Indian households \u2014 heavy cooking and spice usage",
+          "rightValue": "Theme-based and modern kitchens",
+          "leftIsWinner": false,
+          "rightIsWinner": false,
+          "contextDependent": true,
+          "leftWinsWhen": "Traditional Indian cooking, heavy spice usage",
+          "rightWinsWhen": "Modern themed kitchens, aesthetic priority",
+          "media": {
+            "icon": "/images/comparisons/granite-vs-quartz/icon-best-for.svg"
+          }
+        },
+        {
+          "label": "Maintenance",
+          "leftValue": "Lower maintenance with darker colours",
+          "rightValue": "Lighter shades require regular cleaning",
+          "leftIsWinner": true,
+          "rightIsWinner": false,
+          "media": {
+            "icon": "/images/comparisons/granite-vs-quartz/icon-maintenance.svg"
+          }
+        },
+        {
+          "label": "Cost",
+          "leftValue": "More economical",
+          "rightValue": "Nearly double the cost of granite",
+          "leftIsWinner": true,
+          "rightIsWinner": false,
+          "media": {
+            "icon": "/images/comparisons/granite-vs-quartz/icon-cost.svg"
+          }
+        },
+        {
+          "label": "Durability",
+          "leftValue": "Durable and cost-effective",
+          "rightValue": "Durable but only from reputed brands",
+          "leftIsWinner": true,
+          "rightIsWinner": false,
+          "rightCaution": "Durability contingent on brand quality",
+          "media": {
+            "icon": "/images/comparisons/granite-vs-quartz/icon-durability.svg"
+          }
+        },
+        {
+          "label": "Risk",
+          "leftValue": "Can stain without sealer",
+          "rightValue": "Low-quality quartz CAN absorb liquids",
+          "leftIsWinner": false,
+          "rightIsWinner": false,
+          "isDraw": true,
+          "note": "Both have risks \u2014 sealer needed for granite, brand quality matters for quartz",
+          "media": {
+            "icon": "/images/comparisons/granite-vs-quartz/icon-risk.svg"
+          }
+        }
+      ],
+      "verdicts": {
+        "budget": {
+          "winner": "granite",
+          "message": "Granite is best for investment/rental projects \u2014 cost-effective and durable."
+        },
+        "premium": {
+          "winner": "quartz",
+          "message": "Quartz is best for personal homes with adequate budget \u2014 but only from reputed brands.",
+          "condition": "Must be reputed brand quartz"
+        }
+      },
+      "takeaway": "Choose quartz if budget permits (nearly double the cost of granite) and only from reputed brands, as low-quality quartz can absorb liquids. Best for personal use. For investment projects, granite is cost-effective, durable, and works just as well.",
+      "media": {
+        "card_image": "/images/comparisons/granite-vs-quartz/hero.jpg",
+        "card_video": null,
+        "icon": "/images/comparisons/icon-granite-vs-quartz.svg",
+        "diagram": "/images/comparisons/granite-vs-quartz/comparison-chart.svg",
+        "left_image": "/images/comparisons/granite-vs-quartz/left.jpg",
+        "right_image": "/images/comparisons/granite-vs-quartz/right.jpg",
+        "winner_badge_image": "/images/comparisons/winner-badge.svg"
+      },
+      "animation": {
+        "enter": {
+          "type": "fadeIn",
+          "delay": 100,
+          "duration": 400,
+          "trigger": "onViewport"
+        },
+        "scroll": {
+          "parallax": false,
+          "progressBar": false,
+          "reveal": "lazyReveal"
+        },
+        "microInteraction": {
+          "type": "badgeFlip",
+          "repeatable": true
+        }
+      }
+    },
+    {
+      "id": "hdhmr-vs-plywood",
+      "title": "HDHMR vs Plywood",
+      "slug": "/materials/engineered-boards#hdhmr",
+      "source": "HDHMR VS PLY section",
+      "contextQuestion": "What are you building \u2014 shutters or carcass?",
+      "dimensions": [
+        {
+          "label": "Type",
+          "leftValue": "Engineered board made from wood fibres",
+          "rightValue": "Multiple layers of natural wood veneer",
+          "leftIsWinner": false,
+          "rightIsWinner": false,
+          "isDraw": true,
+          "media": {
+            "icon": "/images/comparisons/hdhmr-vs-plywood/icon-type.svg"
+          }
+        },
+        {
+          "label": "Density / Surface",
+          "leftValue": "High density with smooth, uniform surface",
+          "rightValue": "Layered structure \u2014 natural variations possible",
+          "leftIsWinner": true,
+          "rightIsWinner": false,
+          "media": {
+            "icon": "/images/comparisons/hdhmr-vs-plywood/icon-density---surface.svg"
+          }
+        },
+        {
+          "label": "Moisture Resistance",
+          "leftValue": "Better moisture resistance than regular MDF; not for continuous water exposure",
+          "rightValue": "BWP grade handles continuous water; MR/BWR for moderate moisture",
+          "leftIsWinner": false,
+          "rightIsWinner": true,
+          "media": {
+            "icon": "/images/comparisons/hdhmr-vs-plywood/icon-moisture-resistance.svg"
+          }
+        },
+        {
+          "label": "Strength",
+          "leftValue": "Good \u2014 but less than plywood structurally",
+          "rightValue": "Stronger \u2014 better load-bearing capacity",
+          "leftIsWinner": false,
+          "rightIsWinner": true,
+          "media": {
+            "icon": "/images/comparisons/hdhmr-vs-plywood/icon-strength.svg"
+          }
+        },
+        {
+          "label": "Screw Holding",
+          "leftValue": "Good",
+          "rightValue": "Better",
+          "leftIsWinner": false,
+          "rightIsWinner": true,
+          "media": {
+            "icon": "/images/comparisons/hdhmr-vs-plywood/icon-screw-holding.svg"
+          }
+        },
+        {
+          "label": "Best For",
+          "leftValue": "Shutters, CNC designs, painted/PU finishes",
+          "rightValue": "Carcass, kitchen cabinets, wardrobes, wet areas (BWP)",
+          "leftIsWinner": false,
+          "rightIsWinner": false,
+          "contextDependent": true,
+          "leftWinsWhen": "Building shutters \u2014 smooth surface with no undulations or wavy laminate",
+          "rightWinsWhen": "Building carcass \u2014 structural strength and better durability needed",
+          "media": {
+            "icon": "/images/comparisons/hdhmr-vs-plywood/icon-best-for.svg"
+          }
+        },
+        {
+          "label": "Surface Quality",
+          "leftValue": "Smooth \u2014 no undulations or wavy laminate",
+          "rightValue": "May have grain texture \u2014 depends on face veneer quality",
+          "leftIsWinner": true,
+          "rightIsWinner": false,
+          "media": {
+            "icon": "/images/comparisons/hdhmr-vs-plywood/icon-surface-quality.svg"
+          }
+        },
+        {
+          "label": "Cost",
+          "leftValue": "Cost-effective compared to plywood",
+          "rightValue": "More expensive than HDHMR",
+          "leftIsWinner": true,
+          "rightIsWinner": false,
+          "media": {
+            "icon": "/images/comparisons/hdhmr-vs-plywood/icon-cost.svg"
+          }
+        },
+        {
+          "label": "Limitations",
+          "leftValue": "Not for continuous water exposure areas",
+          "rightValue": "Face veneer quality varies by brand",
+          "leftIsWinner": false,
+          "rightIsWinner": false,
+          "isDraw": true,
+          "media": {
+            "icon": "/images/comparisons/hdhmr-vs-plywood/icon-limitations.svg"
+          }
+        }
+      ],
+      "verdicts": {
+        "shutters": {
+          "winner": "hdhmr",
+          "message": "HDHMR is recommended for shutters as it provides a smooth surface with no undulations or wavy laminate."
+        },
+        "carcass": {
+          "winner": "plywood",
+          "message": "Plywood is ideal for the carcass due to its strong, multi-layered structure and better durability."
+        }
+      },
+      "takeaway": "HDHMR is recommended for shutters as it provides a smooth surface with no undulations or wavy laminate. Plywood is ideal for the carcass due to its strong, multi-layered structure and better durability.",
+      "media": {
+        "card_image": "/images/comparisons/hdhmr-vs-plywood/hero.jpg",
+        "card_video": null,
+        "icon": "/images/comparisons/icon-hdhmr-vs-plywood.svg",
+        "diagram": "/images/comparisons/hdhmr-vs-plywood/comparison-chart.svg",
+        "left_image": "/images/comparisons/hdhmr-vs-plywood/left.jpg",
+        "right_image": "/images/comparisons/hdhmr-vs-plywood/right.jpg",
+        "winner_badge_image": "/images/comparisons/winner-badge.svg"
+      },
+      "animation": {
+        "enter": {
+          "type": "fadeIn",
+          "delay": 100,
+          "duration": 400,
+          "trigger": "onViewport"
+        },
+        "scroll": {
+          "parallax": false,
+          "progressBar": false,
+          "reveal": "lazyReveal"
+        },
+        "microInteraction": {
+          "type": "badgeFlip",
+          "repeatable": true
+        }
+      }
+    },
+    {
+      "id": "mdf-vs-hdhmr",
+      "title": "MDF vs HDHMR",
+      "slug": "/materials/engineered-boards",
+      "source": "MDF VS HDHMR section",
+      "contextQuestion": "Is this for structural use or decorative CNC work?",
+      "dimensions": [
+        {
+          "label": "Density",
+          "leftValue": "Medium",
+          "rightValue": "High",
+          "leftIsWinner": false,
+          "rightIsWinner": true,
+          "media": {
+            "icon": "/images/comparisons/mdf-vs-hdhmr/icon-density.svg"
+          }
+        },
+        {
+          "label": "Moisture Resistance",
+          "leftValue": "Low \u2014 swells if exposed to water",
+          "rightValue": "Better moisture resistance",
+          "leftIsWinner": false,
+          "rightIsWinner": true,
+          "media": {
+            "icon": "/images/comparisons/mdf-vs-hdhmr/icon-moisture-resistance.svg"
+          }
+        },
+        {
+          "label": "Strength",
+          "leftValue": "Weaker",
+          "rightValue": "Stronger and more durable",
+          "leftIsWinner": false,
+          "rightIsWinner": true,
+          "media": {
+            "icon": "/images/comparisons/mdf-vs-hdhmr/icon-strength.svg"
+          }
+        },
+        {
+          "label": "Screw Holding",
+          "leftValue": "Poor \u2014 may cause shutter issues over time",
+          "rightValue": "Better screw-holding capacity",
+          "leftIsWinner": false,
+          "rightIsWinner": true,
+          "media": {
+            "icon": "/images/comparisons/mdf-vs-hdhmr/icon-screw-holding.svg"
+          }
+        },
+        {
+          "label": "Surface",
+          "leftValue": "Very smooth \u2014 ideal for paint and laminates",
+          "rightValue": "Smooth, paint-ready surface",
+          "leftIsWinner": false,
+          "rightIsWinner": false,
+          "isDraw": true,
+          "media": {
+            "icon": "/images/comparisons/mdf-vs-hdhmr/icon-surface.svg"
+          }
+        },
+        {
+          "label": "Best For",
+          "leftValue": "Dry areas only: bedroom furniture, wall panels, CNC jaali panels, cut designs",
+          "rightValue": "Kitchen shutters, wardrobes, CNC designs, painted finishes, humid areas",
+          "leftIsWinner": false,
+          "rightIsWinner": false,
+          "contextDependent": true,
+          "leftWinsWhen": "CNC decorative jaali panels and cut designs ONLY",
+          "rightWinsWhen": "Structural use, kitchens, wardrobes, any moisture-prone area",
+          "media": {
+            "icon": "/images/comparisons/mdf-vs-hdhmr/icon-best-for.svg"
+          }
+        },
+        {
+          "label": "Cost",
+          "leftValue": "More economical",
+          "rightValue": "More expensive than MDF",
+          "leftIsWinner": true,
+          "rightIsWinner": false,
+          "media": {
+            "icon": "/images/comparisons/mdf-vs-hdhmr/icon-cost.svg"
+          }
+        },
+        {
+          "label": "Risk",
+          "leftValue": "Not recommended for carcasses; may cause shutter issues over time. Avoid kitchens, bathrooms, wet areas.",
+          "rightValue": "Not for outdoor use",
+          "leftIsWinner": false,
+          "rightIsWinner": true,
+          "leftRiskLevel": "high",
+          "rightRiskLevel": "low",
+          "media": {
+            "icon": "/images/comparisons/mdf-vs-hdhmr/icon-risk.svg"
+          }
+        }
+      ],
+      "verdicts": {
+        "cncDecorative": {
+          "winner": "mdf",
+          "message": "MDF is acceptable for CNC decorative work (jaali panels, cut designs) in dry areas ONLY."
+        },
+        "structural": {
+          "winner": "hdhmr",
+          "message": "HDHMR is a superior and more durable material \u2014 recommended wherever structural strength is needed."
+        },
+        "kitchen": {
+          "winner": "hdhmr",
+          "message": "Use HDHMR only for kitchens. MDF is not suitable."
+        }
+      },
+      "takeaway": "Use MDF only for CNC work such as jaali panels and cut designs. MDF has low moisture resistance and poor screw-holding capacity, so it is not recommended for carcasses and may cause shutter issues over time. HDHMR is a superior and more durable material and is recommended wherever possible.",
+      "media": {
+        "card_image": "/images/comparisons/mdf-vs-hdhmr/hero.jpg",
+        "card_video": null,
+        "icon": "/images/comparisons/icon-mdf-vs-hdhmr.svg",
+        "diagram": "/images/comparisons/mdf-vs-hdhmr/comparison-chart.svg",
+        "left_image": "/images/comparisons/mdf-vs-hdhmr/left.jpg",
+        "right_image": "/images/comparisons/mdf-vs-hdhmr/right.jpg",
+        "winner_badge_image": "/images/comparisons/winner-badge.svg"
+      },
+      "animation": {
+        "enter": {
+          "type": "fadeIn",
+          "delay": 100,
+          "duration": 400,
+          "trigger": "onViewport"
+        },
+        "scroll": {
+          "parallax": false,
+          "progressBar": false,
+          "reveal": "lazyReveal"
+        },
+        "microInteraction": {
+          "type": "badgeFlip",
+          "repeatable": true
+        }
+      }
+    },
+    {
+      "id": "sliding-vs-swing",
+      "title": "Sliding vs Swing Wardrobes",
+      "slug": "/hardware/wardrobe-systems",
+      "source": "Wardrobe: Sliding vs Swing section",
+      "contextQuestion": "How much space do you have, and what's your hardware budget?",
+      "dimensions": [
+        {
+          "label": "Mechanism",
+          "leftValue": "Sliding channels (top/bottom rail)",
+          "rightValue": "Hinges",
+          "leftIsWinner": false,
+          "rightIsWinner": false,
+          "isDraw": true,
+          "media": {
+            "icon": "/images/comparisons/sliding-vs-swing/icon-mechanism.svg"
+          }
+        },
+        {
+          "label": "Space Requirement",
+          "leftValue": "No clearance needed \u2014 saves space",
+          "rightValue": "Requires clearance space in front for door opening",
+          "leftIsWinner": true,
+          "rightIsWinner": false,
+          "media": {
+            "icon": "/images/comparisons/sliding-vs-swing/icon-space-requirement.svg"
+          }
+        },
+        {
+          "label": "Access",
+          "leftValue": "Limited \u2014 only one side can be opened at a time",
+          "rightValue": "Full access \u2014 entire wardrobe at once",
+          "leftIsWinner": false,
+          "rightIsWinner": true,
+          "media": {
+            "icon": "/images/comparisons/sliding-vs-swing/icon-access.svg"
+          }
+        },
+        {
+          "label": "Hardware Quality Dependency",
+          "leftValue": "HIGH \u2014 poor channels cause wobbling, misalignment, getting stuck",
+          "rightValue": "Lower \u2014 hinges are durable and easy to replace",
+          "leftIsWinner": false,
+          "rightIsWinner": true,
+          "media": {
+            "icon": "/images/comparisons/sliding-vs-swing/icon-hardware-quality-dependency.svg"
+          }
+        },
+        {
+          "label": "Maintenance",
+          "leftValue": "Higher if inferior hardware is used",
+          "rightValue": "Lower long-term maintenance",
+          "leftIsWinner": false,
+          "rightIsWinner": true,
+          "media": {
+            "icon": "/images/comparisons/sliding-vs-swing/icon-maintenance.svg"
+          }
+        },
+        {
+          "label": "Load Distribution",
+          "leftValue": "On tracks \u2014 can misalign over time",
+          "rightValue": "Better load distribution on carcass and shutters",
+          "leftIsWinner": false,
+          "rightIsWinner": true,
+          "media": {
+            "icon": "/images/comparisons/sliding-vs-swing/icon-load-distribution.svg"
+          }
+        },
+        {
+          "label": "Best For",
+          "leftValue": "Compact bedrooms",
+          "rightValue": "Any bedroom with adequate space",
+          "leftIsWinner": false,
+          "rightIsWinner": false,
+          "contextDependent": true,
+          "leftWinsWhen": "Bedroom is compact OR premium hardware budget is available",
+          "rightWinsWhen": "Adequate clearance space exists (any budget)",
+          "media": {
+            "icon": "/images/comparisons/sliding-vs-swing/icon-best-for.svg"
+          }
+        },
+        {
+          "label": "Risk",
+          "leftValue": "Poor-quality sliding channels = major long-term frustration",
+          "rightValue": "Minimal risk with standard hinges",
+          "leftIsWinner": false,
+          "rightIsWinner": true,
+          "leftRiskLevel": "high",
+          "rightRiskLevel": "low",
+          "media": {
+            "icon": "/images/comparisons/sliding-vs-swing/icon-risk.svg"
+          }
+        }
+      ],
+      "verdicts": {
+        "compactSpace": {
+          "winner": "sliding",
+          "message": "Sliding is the only space-saving option \u2014 but ONLY with high-quality hardware.",
+          "condition": "Must use high-quality sliding channels"
+        },
+        "adequateSpace": {
+          "winner": "swing",
+          "message": "Swing wardrobes are more reliable, easier to maintain, and structurally stable over time."
+        }
+      },
+      "takeaway": "Choose sliding wardrobes only with high-quality hardware, especially for long-term use. Swing wardrobes are more reliable, easier to maintain, and structurally stable over time.",
+      "media": {
+        "card_image": "/images/comparisons/sliding-vs-swing/hero.jpg",
+        "card_video": null,
+        "icon": "/images/comparisons/icon-sliding-vs-swing.svg",
+        "diagram": "/images/comparisons/sliding-vs-swing/comparison-chart.svg",
+        "left_image": "/images/comparisons/sliding-vs-swing/left.jpg",
+        "right_image": "/images/comparisons/sliding-vs-swing/right.jpg",
+        "winner_badge_image": "/images/comparisons/winner-badge.svg"
+      },
+      "animation": {
+        "enter": {
+          "type": "fadeIn",
+          "delay": 100,
+          "duration": 400,
+          "trigger": "onViewport"
+        },
+        "scroll": {
+          "parallax": false,
+          "progressBar": false,
+          "reveal": "lazyReveal"
+        },
+        "microInteraction": {
+          "type": "badgeFlip",
+          "repeatable": true
+        }
+      }
+    },
+    {
+      "id": "german-vs-indian",
+      "title": "German vs Indian Accessories",
+      "slug": "/hardware/german-vs-indian",
+      "source": "Accessories section",
+      "contextQuestion": "Is this a long-term personal home or a budget/investment project?",
+      "dimensions": [
+        {
+          "label": "Durability",
+          "leftValue": "Higher durability",
+          "rightValue": "Good functionality for regular residential use",
+          "leftIsWinner": true,
+          "rightIsWinner": false,
+          "media": {
+            "icon": "/images/comparisons/german-vs-indian/icon-durability.svg"
+          }
+        },
+        {
+          "label": "Engineering",
+          "leftValue": "Precision engineering",
+          "rightValue": "Comparatively simpler mechanisms",
+          "leftIsWinner": true,
+          "rightIsWinner": false,
+          "media": {
+            "icon": "/images/comparisons/german-vs-indian/icon-engineering.svg"
+          }
+        },
+        {
+          "label": "Load Bearing",
+          "leftValue": "Advanced load-bearing and motion technology",
+          "rightValue": "Lower load ratings",
+          "leftIsWinner": true,
+          "rightIsWinner": false,
+          "media": {
+            "icon": "/images/comparisons/german-vs-indian/icon-load-bearing.svg"
+          }
+        },
+        {
+          "label": "Soft-Close",
+          "leftValue": "Smoother soft-close mechanisms",
+          "rightValue": "Basic soft-close or none",
+          "leftIsWinner": true,
+          "rightIsWinner": false,
+          "media": {
+            "icon": "/images/comparisons/german-vs-indian/icon-soft-close.svg"
+          }
+        },
+        {
+          "label": "Longevity",
+          "leftValue": "Better performance, especially in kitchens and high-usage areas",
+          "rightValue": "Suitable for moderate use",
+          "leftIsWinner": true,
+          "rightIsWinner": false,
+          "media": {
+            "icon": "/images/comparisons/german-vs-indian/icon-longevity.svg"
+          }
+        },
+        {
+          "label": "Service",
+          "leftValue": "May need specialist service",
+          "rightValue": "Wide availability and easy servicing",
+          "leftIsWinner": false,
+          "rightIsWinner": true,
+          "media": {
+            "icon": "/images/comparisons/german-vs-indian/icon-service.svg"
+          }
+        },
+        {
+          "label": "Cost",
+          "leftValue": "Higher cost due to superior engineering and testing standards",
+          "rightValue": "Cost-effective solutions",
+          "leftIsWinner": false,
+          "rightIsWinner": true,
+          "media": {
+            "icon": "/images/comparisons/german-vs-indian/icon-cost.svg"
+          }
+        },
+        {
+          "label": "Best For",
+          "leftValue": "Long-term personal homes, premium kitchens",
+          "rightValue": "Budget-controlled projects, investment properties",
+          "leftIsWinner": false,
+          "rightIsWinner": false,
+          "contextDependent": true,
+          "leftWinsWhen": "Long-term personal home, premium kitchen, prioritizing longevity",
+          "rightWinsWhen": "Rental investment, budget-sensitive project, prioritizing initial savings",
+          "media": {
+            "icon": "/images/comparisons/german-vs-indian/icon-best-for.svg"
+          }
+        }
+      ],
+      "verdicts": {
+        "premium": {
+          "winner": "german",
+          "message": "For long-term use and premium performance, German-based accessories are recommended."
+        },
+        "budget": {
+          "winner": "indian",
+          "message": "For budget-controlled or investment projects, Indian-based accessories offer reliable value."
+        }
+      },
+      "takeaway": "For long-term use and premium performance, German-based accessories are recommended. For budget-controlled or investment projects, Indian-based accessories offer reliable value.",
+      "media": {
+        "card_image": "/images/comparisons/german-vs-indian/hero.jpg",
+        "card_video": null,
+        "icon": "/images/comparisons/icon-german-vs-indian.svg",
+        "diagram": "/images/comparisons/german-vs-indian/comparison-chart.svg",
+        "left_image": "/images/comparisons/german-vs-indian/left.jpg",
+        "right_image": "/images/comparisons/german-vs-indian/right.jpg",
+        "winner_badge_image": "/images/comparisons/winner-badge.svg"
+      },
+      "animation": {
+        "enter": {
+          "type": "fadeIn",
+          "delay": 100,
+          "duration": 400,
+          "trigger": "onViewport"
+        },
+        "scroll": {
+          "parallax": false,
+          "progressBar": false,
+          "reveal": "lazyReveal"
+        },
+        "microInteraction": {
+          "type": "badgeFlip",
+          "repeatable": true
+        }
+      }
+    }
+  ],
+  "media": {
+    "hero_image": "/images/comparisons/hero.jpg",
+    "hero_video": null,
+    "thumbnail": "/images/comparisons/thumbnail.jpg",
+    "icons": {
+      "default": "/images/comparisons/icon-default.svg",
+      "active": "/images/comparisons/icon-active.svg",
+      "hover": "/images/comparisons/icon-hover.svg"
+    }
+  },
+  "animation": {
+    "enter": {
+      "type": "fadeIn",
+      "delay": 0,
+      "duration": 400,
+      "trigger": "onViewport"
+    },
+    "scroll": {
+      "parallax": false,
+      "progressBar": false,
+      "reveal": "lazyReveal"
+    }
+  }
+}

@@ -1,0 +1,307 @@
+{
+  "module": "hardware",
+  "version": "1.0.0",
+  "description": "Hardware & Accessories data \u2014 German vs Indian, Sliding vs Swing Wardrobes, Full-Height Systems",
+  "sections": {
+    "accessories": {
+      "id": "german-vs-indian",
+      "slug": "/hardware/german-vs-indian",
+      "title": "Kitchen & Wardrobe Accessories: German vs Indian",
+      "summary": "The choice between German-based and Indian-based accessories is primarily a trade-off between premium long-term performance and budget-friendly value.",
+      "disclaimer": "We do not specify brand names here.",
+      "comparison": {
+        "german": {
+          "label": "German-Based Accessories",
+          "properties": {
+            "durability": "Higher durability",
+            "engineering": "Precision engineering",
+            "loadBearing": "Advanced load-bearing and motion technology",
+            "softClose": "Smoother soft-close mechanisms",
+            "longevity": "Better performance and longevity, especially in kitchens and high-usage areas",
+            "service": "May need specialist service",
+            "cost": "Higher cost due to superior engineering and testing standards"
+          },
+          "bestFor": [
+            "Long-term personal homes",
+            "Premium kitchens",
+            "High-usage areas",
+            "Homeowners prioritizing longevity over initial cost"
+          ],
+          "costTier": "premium",
+          "recommendation": "For long-term use and premium performance, German-based accessories are recommended.",
+          "media": {
+            "card_image": "/images/hardware/german-accessories.jpg",
+            "card_video": null,
+            "icon": "/images/hardware/icon-german.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideInLeft",
+              "delay": 200,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "glow",
+              "target": "card",
+              "feedback": "tooltip"
+            }
+          }
+        },
+        "indian": {
+          "label": "Indian-Based Accessories",
+          "properties": {
+            "durability": "Good functionality for regular residential use",
+            "engineering": "Comparatively simpler mechanisms",
+            "loadBearing": "Lower load ratings",
+            "softClose": "Basic soft-close or none",
+            "longevity": "Suitable for moderate use",
+            "service": "Wide availability and easy servicing",
+            "cost": "Cost-effective solutions"
+          },
+          "bestFor": [
+            "Budget-sensitive projects",
+            "Investment properties (rental)",
+            "Moderate-use areas",
+            "Homeowners prioritizing initial savings"
+          ],
+          "costTier": "budget",
+          "recommendation": "For budget-controlled or investment projects, Indian-based accessories offer reliable value.",
+          "media": {
+            "card_image": "/images/hardware/indian-accessories.jpg",
+            "card_video": null,
+            "icon": "/images/hardware/icon-indian.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideInRight",
+              "delay": 200,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "glow",
+              "target": "card",
+              "feedback": "tooltip"
+            }
+          }
+        }
+      },
+      "takeaway": "For long-term use and premium performance, German-based accessories are recommended. For budget-controlled or investment projects, Indian-based accessories offer reliable value."
+    },
+    "wardrobeSystems": {
+      "id": "wardrobe-systems",
+      "slug": "/hardware/wardrobe-systems",
+      "title": "Wardrobe Systems: Sliding vs Swing",
+      "summary": "The choice between sliding and swing wardrobes depends on available space, hardware budget, and long-term maintenance tolerance.",
+      "comparison": {
+        "sliding": {
+          "label": "Sliding Wardrobe",
+          "mechanism": "Sliding channels (top and bottom rail system)",
+          "properties": {
+            "spaceRequirement": "No clearance needed in front \u2014 saves space",
+            "access": "Limited \u2014 only one side of the wardrobe can be opened at a time",
+            "hardwareDependency": "HIGH \u2014 requires high-quality sliding channels",
+            "maintenance": "Higher if inferior hardware is used",
+            "loadDistribution": "On tracks \u2014 can misalign over time",
+            "riskFactors": [
+              "Low-quality systems may get stuck over time",
+              "Poor channels can cause wobbling and misalignment",
+              "Higher maintenance if inferior hardware is used"
+            ]
+          },
+          "bestFor": [
+            "Compact bedrooms with limited floor space"
+          ],
+          "criticalCondition": "Choose sliding wardrobes ONLY with high-quality hardware, especially for long-term use.",
+          "costTier": "higher-upfront",
+          "verdict": "Choose sliding wardrobes only with high-quality hardware, especially for long-term use.",
+          "media": {
+            "card_image": "/images/hardware/sliding-wardrobe.jpg",
+            "card_video": null,
+            "icon": "/images/hardware/icon-sliding.svg",
+            "diagram": "/images/hardware/sliding-mechanism.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideUp",
+              "delay": 200,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "scale up"
+            }
+          }
+        },
+        "swing": {
+          "label": "Swing Wardrobe",
+          "mechanism": "Hinges",
+          "properties": {
+            "spaceRequirement": "Requires clearance space in front of the wardrobe for door opening",
+            "access": "Full access \u2014 allows full access to the wardrobe at once",
+            "hardwareDependency": "Lower dependency \u2014 hinges are generally more durable and easier to replace",
+            "maintenance": "Lower long-term maintenance compared to sliding systems",
+            "loadDistribution": "Better load distribution on carcass and shutters",
+            "riskFactors": [
+              "Requires adequate clearance space"
+            ]
+          },
+          "bestFor": [
+            "Any bedroom with adequate clearance space",
+            "Long-term reliability",
+            "Lower maintenance preference"
+          ],
+          "criticalCondition": "Ensure adequate clearance space in front.",
+          "costTier": "standard",
+          "verdict": "Swing wardrobes are more reliable, easier to maintain, and structurally stable over time.",
+          "media": {
+            "card_image": "/images/hardware/swing-wardrobe.jpg",
+            "card_video": null,
+            "icon": "/images/hardware/icon-swing.svg",
+            "diagram": "/images/hardware/swing-mechanism.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideUp",
+              "delay": 200,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "scale up"
+            }
+          }
+        }
+      },
+      "takeaway": "Choose sliding wardrobes only with high-quality hardware, especially for long-term use. Swing wardrobes are more reliable, easier to maintain, and structurally stable over time."
+    },
+    "fullHeightSystems": {
+      "id": "full-height-systems",
+      "slug": "/hardware/full-height-systems",
+      "title": "Bottom-to-Ceiling (Full Height) Wardrobe Systems",
+      "summary": "Bottom-to-ceiling wardrobes maximize vertical storage with a clean built-in look. Advanced full-height technology uses full-length rail systems for superior alignment and customization.",
+      "definition": "A wardrobe system that extends from floor to ceiling, maximizing vertical storage and creating a clean, built-in look.",
+      "systems": {
+        "advanced": {
+          "label": "Advanced Full-Height Technology",
+          "description": "Uses full-length rail systems with heavy load-bearing capacity. Specifically references a well-known Russian brand technology.",
+          "properties": {
+            "railSystem": "Full-length rail systems with heavy load-bearing capacity",
+            "customization": "Allows 100% customization",
+            "alignment": "Better alignment, stability, and seamless finish",
+            "joints": "Fewer visible joints and profiles",
+            "loadCapacity": "Heavy load-bearing",
+            "finish": "Seamless"
+          },
+          "costLevel": "Costlier than normal wardrobes",
+          "media": {
+            "card_image": "/images/hardware/full-height-advanced.jpg",
+            "card_video": null,
+            "icon": "/images/hardware/icon-advanced.svg",
+            "diagram": "/images/hardware/full-height-advanced-diagram.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideInLeft",
+              "delay": 200,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "borderGlow",
+              "target": "card",
+              "feedback": "tooltip"
+            }
+          }
+        },
+        "standard": {
+          "label": "Standard Local Systems",
+          "description": "Provide full-height storage using simpler connection methods.",
+          "properties": {
+            "railSystem": "Simpler connection methods",
+            "customization": "Limited adjustability compared to full-rail technology",
+            "alignment": "Standard alignment",
+            "joints": "May have more visible joints or profiles",
+            "loadCapacity": "Standard load-bearing",
+            "finish": "Standard \u2014 more visible joints"
+          },
+          "costLevel": "Standard \u2014 more economical",
+          "media": {
+            "card_image": "/images/hardware/full-height-standard.jpg",
+            "card_video": null,
+            "icon": "/images/hardware/icon-standard.svg",
+            "diagram": "/images/hardware/full-height-standard-diagram.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "slideInRight",
+              "delay": 200,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "borderGlow",
+              "target": "card",
+              "feedback": "tooltip"
+            }
+          }
+        }
+      },
+      "budgetGuidance": [
+        {
+          "budgetLevel": "low",
+          "recommendation": "Avoid advanced full-height systems entirely \u2014 use standard systems",
+          "media": {
+            "icon": "/images/hardware/icon-budget-low.svg",
+            "card_image": "/images/hardware/budget-low.jpg"
+          }
+        },
+        {
+          "budgetLevel": "mid",
+          "recommendation": "Install advanced full-height system in Master Bedroom only; standard systems in other bedrooms",
+          "media": {
+            "icon": "/images/hardware/icon-budget-mid.svg",
+            "card_image": "/images/hardware/budget-mid.jpg"
+          }
+        },
+        {
+          "budgetLevel": "high",
+          "recommendation": "Definitely recommended in all bedrooms",
+          "media": {
+            "icon": "/images/hardware/icon-budget-high.svg",
+            "card_image": "/images/hardware/budget-high.jpg"
+          }
+        }
+      ],
+      "takeaway": "Advanced Full Height tech wardrobes are comparatively costlier than normal wardrobes. You can go for these if your budget is mid only in Master Bedroom, Low budget avoid it, high budget definitely recommended in all bedrooms."
+    }
+  },
+  "media": {
+    "hero_image": "/images/hardware/hero.jpg",
+    "hero_video": null,
+    "thumbnail": "/images/hardware/thumbnail.jpg",
+    "icons": {
+      "default": "/images/hardware/icon-default.svg",
+      "active": "/images/hardware/icon-active.svg",
+      "hover": "/images/hardware/icon-hover.svg"
+    }
+  },
+  "animation": {
+    "enter": {
+      "type": "fadeIn",
+      "delay": 0,
+      "duration": 400,
+      "trigger": "onViewport"
+    },
+    "scroll": {
+      "parallax": false,
+      "progressBar": false,
+      "reveal": "lazyReveal"
+    }
+  }
+}

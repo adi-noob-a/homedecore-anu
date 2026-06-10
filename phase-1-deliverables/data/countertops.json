@@ -1,0 +1,141 @@
+{
+  "module": "countertops",
+  "version": "1.0.0",
+  "description": "Countertops data — Granite vs Quartz comparison",
+  "media": {
+    "hero_image": "/images/countertops/hero.jpg",
+    "hero_video": null,
+    "thumbnail": "/images/countertops/thumbnail.jpg",
+    "icons": {
+      "default": "/images/countertops/icon-default.svg",
+      "active": "/images/countertops/icon-active.svg",
+      "hover": "/images/countertops/icon-hover.svg"
+    }
+  },
+  "animation": {
+    "enter": { "type": "fadeIn", "delay": 0, "duration": 400, "trigger": "onViewport" },
+    "scroll": { "parallax": false, "progressBar": false, "reveal": "lazyReveal" }
+  },
+  "sections": {
+    "graniteVsQuartz": {
+      "id": "granite-vs-quartz",
+      "slug": "/countertops/granite-vs-quartz",
+      "title": "Granite vs Quartz Countertops",
+      "summary": "Choose quartz if budget permits (nearly double the cost of granite) and only from reputed brands. For investment projects, granite is cost-effective, durable, and works just as well.",
+      "media": {
+        "card_image": "/images/countertops/granite-vs-quartz-hero.jpg",
+        "card_video": null,
+        "icon": "/images/countertops/icon-comparison.svg",
+        "diagram": "/images/countertops/porosity-cross-section.svg"
+      },
+      "animation": {
+        "enter": { "type": "slideUp", "delay": 100, "duration": 400, "trigger": "onViewport" },
+        "hover": { "effect": "lift", "target": "card", "feedback": "scale up" },
+        "scroll": { "parallax": false, "progressBar": false, "reveal": "lazyReveal" },
+        "microInteraction": { "type": "badgeFlip", "repeatable": true }
+      },
+      "comparison": {
+        "granite": {
+          "label": "Granite",
+          "type": "Natural stone",
+          "media": {
+            "card_image": "/images/countertops/granite-slab.jpg",
+            "card_video": null,
+            "icon": "/images/countertops/icon-granite.svg",
+            "diagram": "/images/countertops/granite-cross-section.svg"
+          },
+          "animation": {
+            "enter": { "type": "slideInLeft", "delay": 200, "duration": 300, "trigger": "onViewport" },
+            "hover": { "effect": "glow", "target": "card", "feedback": "tooltip" }
+          },
+          "properties": {
+            "porosity": "Porous material — absorbs liquids slowly if sealer is not applied",
+            "colorRange": "Commonly used in darker colours, especially black, as it hides stains better",
+            "bestFor": "Indian households due to heavy cooking and spice usage",
+            "maintenance": "Lower maintenance with darker colours",
+            "cost": "More economical compared to quartz",
+            "durability": "Durable and cost-effective",
+            "risk": "Can stain without sealer application",
+            "appearance": "Natural stone patterns — unique variations in each slab"
+          },
+          "idealFor": [
+            "Investment/rental projects",
+            "Budget-conscious homeowners",
+            "Traditional Indian cooking with heavy spices and oils",
+            "Those who prefer darker kitchen aesthetics"
+          ],
+          "costTier": "economical",
+          "verdict": "Best for: investment/rental projects — cost-effective, durable, and works just as well."
+        },
+        "quartz": {
+          "label": "Quartz",
+          "type": "Engineered stone",
+          "media": {
+            "card_image": "/images/countertops/quartz-slab.jpg",
+            "card_video": null,
+            "icon": "/images/countertops/icon-quartz.svg",
+            "diagram": "/images/countertops/quartz-cross-section.svg"
+          },
+          "animation": {
+            "enter": { "type": "slideInRight", "delay": 200, "duration": 300, "trigger": "onViewport" },
+            "hover": { "effect": "glow", "target": "card", "feedback": "tooltip" }
+          },
+          "properties": {
+            "porosity": "Non-porous in good-quality brands; does not absorb liquids",
+            "colorRange": "Available in a wide range of colours and patterns",
+            "bestFor": "Theme-based and modern kitchens",
+            "maintenance": "Lighter shades require regular cleaning to maintain appearance",
+            "cost": "Nearly double the cost of granite",
+            "durability": "Durable but only from reputed brands",
+            "risk": "Low-quality quartz CAN absorb liquids",
+            "appearance": "Consistent patterns and colours — engineered uniformity"
+          },
+          "idealFor": [
+            "Personal homes with adequate budget",
+            "Theme-based modern kitchen designs",
+            "Homeowners wanting wide colour choices",
+            "Those willing to invest in reputed brands only"
+          ],
+          "criticalCondition": "Must be from reputed brands — low-quality quartz can absorb liquids despite being marketed as non-porous",
+          "costTier": "premium",
+          "verdict": "Best for: personal homes with adequate budget — but ONLY from reputed brands."
+        }
+      },
+      "decisionMatrix": [
+        {
+          "scenario": "Rental/Investment Property",
+          "recommendation": "Granite",
+          "reason": "More economical, durable, and tenants won't value the premium of quartz",
+          "media": { "card_image": "/images/countertops/decision-rental.jpg", "icon": "/images/countertops/icon-rental.svg" }
+        },
+        {
+          "scenario": "Personal Home — Budget-Conscious",
+          "recommendation": "Granite",
+          "reason": "Cost-effective without significant compromise; choose darker colours for stain hiding",
+          "media": { "card_image": "/images/countertops/decision-personal-budget.jpg", "icon": "/images/countertops/icon-budget.svg" }
+        },
+        {
+          "scenario": "Personal Home — Premium Budget",
+          "recommendation": "Quartz",
+          "reason": "Wider aesthetic options, non-porous (with good brands), modern look",
+          "condition": "ONLY from reputed brands",
+          "media": { "card_image": "/images/countertops/decision-premium.jpg", "icon": "/images/countertops/icon-premium.svg" }
+        },
+        {
+          "scenario": "Heavy Indian Cooking",
+          "recommendation": "Granite (Dark)",
+          "reason": "Black/dark granite hides stains from turmeric, oil, and spices better than light quartz",
+          "media": { "card_image": "/images/countertops/decision-indian-cooking.jpg", "icon": "/images/countertops/icon-cooking.svg" }
+        },
+        {
+          "scenario": "Modern Theme Kitchen",
+          "recommendation": "Quartz",
+          "reason": "Consistent patterns and wide colour range suit themed designs",
+          "media": { "card_image": "/images/countertops/decision-modern.jpg", "icon": "/images/countertops/icon-modern.svg" }
+        }
+      ],
+      "keyFact": "Quartz costs nearly double that of granite. Low-quality quartz CAN absorb liquids despite marketing claims. Always insist on reputed quartz brands.",
+      "takeaway": "Choose quartz if budget permits (nearly double the cost of granite) and only from reputed brands, as low-quality quartz can absorb liquids. Best for personal use. For investment projects, granite is cost-effective, durable, and works just as well."
+    }
+  }
+}

@@ -1,0 +1,712 @@
+{
+  "module": "calculator",
+  "version": "1.0.0",
+  "description": "Budget Allocation Calculator data \u2014 property archetypes, room defaults, finish multipliers, and budget splits",
+  "propertyArchetypes": [
+    {
+      "type": "rental",
+      "label": "Rental Investment",
+      "budgetPercentage": {
+        "min": 7,
+        "max": 8
+      },
+      "formula": "propertyValue * 0.07 to propertyValue * 0.08",
+      "description": "Designed for tenant appeal and durability at minimal cost.",
+      "defaultRooms": [
+        {
+          "room": "Living Room",
+          "units": [
+            "TV Unit"
+          ],
+          "quantity": 1,
+          "required": true,
+          "media": {
+            "icon": "/images/calculator/icon-room-living-room.svg"
+          }
+        },
+        {
+          "room": "Bedroom",
+          "units": [
+            "Wardrobe (Swing)"
+          ],
+          "quantity": 2,
+          "required": true,
+          "maxQuantity": 5,
+          "media": {
+            "icon": "/images/calculator/icon-room-bedroom.svg"
+          }
+        },
+        {
+          "room": "Kitchen",
+          "units": [
+            "Base Cabinets",
+            "Wall Units (no tall unit)"
+          ],
+          "quantity": 1,
+          "required": true,
+          "finishDefault": "laminate",
+          "media": {
+            "icon": "/images/calculator/icon-room-kitchen.svg"
+          }
+        },
+        {
+          "room": "Shoe Unit",
+          "units": [
+            "Shoe Cabinet"
+          ],
+          "quantity": 1,
+          "required": false,
+          "media": {
+            "icon": "/images/calculator/icon-room-shoe-unit.svg"
+          }
+        }
+      ],
+      "finishDefaults": {
+        "kitchen": "laminate",
+        "wardrobe": "laminate",
+        "countertop": "granite"
+      },
+      "hardwareDefault": "indian",
+      "media": {
+        "card_image": "/images/calculator/archetype-rental.jpg",
+        "card_video": null,
+        "icon": "/images/calculator/icon-rental.svg",
+        "diagram": "/images/calculator/rental-floorplan.svg"
+      },
+      "animation": {
+        "enter": {
+          "type": "slideUp",
+          "delay": 100,
+          "duration": 400,
+          "trigger": "onViewport"
+        },
+        "hover": {
+          "effect": "lift",
+          "target": "card",
+          "feedback": "scale up"
+        }
+      }
+    },
+    {
+      "type": "personal",
+      "label": "Personal Home",
+      "budgetPercentage": {
+        "min": 10,
+        "max": 10
+      },
+      "formula": "propertyValue * 0.10",
+      "description": "Designed for long-term family living with better finishes and full storage.",
+      "defaultRooms": [
+        {
+          "room": "Living Room",
+          "units": [
+            "TV Unit"
+          ],
+          "quantity": 1,
+          "required": true,
+          "media": {
+            "icon": "/images/calculator/icon-room-living-room.svg"
+          }
+        },
+        {
+          "room": "Bedroom",
+          "units": [
+            "Wardrobe"
+          ],
+          "quantity": 3,
+          "required": true,
+          "maxQuantity": 6,
+          "media": {
+            "icon": "/images/calculator/icon-room-bedroom.svg"
+          }
+        },
+        {
+          "room": "Kitchen",
+          "units": [
+            "Base Cabinets",
+            "Wall Units",
+            "Tall Unit",
+            "Wicker Baskets"
+          ],
+          "quantity": 1,
+          "required": true,
+          "finishDefault": "acrylic",
+          "media": {
+            "icon": "/images/calculator/icon-room-kitchen.svg"
+          }
+        },
+        {
+          "room": "Crockery Unit",
+          "units": [
+            "Display Cabinet"
+          ],
+          "quantity": 1,
+          "required": true,
+          "media": {
+            "icon": "/images/calculator/icon-room-crockery-unit.svg"
+          }
+        },
+        {
+          "room": "Pooja/Prayer Unit",
+          "units": [
+            "Temple Unit"
+          ],
+          "quantity": 1,
+          "required": false,
+          "media": {
+            "icon": "/images/calculator/icon-room-pooja/prayer-unit.svg"
+          }
+        },
+        {
+          "room": "Utility",
+          "units": [
+            "Washing Machine Provision",
+            "Dishwasher Provision"
+          ],
+          "quantity": 1,
+          "required": true,
+          "media": {
+            "icon": "/images/calculator/icon-room-utility.svg"
+          }
+        },
+        {
+          "room": "Shoe Unit",
+          "units": [
+            "Shoe Cabinet"
+          ],
+          "quantity": 1,
+          "required": true,
+          "media": {
+            "icon": "/images/calculator/icon-room-shoe-unit.svg"
+          }
+        }
+      ],
+      "finishDefaults": {
+        "kitchen": "acrylic",
+        "wardrobe": "laminate",
+        "countertop": "quartz"
+      },
+      "hardwareDefault": "german",
+      "media": {
+        "card_image": "/images/calculator/archetype-personal.jpg",
+        "card_video": null,
+        "icon": "/images/calculator/icon-personal.svg",
+        "diagram": "/images/calculator/personal-floorplan.svg"
+      },
+      "animation": {
+        "enter": {
+          "type": "slideUp",
+          "delay": 100,
+          "duration": 400,
+          "trigger": "onViewport"
+        },
+        "hover": {
+          "effect": "lift",
+          "target": "card",
+          "feedback": "scale up"
+        }
+      }
+    },
+    {
+      "type": "villa",
+      "label": "Villa",
+      "budgetPercentage": {
+        "min": 10,
+        "max": 10
+      },
+      "formula": "propertyValue * 0.10",
+      "description": "Premium living with statement pieces, multiple specialized rooms, and top-tier finishes.",
+      "defaultRooms": [
+        {
+          "room": "Foyer",
+          "units": [
+            "Statement Storage Unit"
+          ],
+          "quantity": 1,
+          "required": true,
+          "media": {
+            "icon": "/images/calculator/icon-room-foyer.svg"
+          }
+        },
+        {
+          "room": "Living Room",
+          "units": [
+            "TV Unit",
+            "Entertainment Storage"
+          ],
+          "quantity": 1,
+          "required": true,
+          "media": {
+            "icon": "/images/calculator/icon-room-living-room.svg"
+          }
+        },
+        {
+          "room": "Bedroom",
+          "units": [
+            "Premium Wardrobe (Full-Height)"
+          ],
+          "quantity": 4,
+          "required": true,
+          "maxQuantity": 8,
+          "wardrobeType": "full-height",
+          "media": {
+            "icon": "/images/calculator/icon-room-bedroom.svg"
+          }
+        },
+        {
+          "room": "Kitchen",
+          "units": [
+            "Base Cabinets",
+            "Wall Units",
+            "Tall Unit",
+            "Wicker Baskets"
+          ],
+          "quantity": 1,
+          "required": true,
+          "finishDefault": "acrylic",
+          "finishAlternative": "lacquered-glass",
+          "media": {
+            "icon": "/images/calculator/icon-room-kitchen.svg"
+          }
+        },
+        {
+          "room": "Crockery Unit",
+          "units": [
+            "Premium Display Cabinet"
+          ],
+          "quantity": 1,
+          "required": true,
+          "media": {
+            "icon": "/images/calculator/icon-room-crockery-unit.svg"
+          }
+        },
+        {
+          "room": "Pooja Room",
+          "units": [
+            "Dedicated Temple Unit"
+          ],
+          "quantity": 1,
+          "required": true,
+          "media": {
+            "icon": "/images/calculator/icon-room-pooja-room.svg"
+          }
+        },
+        {
+          "room": "Study Room",
+          "units": [
+            "Bookshelves",
+            "Workstation"
+          ],
+          "quantity": 1,
+          "required": true,
+          "media": {
+            "icon": "/images/calculator/icon-room-study-room.svg"
+          }
+        },
+        {
+          "room": "Family Room",
+          "units": [
+            "Entertainment Unit",
+            "Seating Storage"
+          ],
+          "quantity": 1,
+          "required": true,
+          "media": {
+            "icon": "/images/calculator/icon-room-family-room.svg"
+          }
+        },
+        {
+          "room": "Gazebo",
+          "units": [
+            "Outdoor Structure"
+          ],
+          "quantity": 1,
+          "required": true,
+          "media": {
+            "icon": "/images/calculator/icon-room-gazebo.svg"
+          }
+        },
+        {
+          "room": "Utility",
+          "units": [
+            "Washing Machine",
+            "Dishwasher"
+          ],
+          "quantity": 1,
+          "required": true,
+          "media": {
+            "icon": "/images/calculator/icon-room-utility.svg"
+          }
+        }
+      ],
+      "finishDefaults": {
+        "kitchen": "acrylic",
+        "wardrobe": "pu",
+        "countertop": "quartz"
+      },
+      "hardwareDefault": "german",
+      "media": {
+        "card_image": "/images/calculator/archetype-villa.jpg",
+        "card_video": null,
+        "icon": "/images/calculator/icon-villa.svg",
+        "diagram": "/images/calculator/villa-floorplan.svg"
+      },
+      "animation": {
+        "enter": {
+          "type": "slideUp",
+          "delay": 100,
+          "duration": 400,
+          "trigger": "onViewport"
+        },
+        "hover": {
+          "effect": "lift",
+          "target": "card",
+          "feedback": "scale up"
+        }
+      }
+    }
+  ],
+  "finishMultipliers": {
+    "description": "Relative cost multipliers for finish types. Base = Laminate at 1.0x. These are indicative ratios, not absolute prices.",
+    "finishes": [
+      {
+        "id": "laminate",
+        "label": "Laminate",
+        "multiplier": 1.0,
+        "media": {
+          "card_image": "/images/calculator/finish-laminate.jpg",
+          "icon": "/images/calculator/icon-finish-laminate.svg"
+        }
+      },
+      {
+        "id": "acrylic",
+        "label": "Acrylic",
+        "multiplier": 1.4,
+        "media": {
+          "card_image": "/images/calculator/finish-acrylic.jpg",
+          "icon": "/images/calculator/icon-finish-acrylic.svg"
+        }
+      },
+      {
+        "id": "duco",
+        "label": "DUCO Paint",
+        "multiplier": 1.7,
+        "media": {
+          "card_image": "/images/calculator/finish-duco.jpg",
+          "icon": "/images/calculator/icon-finish-duco.svg"
+        }
+      },
+      {
+        "id": "rattan",
+        "label": "Rattan",
+        "multiplier": 1.7,
+        "media": {
+          "card_image": "/images/calculator/finish-rattan.jpg",
+          "icon": "/images/calculator/icon-finish-rattan.svg"
+        }
+      },
+      {
+        "id": "lacquered-glass",
+        "label": "Lacquered Glass",
+        "multiplier": 1.7,
+        "media": {
+          "card_image": "/images/calculator/finish-lacquered-glass.jpg",
+          "icon": "/images/calculator/icon-finish-lacquered-glass.svg"
+        }
+      },
+      {
+        "id": "pu",
+        "label": "PU Paint",
+        "multiplier": 2.1,
+        "media": {
+          "card_image": "/images/calculator/finish-pu.jpg",
+          "icon": "/images/calculator/icon-finish-pu.svg"
+        }
+      }
+    ]
+  },
+  "wardrobeMultipliers": {
+    "description": "Relative cost multipliers for wardrobe types. Base = Swing at 1.0x.",
+    "types": [
+      {
+        "id": "swing",
+        "label": "Swing Wardrobe",
+        "multiplier": 1.0,
+        "media": {
+          "icon": "/images/calculator/icon-wardrobe-swing.svg"
+        }
+      },
+      {
+        "id": "sliding",
+        "label": "Sliding Wardrobe",
+        "multiplier": 1.3,
+        "media": {
+          "icon": "/images/calculator/icon-wardrobe-sliding.svg"
+        }
+      },
+      {
+        "id": "full-height",
+        "label": "Full-Height (Advanced Rail)",
+        "multiplier": 1.8,
+        "media": {
+          "icon": "/images/calculator/icon-wardrobe-full-height.svg"
+        }
+      }
+    ]
+  },
+  "hardwareMultipliers": {
+    "description": "Relative cost multipliers for hardware tiers.",
+    "tiers": [
+      {
+        "id": "indian",
+        "label": "Indian Accessories",
+        "multiplier": 1.0
+      },
+      {
+        "id": "german",
+        "label": "German Accessories",
+        "multiplier": 1.5
+      }
+    ]
+  },
+  "countertopMultipliers": {
+    "description": "Relative cost multipliers for countertop materials.",
+    "materials": [
+      {
+        "id": "granite",
+        "label": "Granite",
+        "multiplier": 1.0
+      },
+      {
+        "id": "quartz",
+        "label": "Quartz",
+        "multiplier": 2.0,
+        "note": "Nearly double the cost of granite"
+      }
+    ]
+  },
+  "budgetSplitPercentages": {
+    "description": "Recommended percentage allocation of total interior budget across categories.",
+    "categories": [
+      {
+        "name": "Kitchen",
+        "minPercent": 25,
+        "maxPercent": 30,
+        "includes": [
+          "Cabinets",
+          "Shutters",
+          "Countertop",
+          "Tall Unit",
+          "Hardware",
+          "Plumbing"
+        ],
+        "note": "Largest single category \u2014 includes both materials and specialized installation",
+        "media": {
+          "icon": "/images/calculator/icon-category-kitchen.svg"
+        }
+      },
+      {
+        "name": "Wardrobes",
+        "minPercent": 20,
+        "maxPercent": 25,
+        "includes": [
+          "Carcass",
+          "Shutters",
+          "Channels/Hinges",
+          "Internal Storage",
+          "Loft"
+        ],
+        "note": "Scales with number of bedrooms",
+        "media": {
+          "icon": "/images/calculator/icon-category-wardrobes.svg"
+        }
+      },
+      {
+        "name": "Living & Dining",
+        "minPercent": 15,
+        "maxPercent": 20,
+        "includes": [
+          "TV Unit",
+          "Crockery Unit",
+          "Shoe Unit",
+          "Foyer Storage",
+          "Console Tables"
+        ],
+        "note": "Entertainment and social area furniture",
+        "media": {
+          "icon": "/images/calculator/icon-category-living-and-dining.svg"
+        }
+      },
+      {
+        "name": "Bedroom Furniture",
+        "minPercent": 10,
+        "maxPercent": 15,
+        "includes": [
+          "Beds",
+          "Side Tables",
+          "Dressers",
+          "Study Tables"
+        ],
+        "note": "Excludes wardrobes \u2014 those are in the Wardrobes category",
+        "media": {
+          "icon": "/images/calculator/icon-category-bedroom-furniture.svg"
+        }
+      },
+      {
+        "name": "Electrical & Plumbing",
+        "minPercent": 10,
+        "maxPercent": 15,
+        "includes": [
+          "Point Shifting",
+          "Wiring",
+          "Lights",
+          "Switches",
+          "Kitchen Plumbing",
+          "Utility Plumbing"
+        ],
+        "note": "Often excluded from initial carpentry quotes \u2014 budget separately",
+        "media": {
+          "icon": "/images/calculator/icon-category-electrical-and-plumbing.svg"
+        }
+      },
+      {
+        "name": "Painting & Finishing",
+        "minPercent": 8,
+        "maxPercent": 10,
+        "includes": [
+          "Wall Painting",
+          "Touch-ups After Installation",
+          "Finish Coats on Furniture"
+        ],
+        "note": "Almost always needed after installation",
+        "media": {
+          "icon": "/images/calculator/icon-category-painting-and-finishing.svg"
+        }
+      },
+      {
+        "name": "False Ceiling",
+        "minPercent": 5,
+        "maxPercent": 8,
+        "includes": [
+          "Gypsum/POP Work",
+          "Ceiling Painting",
+          "Ceiling Electrical Points"
+        ],
+        "note": "Ensure painting and electrical for false ceiling are explicitly included",
+        "media": {
+          "icon": "/images/calculator/icon-category-false-ceiling.svg"
+        }
+      },
+      {
+        "name": "Logistics, Cleaning & Floor Protection",
+        "minPercent": 3,
+        "maxPercent": 5,
+        "includes": [
+          "Material Transport",
+          "Deep Cleaning Post-Installation",
+          "Floor Protection Material"
+        ],
+        "note": "Small percentage but critical \u2014 floor damage not covered without it",
+        "media": {
+          "icon": "/images/calculator/icon-category-logistics,-cleaning-and-floor-protection.svg"
+        }
+      }
+    ]
+  },
+  "redFlagTriggers": {
+    "description": "Conditions that trigger red flag warnings in the calculator summary.",
+    "triggers": [
+      {
+        "id": "floor-protection-missing",
+        "condition": "logisticsCategory < 3%",
+        "message": "\u26a0 Floor protection may be under-budgeted. Damage during installation is often not covered without it.",
+        "severity": "warning",
+        "media": {
+          "icon": "/images/red-flags/icon-warning.svg"
+        }
+      },
+      {
+        "id": "deep-cleaning-missing",
+        "condition": "logisticsCategory < 2%",
+        "message": "\u26a0 Deep cleaning may not be included. Required after painting to remove marks and dust.",
+        "severity": "warning",
+        "media": {
+          "icon": "/images/red-flags/icon-warning.svg"
+        }
+      },
+      {
+        "id": "false-ceiling-gap",
+        "condition": "falseCeilingSelected AND paintingCategory < 8%",
+        "message": "\u26a0 Does the false ceiling quote include painting and electrical work? These are often quoted separately.",
+        "severity": "info",
+        "media": {
+          "icon": "/images/red-flags/icon-info.svg"
+        }
+      },
+      {
+        "id": "acrylic-without-logistics",
+        "condition": "kitchenFinish IN ['acrylic','lacquered-glass'] AND logisticsCategory < 4%",
+        "message": "\u26a0 Acrylic/Glass finishes need careful transport and handling. Ensure transport costs are in the lump-sum estimate.",
+        "severity": "warning",
+        "media": {
+          "icon": "/images/red-flags/icon-warning.svg"
+        }
+      },
+      {
+        "id": "sliding-without-premium-hardware",
+        "condition": "wardrobeType == 'sliding' AND hardwareTier == 'indian'",
+        "message": "\u26a0 Sliding wardrobes with Indian hardware: risk of wobbling and getting stuck over time. German hardware strongly recommended for sliding systems.",
+        "severity": "warning",
+        "media": {
+          "icon": "/images/red-flags/icon-warning.svg"
+        }
+      },
+      {
+        "id": "quartz-without-reputed-brand",
+        "condition": "countertop == 'quartz' AND budgetType == 'rental'",
+        "message": "\u26a0 Quartz at nearly 2x granite cost may not be optimal for investment/rental projects. Low-quality quartz can also absorb liquids. Consider granite.",
+        "severity": "info",
+        "media": {
+          "icon": "/images/red-flags/icon-info.svg"
+        }
+      }
+    ]
+  },
+  "exportOptions": {
+    "formats": [
+      "PDF Checklist",
+      "Email Summary",
+      "Shareable URL"
+    ],
+    "pdfSections": [
+      "Budget Summary",
+      "Room-by-Room Breakdown",
+      "Finish Selections",
+      "Red Flag Checklist",
+      "Vendor Questions to Ask"
+    ]
+  },
+  "media": {
+    "hero_image": "/images/calculator/hero.jpg",
+    "hero_video": null,
+    "thumbnail": "/images/calculator/thumbnail.jpg",
+    "icons": {
+      "default": "/images/calculator/icon-default.svg",
+      "active": "/images/calculator/icon-active.svg",
+      "hover": "/images/calculator/icon-hover.svg"
+    }
+  },
+  "animation": {
+    "enter": {
+      "type": "fadeIn",
+      "delay": 0,
+      "duration": 400,
+      "trigger": "onViewport"
+    },
+    "scroll": {
+      "parallax": false,
+      "progressBar": false,
+      "reveal": "lazyReveal"
+    }
+  }
+}

@@ -1,0 +1,623 @@
+{
+  "module": "budget",
+  "version": "1.0.0",
+  "description": "Budget & Cost Management data for the Interior Materials & Budgeting Guide",
+  "sections": {
+    "quoteIncreases": {
+      "id": "quote-increases",
+      "slug": "/budget/quote-increases",
+      "title": "Why Interior Quotes Increase After the Design Phase",
+      "subtitle": "And How to Avoid It",
+      "summary": "Quote escalation after design is the #1 complaint in online reviews of interior companies. Design additions can cause 30-50% cost rise. Always ask what costs are NOT included in the initial estimate.",
+      "content": {
+        "opening": "You can check online reviews of almost any interior design company, and a common negative feedback you'll find is: 'The quote increased significantly after the design phase.'",
+        "warning": "To avoid sudden jumps in your interior quote, always ask what costs are not included in the initial estimate. And how much it will increase after designing phase. If the answer is 'nothing much', be cautious \u2014 interiors involve more than just woodwork.",
+        "realityCheck": {
+          "title": "What Most Homeowners Don't Realize",
+          "body": "Interior work is not limited to carpentry. Most projects also require:",
+          "items": [
+            {
+              "category": "Electrical Work",
+              "description": "Point shifting, wiring, lights, switches, adaptors",
+              "isCommonlyExcluded": true
+            },
+            {
+              "category": "Painting & Touch-ups",
+              "description": "Almost always needed after installation",
+              "isCommonlyExcluded": true
+            },
+            {
+              "category": "Plumbing Work",
+              "description": "Especially kitchens and utility areas",
+              "isCommonlyExcluded": true
+            }
+          ],
+          "note": "Exact costs can't be finalized before design completion, but interior companies usually know the cost range."
+        },
+        "costDrivers": [
+          {
+            "driver": "Design Additions",
+            "impact": "30-50% rise",
+            "description": "Additional elements requested after initial design sign-off",
+            "media": {
+              "card_image": "/images/budget/cost-driver-1.jpg",
+              "card_video": null,
+              "icon": "/images/budget/icon-driver-1.svg"
+            },
+            "animation": {
+              "enter": {
+                "type": "slideUp",
+                "delay": 0,
+                "duration": 300,
+                "trigger": "onScroll"
+              }
+            }
+          },
+          {
+            "driver": "Basic vs Premium Materials",
+            "impact": "Variable",
+            "description": "Upgrading from laminate to acrylic, MR to BWP plywood, Indian to German hardware",
+            "media": {
+              "card_image": "/images/budget/cost-driver-2.jpg",
+              "card_video": null,
+              "icon": "/images/budget/icon-driver-2.svg"
+            },
+            "animation": {
+              "enter": {
+                "type": "slideUp",
+                "delay": 80,
+                "duration": 300,
+                "trigger": "onScroll"
+              }
+            }
+          },
+          {
+            "driver": "Size Revisions",
+            "impact": "Variable",
+            "description": "Increasing wardrobe length, kitchen size, or adding storage units",
+            "media": {
+              "card_image": "/images/budget/cost-driver-3.jpg",
+              "card_video": null,
+              "icon": "/images/budget/icon-driver-3.svg"
+            },
+            "animation": {
+              "enter": {
+                "type": "slideUp",
+                "delay": 160,
+                "duration": 300,
+                "trigger": "onScroll"
+              }
+            }
+          },
+          {
+            "driver": "Glass Shutters & Profiling",
+            "impact": "Significant",
+            "description": "Adding glass elements and profile detailing to shutters",
+            "media": {
+              "card_image": "/images/budget/cost-driver-4.jpg",
+              "card_video": null,
+              "icon": "/images/budget/icon-driver-4.svg"
+            },
+            "animation": {
+              "enter": {
+                "type": "slideUp",
+                "delay": 240,
+                "duration": 300,
+                "trigger": "onScroll"
+              }
+            }
+          },
+          {
+            "driver": "Hidden Costs (Elec/Plumb/Paint)",
+            "impact": "10-20% of project",
+            "description": "Electrical, plumbing, and paint work not in initial carpentry quote",
+            "media": {
+              "card_image": "/images/budget/cost-driver-5.jpg",
+              "card_video": null,
+              "icon": "/images/budget/icon-driver-5.svg"
+            },
+            "animation": {
+              "enter": {
+                "type": "slideUp",
+                "delay": 320,
+                "duration": 300,
+                "trigger": "onScroll"
+              }
+            }
+          }
+        ]
+      },
+      "takeaway": "Clear questions at the beginning prevent budget shocks later. Transparency upfront saves time, money, and stress."
+    },
+    "hiddenCosts": {
+      "id": "hidden-costs",
+      "slug": "/budget/hidden-costs",
+      "title": "Hidden Costs Most Interior Companies Don't Include Upfront",
+      "summary": "Several essential costs are routinely excluded from initial interior quotes. Check if yours includes these items.",
+      "costChecklist": [
+        {
+          "item": "Transportation & Logistics",
+          "description": "Movement of materials from factory/warehouse to site. Can be significant for multi-room projects.",
+          "typicalCoverage": "Often excluded or capped",
+          "redFlagIfMissing": false,
+          "severity": "info",
+          "media": {
+            "card_image": "/images/budget/hidden-cost-1.jpg",
+            "card_video": null,
+            "icon": "/images/budget/icon-cost-1.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 0,
+              "duration": 300,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "borderGlow",
+              "target": "card",
+              "feedback": "tooltip"
+            }
+          }
+        },
+        {
+          "item": "Floor Protection",
+          "description": "Protective covering for existing flooring during installation. Critical: damage during work is often NOT covered if this isn't explicitly included in the contract.",
+          "typicalCoverage": "Frequently excluded",
+          "redFlagIfMissing": true,
+          "severity": "warning",
+          "redFlagMessage": "If floor protection is not in the quote, any damage to your existing flooring during installation will likely NOT be covered by the company.",
+          "media": {
+            "card_image": "/images/budget/hidden-cost-2.jpg",
+            "card_video": null,
+            "icon": "/images/budget/icon-cost-2.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 100,
+              "duration": 300,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "borderGlow",
+              "target": "card",
+              "feedback": "tooltip"
+            }
+          }
+        },
+        {
+          "item": "Deep Cleaning",
+          "description": "Post-installation deep cleaning to remove paint marks, dust, and construction debris. Needed especially if painting is done.",
+          "typicalCoverage": "Frequently excluded",
+          "redFlagIfMissing": true,
+          "severity": "warning",
+          "redFlagMessage": "Deep cleaning is almost always needed after painting. Ensure it's included or budget for it separately.",
+          "media": {
+            "card_image": "/images/budget/hidden-cost-3.jpg",
+            "card_video": null,
+            "icon": "/images/budget/icon-cost-3.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 200,
+              "duration": 300,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "borderGlow",
+              "target": "card",
+              "feedback": "tooltip"
+            }
+          }
+        },
+        {
+          "item": "False Ceiling Work (Complete)",
+          "description": "Ensure the quote clearly mentions both painting AND electrical work for the false ceiling. Many quotes only include the gypsum/POF work.",
+          "typicalCoverage": "Partially included",
+          "redFlagIfMissing": true,
+          "severity": "info",
+          "redFlagMessage": "Check if the false ceiling quote includes painting and electrical point work \u2014 these are often quoted separately.",
+          "media": {
+            "card_image": "/images/budget/hidden-cost-4.jpg",
+            "card_video": null,
+            "icon": "/images/budget/icon-cost-4.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 300,
+              "duration": 300,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "borderGlow",
+              "target": "card",
+              "feedback": "tooltip"
+            }
+          }
+        }
+      ],
+      "takeaway": "Always ask for a lump-sum estimate so you have a realistic budget in mind. Check each line item: transportation, floor protection, deep cleaning, and complete false ceiling scope."
+    },
+    "costSavingTips": {
+      "id": "cost-saving-tips",
+      "slug": "/budget/cost-saving-tips",
+      "title": "Cost-Saving Tips for Interior Projects",
+      "summary": "Practical strategies to keep your interior budget under control without compromising on essential quality.",
+      "tips": [
+        {
+          "tip": "Always ask for a lump-sum estimate",
+          "description": "A lump-sum estimate gives you a realistic total budget figure upfront. Avoid open-ended estimates that grow with each design decision.",
+          "impact": "high"
+        },
+        {
+          "tip": "Verify inclusions upfront",
+          "description": "Confirm that cleaning, logistics, floor protection, and false ceiling electrical/painting are included in the base quote.",
+          "impact": "high"
+        },
+        {
+          "tip": "Maintain discounts through negotiation",
+          "description": "Smaller firms especially are more flexible with pricing and discounts. Negotiate before signing, not after.",
+          "impact": "medium"
+        },
+        {
+          "tip": "Lock material specifications early",
+          "description": "Specify plywood grade (BWP/BWR/MR), laminate brand, hardware tier before design sign-off to prevent mid-project upgrades that inflate cost.",
+          "impact": "high"
+        },
+        {
+          "tip": "Prioritize wet areas for premium materials",
+          "description": "Use BWP plywood only in kitchens and bathrooms. Use MR plywood in dry areas like bedrooms and living rooms to save cost without compromising durability.",
+          "impact": "medium"
+        }
+      ],
+      "takeaway": "Clear questions at the beginning prevent budget shocks later. Transparency upfront saves time, money, and stress."
+    },
+    "projectBudgets": {
+      "id": "project-budgets",
+      "slug": "/budget/project-budgets",
+      "title": "Budget Guide: Rental vs Personal vs Villa",
+      "summary": "The purpose of the home defines the budget, materials, and level of detailing. Design accordingly using these archetype-based guidelines.",
+      "archetypes": [
+        {
+          "type": "rental",
+          "label": "Rental Investment",
+          "budgetPercentage": {
+            "min": 7,
+            "max": 8,
+            "unit": "percent",
+            "formula": "Property Value \u00d7 0.07 to 0.08"
+          },
+          "description": "Designed for tenant appeal and durability at minimal cost. Focus on essential furniture with budget-friendly finishes.",
+          "inclusions": [
+            {
+              "item": "TV Unit",
+              "required": true,
+              "notes": "Basic laminate finish"
+            },
+            {
+              "item": "Wardrobes",
+              "required": true,
+              "notes": "Swing preferred for easy maintenance; sliding may cost more",
+              "type": "swing"
+            },
+            {
+              "item": "Kitchen",
+              "required": true,
+              "notes": "Without tall units; laminate finish",
+              "finish": "laminate"
+            },
+            {
+              "item": "Shoe Unit",
+              "required": false,
+              "notes": "Optional add-on"
+            }
+          ],
+          "finishRecommendation": "Laminate throughout",
+          "materialRecommendation": "MR Plywood for dry areas; BWR for kitchen",
+          "media": {
+            "card_image": "/images/budget/project-budgets-rental.jpg",
+            "card_video": null,
+            "icon": "/images/budget/icon-archetype-rental.svg",
+            "diagram": "/images/budget/rental-layout.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 100,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "scale up"
+            },
+            "microInteraction": {
+              "type": "badgeFlip",
+              "repeatable": true
+            }
+          }
+        },
+        {
+          "type": "personal",
+          "label": "Personal Home",
+          "budgetPercentage": {
+            "min": 10,
+            "max": 10,
+            "unit": "percent",
+            "formula": "Property Value \u00d7 0.10"
+          },
+          "description": "Designed for long-term family living. Better finishes, more storage, and provisions for all appliances.",
+          "inclusions": [
+            {
+              "item": "Shoe Unit",
+              "required": true,
+              "notes": "Integrated storage"
+            },
+            {
+              "item": "TV Unit",
+              "required": true,
+              "notes": "With storage integration"
+            },
+            {
+              "item": "Crockery Unit",
+              "required": true,
+              "notes": "Dedicated display and storage"
+            },
+            {
+              "item": "Pooja/Prayer Unit",
+              "required": false,
+              "notes": "If required by family"
+            },
+            {
+              "item": "Kitchen",
+              "required": true,
+              "notes": "Acrylic finish with tall unit and wicker baskets",
+              "finish": "acrylic"
+            },
+            {
+              "item": "Washing Machine Provision",
+              "required": true,
+              "notes": "Utility area with plumbing and electrical points"
+            },
+            {
+              "item": "Dishwasher Provision",
+              "required": true,
+              "notes": "Under-counter space with plumbing point"
+            },
+            {
+              "item": "Wardrobes",
+              "required": true,
+              "notes": "Well-planned storage with better finishes"
+            }
+          ],
+          "finishRecommendation": "Acrylic kitchen, laminate wardrobes",
+          "materialRecommendation": "BWP for kitchen/utility; MR for dry areas",
+          "media": {
+            "card_image": "/images/budget/project-budgets-personal.jpg",
+            "card_video": null,
+            "icon": "/images/budget/icon-archetype-personal.svg",
+            "diagram": "/images/budget/personal-layout.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 100,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "scale up"
+            },
+            "microInteraction": {
+              "type": "badgeFlip",
+              "repeatable": true
+            }
+          }
+        },
+        {
+          "type": "villa",
+          "label": "Villa",
+          "budgetPercentage": {
+            "min": 10,
+            "max": 10,
+            "unit": "percent",
+            "formula": "Property Value \u00d7 0.10"
+          },
+          "description": "Premium living with statement pieces, multiple specialized rooms, and top-tier finishes throughout.",
+          "inclusions": [
+            {
+              "item": "Foyer & Statement Storage",
+              "required": true,
+              "notes": "Grand entrance with designer storage units"
+            },
+            {
+              "item": "Crockery Unit",
+              "required": true,
+              "notes": "Premium display unit"
+            },
+            {
+              "item": "Kitchen",
+              "required": true,
+              "notes": "Acrylic or lacquered glass finish",
+              "finish": [
+                "acrylic",
+                "lacquered-glass"
+              ]
+            },
+            {
+              "item": "Premium Wardrobes",
+              "required": true,
+              "notes": "Full-height systems; Aristo or equivalent brand",
+              "type": "full-height"
+            },
+            {
+              "item": "Study Room",
+              "required": true,
+              "notes": "Full study with bookshelves and workstation"
+            },
+            {
+              "item": "Family Room",
+              "required": true,
+              "notes": "Entertainment unit and seating storage"
+            },
+            {
+              "item": "Gazebo",
+              "required": true,
+              "notes": "Outdoor seating/structure"
+            },
+            {
+              "item": "Dedicated Pooja Room",
+              "required": true,
+              "notes": "Separate pooja room with custom temple unit"
+            }
+          ],
+          "finishRecommendation": "Acrylic or lacquered glass kitchen; PU/DUCO for select wardrobes",
+          "materialRecommendation": "BWP throughout kitchen and wet areas; HDHMR shutters; premium hardware",
+          "media": {
+            "card_image": "/images/budget/project-budgets-villa.jpg",
+            "card_video": null,
+            "icon": "/images/budget/icon-archetype-villa.svg",
+            "diagram": "/images/budget/villa-layout.svg"
+          },
+          "animation": {
+            "enter": {
+              "type": "fadeIn",
+              "delay": 100,
+              "duration": 400,
+              "trigger": "onViewport"
+            },
+            "hover": {
+              "effect": "lift",
+              "target": "card",
+              "feedback": "scale up"
+            },
+            "microInteraction": {
+              "type": "badgeFlip",
+              "repeatable": true
+            }
+          }
+        }
+      ],
+      "guidingPrinciple": "The purpose of the home defines the budget, materials, and level of detailing \u2014 design accordingly.",
+      "takeaway": "For rental: 7-8% with laminate, minimal units. For personal: 10% with acrylic kitchen, full storage. For villa: 10% with premium everything, including gazebo and dedicated rooms."
+    },
+    "budgetAllocationDefaults": {
+      "description": "Estimated percentage splits of total interior budget by category. Used by the Budget Calculator.",
+      "categories": [
+        {
+          "name": "Kitchen",
+          "minPercent": 25,
+          "maxPercent": 30,
+          "includes": [
+            "Cabinets",
+            "Shutters",
+            "Countertop",
+            "Tall Unit",
+            "Hardware"
+          ]
+        },
+        {
+          "name": "Wardrobes",
+          "minPercent": 20,
+          "maxPercent": 25,
+          "includes": [
+            "Carcass",
+            "Shutters",
+            "Channels/Hinges",
+            "Internal Storage"
+          ]
+        },
+        {
+          "name": "Living & Dining",
+          "minPercent": 15,
+          "maxPercent": 20,
+          "includes": [
+            "TV Unit",
+            "Crockery Unit",
+            "Shoe Unit",
+            "Foyer Storage"
+          ]
+        },
+        {
+          "name": "Bedroom Furniture",
+          "minPercent": 10,
+          "maxPercent": 15,
+          "includes": [
+            "Beds",
+            "Side Tables",
+            "Dressers"
+          ]
+        },
+        {
+          "name": "Electrical & Plumbing",
+          "minPercent": 10,
+          "maxPercent": 15,
+          "includes": [
+            "Point Shifting",
+            "Wiring",
+            "Plumbing for Kitchen/Utility"
+          ]
+        },
+        {
+          "name": "Painting & Finishing",
+          "minPercent": 8,
+          "maxPercent": 10,
+          "includes": [
+            "Wall Painting",
+            "Touch-ups",
+            "Finish Coats"
+          ]
+        },
+        {
+          "name": "False Ceiling",
+          "minPercent": 5,
+          "maxPercent": 8,
+          "includes": [
+            "Gypsum Work",
+            "Ceiling Painting",
+            "Ceiling Electrical"
+          ]
+        },
+        {
+          "name": "Logistics, Cleaning & Floor Protection",
+          "minPercent": 3,
+          "maxPercent": 5,
+          "includes": [
+            "Transport",
+            "Deep Cleaning",
+            "Floor Protection Material"
+          ]
+        }
+      ]
+    }
+  },
+  "media": {
+    "hero_image": "/images/budget/hero.jpg",
+    "hero_video": null,
+    "thumbnail": "/images/budget/thumbnail.jpg",
+    "icons": {
+      "default": "/images/budget/icon-default.svg",
+      "active": "/images/budget/icon-active.svg",
+      "hover": "/images/budget/icon-hover.svg"
+    }
+  },
+  "animation": {
+    "enter": {
+      "type": "fadeIn",
+      "delay": 0,
+      "duration": 400,
+      "trigger": "onViewport"
+    },
+    "scroll": {
+      "parallax": false,
+      "progressBar": false,
+      "reveal": "lazyReveal"
+    }
+  }
+}
