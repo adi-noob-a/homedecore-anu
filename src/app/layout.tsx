@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
+import { CustomCursor } from "@/components/CustomCursor";
+import { PageTransitionWrapper } from "@/components/PageTransitionWrapper";
 
 export const metadata: Metadata = {
-  title: "Interior Design Hub — Budget Calculator & Material Guide",
+  title: "Interior Design Hub — Design Without Guesswork",
   description:
-    "Interactive budget calculator for Indian homeowners. Compare materials, finishes, and hardware for your interior design project.",
+    "Interactive budget calculator, premium material comparisons, and hardware guides for Indian homeowners. Design your dream interior with confidence.",
+  keywords: ["interior design", "budget calculator", "Indian homes", "materials guide", "hardware comparison"],
 };
 
 export default function RootLayout({
@@ -15,9 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased font-sans bg-zinc-950 text-zinc-100">
+      <body className="antialiased font-sans">
+        <CustomCursor />
         <Navbar />
-        {children}
+        <PageTransitionWrapper>
+          {children}
+        </PageTransitionWrapper>
       </body>
     </html>
   );

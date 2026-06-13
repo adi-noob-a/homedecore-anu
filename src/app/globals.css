@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 @layer base {
   html {
@@ -12,7 +12,13 @@
   }
 
   body {
-    @apply text-surface-900 bg-surface-50;
+    @apply font-sans text-[#94A3B8] cursor-none;
+    background-color: #05050A;
+  }
+
+  /* Hide default cursor on interactive elements too */
+  a, button, input, select, textarea, label {
+    cursor: none;
   }
 
   /* Better number input styling */
@@ -25,6 +31,21 @@
     -moz-appearance: textfield;
   }
 
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0A0A14;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2A2A3E;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3A3A50;
+  }
+
   /* Scrollbar-hide utility */
   .scrollbar-hide {
     -ms-overflow-style: none;
@@ -33,22 +54,88 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  /* Text selection */
+  ::selection {
+    background: rgba(99, 102, 241, 0.3);
+    color: #fff;
+  }
 }
 
 @layer components {
   /* Skeleton loader base */
   .skeleton {
-    @apply bg-surface-200 animate-pulse rounded;
+    @apply bg-white/[0.03] animate-pulse rounded;
   }
 
-  /* Glass morphism utility for cost bar */
-  .glass-bottom {
-    @apply bg-white/80 backdrop-blur-md border-t border-surface-200/50;
+  /* Glass morphism */
+  .glass {
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(48px);
+    -webkit-backdrop-filter: blur(48px);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .glass-hover {
+    transition: all 0.3s;
+  }
+
+  .glass-hover:hover {
+    background: rgba(255,255,255,0.04);
+    border-color: rgba(255,255,255,0.08);
+  }
+
+  /* Gradient text utility */
+  .text-gradient {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(135deg, #818CF8 0%, #FF7E67 100%);
+  }
+
+  /* Glow ring for active states */
+  .glow-ring {
+    @apply ring-1 ring-indigo-500/30 ring-offset-1;
+    --tw-ring-offset-color: #05050A;
+  }
+
+  /* Premium button */
+  .btn-premium {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+    color: white;
+    background: linear-gradient(135deg, #6366F1 0%, #FF7E67 100%);
+    transition: all 0.3s;
+  }
+
+  .btn-premium:hover {
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+  }
+
+  .btn-premium::before {
+    content: '';
+    @apply absolute inset-0 bg-white/10 opacity-0 transition-opacity duration-300;
+  }
+
+  .btn-premium:hover::before {
+    @apply opacity-100;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
   }
 }
