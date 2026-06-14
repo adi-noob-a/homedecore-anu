@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 @layer base {
   html {
@@ -14,6 +14,10 @@
   body {
     @apply font-sans text-surface-400;
     background-color: #0A0A0C;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
   }
 
   /* Better number input styling */
@@ -101,10 +105,94 @@
     padding: 0.75rem 1.5rem;
     color: #0A0A0C;
     background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
-    transition: all 0.25s;
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   .btn-amber:hover {
     box-shadow: 0 0 24px rgba(245, 158, 11, 0.25);
+  }
+  .btn-amber:active {
+    transform: scale(0.97);
+  }
+
+  /* Premium CTA (home page hero) */
+  .btn-premium {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+    color: #0A0A0C;
+    background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .btn-premium:hover {
+    box-shadow: 0 0 24px rgba(245, 158, 11, 0.25);
+  }
+  .btn-premium:active {
+    transform: scale(0.97);
+  }
+
+  /* Generic button press state — add to all interactive buttons */
+  .btn-press {
+    transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .btn-press:active {
+    transform: scale(0.97);
+  }
+
+  /* Card hover architecture: lift + shadow */
+  .card-hover {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Frosted glass panel (slides up on card hover) */
+  .frosted-panel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.75rem 1rem;
+  }
+  .group:hover .frosted-panel {
+    transform: translateY(0);
+  }
+
+  /* Visual finish swatch — clickable color circles */
+  .finish-swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    flex-shrink: 0;
+  }
+  .finish-swatch:hover {
+    border-color: rgba(245, 158, 11, 0.6);
+    transform: scale(1.15);
+  }
+  .finish-swatch--selected {
+    border-color: #F59E0B;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
+  }
+
+  /* Success state on buttons (checkmark morph) */
+  .btn-success {
+    background: #059669 !important;
+    color: #fff !important;
   }
 
   /* Warning banner */

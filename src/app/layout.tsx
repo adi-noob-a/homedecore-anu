@@ -21,9 +21,12 @@ export default function RootLayout({
       <body className="antialiased font-sans">
         <ScrollProgressBar />
         <Navbar />
-        <CompareProvider>
-          {children}
-        </CompareProvider>
+        {/* pt-16 accounts for fixed header height (h-16 = 64px) */}
+        <div className="pt-16">
+          <CompareProvider>
+            {children}
+          </CompareProvider>
+        </div>
       </body>
     </html>
   );

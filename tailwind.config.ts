@@ -58,7 +58,7 @@ const config: Config = {
           100: "#f1f5f9",
           200: "#e2e8f0",
           300: "#cbd5e1",
-          400: "#94a3b8",
+          400: "#4B5563",     // ← WCAG AA compliant dark grey for muted text
           500: "#64748b",
           600: "#475569",
           700: "#334155",
@@ -91,7 +91,22 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
+        display: ["Plus Jakarta Sans", "Inter", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
+      },
+      fontSize: {
+        // Major-third typographic scale
+        "display-xl": ["4.5rem", { lineHeight: "0.95", fontWeight: "800", letterSpacing: "-0.03em" }],
+        "display-lg": ["3.75rem", { lineHeight: "1", fontWeight: "800", letterSpacing: "-0.025em" }],
+        "display-md": ["3rem", { lineHeight: "1.05", fontWeight: "700", letterSpacing: "-0.02em" }],
+        "heading-xl": ["2.25rem", { lineHeight: "1.15", fontWeight: "700", letterSpacing: "-0.015em" }],
+        "heading-lg": ["1.875rem", { lineHeight: "1.25", fontWeight: "700", letterSpacing: "-0.01em" }],
+        "heading-md": ["1.5rem", { lineHeight: "1.35", fontWeight: "600", letterSpacing: "-0.005em" }],
+        "body-lg": ["1.125rem", { lineHeight: "1.6", fontWeight: "400" }],
+        "body-md": ["1rem", { lineHeight: "1.6", fontWeight: "400" }],
+        "body-sm": ["0.875rem", { lineHeight: "1.6", fontWeight: "400" }],
+        "caption": ["0.75rem", { lineHeight: "1.5", fontWeight: "400" }],
+        "caption-sm": ["0.6875rem", { lineHeight: "1.45", fontWeight: "400" }],
       },
       keyframes: {
         "shimmer-slide": {
@@ -110,12 +125,22 @@ const config: Config = {
           "0%": { width: "0%" },
           "100%": { width: "var(--progress-target)" },
         },
+        "fade-in-up": {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "checkmark-draw": {
+          "0%": { strokeDashoffset: "24" },
+          "100%": { strokeDashoffset: "0" },
+        },
       },
       animation: {
         "shimmer-slide": "shimmer-slide 2s ease-in-out infinite",
         "float": "float 3s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "progress-fill": "progress-fill 0.5s ease-out forwards",
+        "fade-in-up": "fade-in-up 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
+        "checkmark-draw": "checkmark-draw 0.4s ease-out forwards",
       },
     },
   },

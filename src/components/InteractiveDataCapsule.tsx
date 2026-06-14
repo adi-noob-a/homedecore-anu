@@ -75,8 +75,24 @@ export function InteractiveDataCapsule({
         viewport={{ once: true, margin: "-40px" }}
         transition={{ type: "spring", stiffness: 90, damping: 18 }}
         layout
+        className="group"
       >
-        <div className="glass glass-hover rounded-2xl overflow-hidden">
+        <div className="glass glass-hover rounded-2xl overflow-hidden card-hover relative">
+          {/* Frosted glass panel — slides up on card hover, reveals finishes + Quick Add */}
+          <div className="frosted-panel z-10 hidden md:flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-surface-300 font-medium">Finishes:</span>
+              <div className="flex items-center gap-1.5">
+                <button className="finish-swatch" style={{ backgroundColor: "#B8860B" }} aria-label="Brushed Brass" />
+                <button className="finish-swatch" style={{ backgroundColor: "#C0C0C0" }} aria-label="Satin Chrome" />
+                <button className="finish-swatch" style={{ backgroundColor: "#1C1C1C" }} aria-label="Matte Black" />
+                <button className="finish-swatch" style={{ backgroundColor: "#D4AF37" }} aria-label="Polished Gold" />
+              </div>
+            </div>
+            <button className="text-xs font-medium text-amber-400 hover:text-amber-300 transition-colors px-3 py-1 rounded-lg bg-amber-900/20 hover:bg-amber-900/30">
+              Quick Add →
+            </button>
+          </div>
           {/* Stage 1 — Clickable card header */}
           <div
             onClick={handleStage2}
