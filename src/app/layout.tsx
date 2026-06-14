@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
-import { CustomCursor } from "@/components/CustomCursor";
-import { PageTransitionWrapper } from "@/components/PageTransitionWrapper";
+import { ScrollProgressBar } from "@/components/ScrollProgressBar";
+import { CompareProvider } from "@/components/CompareModeProvider";
 
 export const metadata: Metadata = {
   title: "Interior Design Hub — Design Without Guesswork",
   description:
-    "Interactive budget calculator, premium material comparisons, and hardware guides for Indian homeowners. Design your dream interior with confidence.",
-  keywords: ["interior design", "budget calculator", "Indian homes", "materials guide", "hardware comparison"],
+    "Interactive budget calculator with real-time costing, premium material comparisons, and hardware engineering guides for Indian homeowners.",
+  keywords: ["interior design", "budget calculator", "Indian homes", "materials guide", "hardware comparison", "plywood grades", "modular kitchen"],
 };
 
 export default function RootLayout({
@@ -19,11 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased font-sans">
-        <CustomCursor />
+        <ScrollProgressBar />
         <Navbar />
-        <PageTransitionWrapper>
+        <CompareProvider>
           {children}
-        </PageTransitionWrapper>
+        </CompareProvider>
       </body>
     </html>
   );

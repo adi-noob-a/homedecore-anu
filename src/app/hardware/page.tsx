@@ -1,86 +1,49 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Wrench,
-  Settings,
-  CheckCircle2,
-  AlertTriangle,
-  Lightbulb,
-  ArrowRight,
-  Shield,
-  AlertOctagon,
-} from "lucide-react";
-import { AssetPlaceholder } from "@/components/AssetPlaceholder";
+import { Settings, Shield, CheckCircle2, AlertTriangle, Lightbulb, AlertOctagon } from "lucide-react";
+import { InteractiveDataCapsule } from "@/components/InteractiveDataCapsule";
+import { StickyCtaBar } from "@/components/StickyCtaBar";
 import hardwareData from "../../../phase-1-deliverables/data/hardware.json";
 
 // ─── Types ───
 
 interface HardwareSide {
-  label: string;
-  properties: Record<string, string>;
-  bestFor: string[];
-  costTier: string;
-  recommendation: string;
-  media: { card_image?: string; icon?: string };
+  label: string; properties: Record<string, string>; bestFor: string[];
+  costTier: string; recommendation: string; media: { card_image?: string; icon?: string };
 }
 
 interface WardrobeSide {
-  label: string;
-  mechanism: string;
-  properties: Record<string, string | string[]>;
-  bestFor: string[];
-  criticalCondition: string;
-  costTier: string;
-  verdict: string;
+  label: string; mechanism: string;
+  properties: Record<string, string | string[]>; bestFor: string[];
+  criticalCondition: string; costTier: string; verdict: string;
   media: { card_image?: string; icon?: string; diagram?: string };
 }
 
 interface FullHeightSystem {
-  label: string;
-  description: string;
-  properties: Record<string, string>;
-  costLevel: string;
-  media: { card_image?: string; icon?: string; diagram?: string };
+  label: string; description: string; properties: Record<string, string>;
+  costLevel: string; media: { card_image?: string; icon?: string; diagram?: string };
 }
 
-interface BudgetGuide {
-  budgetLevel: string;
-  recommendation: string;
-}
+interface BudgetGuide { budgetLevel: string; recommendation: string; }
 
 type HardwareModule = {
   module: string;
   sections: {
     accessories: {
-      title: string;
-      summary: string;
-      disclaimer: string;
-      comparison: {
-        german: HardwareSide;
-        indian: HardwareSide;
-      };
+      title: string; summary: string; disclaimer: string;
+      comparison: { german: HardwareSide; indian: HardwareSide };
       takeaway: string;
     };
     wardrobeSystems: {
-      title: string;
-      summary: string;
-      comparison: {
-        sliding: WardrobeSide;
-        swing: WardrobeSide;
-      };
+      title: string; summary: string;
+      comparison: { sliding: WardrobeSide; swing: WardrobeSide };
       takeaway: string;
     };
     fullHeightSystems: {
-      title: string;
-      summary: string;
-      definition: string;
-      systems: {
-        advanced: FullHeightSystem;
-        standard: FullHeightSystem;
-      };
-      budgetGuidance: BudgetGuide[];
-      takeaway: string;
+      title: string; summary: string; definition: string;
+      systems: { advanced: FullHeightSystem; standard: FullHeightSystem };
+      budgetGuidance: BudgetGuide[]; takeaway: string;
     };
   };
 };
@@ -88,283 +51,259 @@ type HardwareModule = {
 const data = hardwareData as unknown as HardwareModule;
 const { accessories, wardrobeSystems, fullHeightSystems } = data.sections;
 
-// ─── Dual Column ───
-
-function DualColumn({
-  left,
-  right,
-  leftTitle,
-  rightTitle,
-  leftAccent = "border-brand-700/50",
-  rightAccent = "border-amber-700/50",
-}: {
-  left: Record<string, string>[];
-  right: Record<string, string>[];
-  leftTitle: string;
-  rightTitle: string;
-  leftAccent?: string;
-  rightAccent?: string;
-}) {
-  return (
-    <div className="grid md:grid-cols-2 gap-4">
-      <motion.div
-        initial={{ opacity: 0, x: -15 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        className={`rounded-2xl border ${leftAccent} bg-zinc-900/60 backdrop-blur-sm p-5`}
-      >
-        <h3 className="text-sm font-bold text-zinc-100 mb-3 flex items-center gap-2">
-          <Shield className="w-4 h-4 text-brand-400" />
-          {leftTitle}
-        </h3>
-        <div className="space-y-2">
-          {left.map((item) => {
-            const [key, val] = Object.entries(item)[0];
-            return (
-              <div key={key} className="flex items-start gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-brand-500 mt-0.5 shrink-0" />
-                <div>
-                  <span className="text-xs font-medium text-zinc-300">{key}:</span>
-                  <span className="text-xs text-zinc-500 ml-1">{val}</span>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, x: 15 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        className={`rounded-2xl border ${rightAccent} bg-zinc-900/60 backdrop-blur-sm p-5`}
-      >
-        <h3 className="text-sm font-bold text-zinc-100 mb-3 flex items-center gap-2">
-          <Shield className="w-4 h-4 text-amber-400" />
-          {rightTitle}
-        </h3>
-        <div className="space-y-2">
-          {right.map((item) => {
-            const [key, val] = Object.entries(item)[0];
-            return (
-              <div key={key} className="flex items-start gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-amber-500 mt-0.5 shrink-0" />
-                <div>
-                  <span className="text-xs font-medium text-zinc-300">{key}:</span>
-                  <span className="text-xs text-zinc-500 ml-1">{val}</span>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </motion.div>
-    </div>
-  );
+function propertiesToSpecRows(props: Record<string, string>): { label: string; value: string }[] {
+  return Object.entries(props).map(([k, v]) => ({
+    label: k.replace(/([A-Z])/g, " $1").trim(),
+    value: v,
+  }));
 }
 
 // ─── Main Page ───
 
 export default function HardwarePage() {
-  const germanProps = Object.entries(accessories.comparison.german.properties).map(([k, v]) => ({ [k]: v }));
-  const indianProps = Object.entries(accessories.comparison.indian.properties).map(([k, v]) => ({ [k]: v }));
+  const germanProps = propertiesToSpecRows(accessories.comparison.german.properties);
+  const indianProps = propertiesToSpecRows(accessories.comparison.indian.properties);
+
   const slidingEntries = Object.entries(wardrobeSystems.comparison.sliding.properties);
-  const slidingProps = slidingEntries.filter(([k]) => k !== "riskFactors").map(([k, v]) => ({ [k]: String(v) }));
   const swingEntries = Object.entries(wardrobeSystems.comparison.swing.properties);
-  const swingProps = swingEntries.filter(([k]) => k !== "riskFactors").map(([k, v]) => ({ [k]: String(v) }));
-  const slidingRiskFactors = slidingEntries.find(([k]) => k === "riskFactors");
-  const slidingRisks: string[] = slidingRiskFactors ? (slidingRiskFactors[1] as string[]) : [];
-  const swingRiskFactors = swingEntries.find(([k]) => k === "riskFactors");
-  const swingRisks: string[] = swingRiskFactors ? (swingRiskFactors[1] as string[]) : [];
-  const advancedProps = Object.entries(fullHeightSystems.systems.advanced.properties).map(([k, v]) => ({ [k]: v }));
-  const standardProps = Object.entries(fullHeightSystems.systems.standard.properties).map(([k, v]) => ({ [k]: v }));
+  const slidingRisk = slidingEntries.find(([k]) => k === "riskFactors");
+  const swingRisk = swingEntries.find(([k]) => k === "riskFactors");
+  const slidingRisks: string[] = slidingRisk ? (slidingRisk[1] as string[]) : [];
+  const swingRisks: string[] = swingRisk ? (swingRisk[1] as string[]) : [];
+  const slidingSafe = slidingEntries.filter(([k]) => k !== "riskFactors").map(([k, v]) => ({ label: k.replace(/([A-Z])/g, " $1").trim(), value: String(v) }));
+  const swingSafe = swingEntries.filter(([k]) => k !== "riskFactors").map(([k, v]) => ({ label: k.replace(/([A-Z])/g, " $1").trim(), value: String(v) }));
+
+  const advancedProps = propertiesToSpecRows(fullHeightSystems.systems.advanced.properties);
+  const standardProps = propertiesToSpecRows(fullHeightSystems.systems.standard.properties);
 
   return (
-    <div className="min-h-screen bg-zinc-950">
+    <div style={{ backgroundColor: "#0A0A0C" }} className="min-h-screen pb-24">
       {/* Hero */}
-      <section className="relative border-b border-zinc-800 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-950/30 to-transparent pointer-events-none" />
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+      <section className="relative border-b border-white/[0.06] overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-hero pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 relative">
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <div className="flex items-center gap-2 mb-3">
-              <Settings className="w-5 h-5 text-brand-400" />
-              <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">Hardware & Accessories</span>
+              <Settings className="w-5 h-5 text-amber-400" />
+              <span className="text-xs font-mono uppercase tracking-widest text-surface-500">Hardware & Accessories</span>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-zinc-100 tracking-tight leading-tight">
-              The Moving Parts
-            </h1>
-            <p className="mt-4 text-base sm:text-lg text-zinc-400 max-w-2xl leading-relaxed">
-              {accessories.summary}
-            </p>
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">The Moving Parts</h1>
+            <p className="mt-4 text-base sm:text-lg text-surface-400 max-w-2xl leading-relaxed">{accessories.summary}</p>
           </motion.div>
         </div>
       </section>
 
-      {/* Section: German vs Indian */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="mb-8">
-          <span className="text-xs font-mono text-brand-500 uppercase tracking-widest">Structural Comparison</span>
-          <h2 className="text-2xl font-bold text-zinc-100 mt-1 mb-2">{accessories.title}</h2>
-          <p className="text-sm text-zinc-500">{accessories.disclaimer}</p>
+      {/* Section: German vs Indian — paired capsules */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+        <span className="text-xs font-mono text-amber-500 uppercase tracking-widest">Structural Comparison</span>
+        <h2 className="text-xl font-bold text-white mt-1 mb-2">{accessories.title}</h2>
+        <p className="text-sm text-surface-500 mb-5">{accessories.disclaimer}</p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-stretch">
+          {/* German capsule */}
+          <InteractiveDataCapsule
+            id="hw-german"
+            category="Hardware"
+            title={accessories.comparison.german.label}
+            tagline={accessories.comparison.german.recommendation}
+            imageLabel="German Hardware"
+            tierLabel="Premium Tier"
+            tags={accessories.comparison.german.bestFor.slice(0, 3).map((a) => ({ label: a, variant: "green" as const }))}
+            quickAnswerContent={
+              <div className="space-y-2">
+                {germanProps.map((p) => (
+                  <div key={p.label} className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3 h-3 text-amber-500 mt-1 shrink-0" />
+                    <div>
+                      <span className="text-xs font-medium text-white">{p.label}:</span>
+                      <span className="text-xs text-surface-400 ml-1">{p.value}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            }
+            specRows={germanProps}
+            whatsappText={`${accessories.comparison.german.label}: ${accessories.comparison.german.recommendation}\nBest for: ${accessories.comparison.german.bestFor.join(", ")}`}
+          />
+
+          {/* Indian capsule */}
+          <InteractiveDataCapsule
+            id="hw-indian"
+            category="Hardware"
+            title={accessories.comparison.indian.label}
+            tagline={accessories.comparison.indian.recommendation}
+            imageLabel="Indian Hardware"
+            tierLabel="Budget Tier"
+            tags={accessories.comparison.indian.bestFor.slice(0, 3).map((a) => ({ label: a, variant: "amber" as const }))}
+            quickAnswerContent={
+              <div className="space-y-2">
+                {indianProps.map((p) => (
+                  <div key={p.label} className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3 h-3 text-amber-500 mt-1 shrink-0" />
+                    <div>
+                      <span className="text-xs font-medium text-white">{p.label}:</span>
+                      <span className="text-xs text-surface-400 ml-1">{p.value}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            }
+            specRows={indianProps}
+            whatsappText={`${accessories.comparison.indian.label}: ${accessories.comparison.indian.recommendation}\nBest for: ${accessories.comparison.indian.bestFor.join(", ")}`}
+          />
         </div>
 
-        <DualColumn
-          left={germanProps}
-          right={indianProps}
-          leftTitle={accessories.comparison.german.label}
-          rightTitle={accessories.comparison.indian.label}
-          leftAccent="border-brand-800/40"
-          rightAccent="border-amber-800/40"
-        />
-
-        {/* Best For Columns */}
-        <div className="grid md:grid-cols-2 gap-4 mt-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="p-4 rounded-xl border border-brand-900/30 bg-brand-900/15"
-          >
-            <h4 className="text-xs font-semibold text-brand-400 uppercase tracking-wider mb-2">Best For</h4>
-            <ul className="space-y-1">
-              {accessories.comparison.german.bestFor.map((item) => (
-                <li key={item} className="text-xs text-zinc-400 flex items-start gap-1.5">
-                  <ArrowRight className="w-3 h-3 text-brand-500 mt-0.5 shrink-0" /> {item}
-                </li>
-              ))}
-            </ul>
-            <p className="text-xs text-zinc-500 mt-3 italic">{accessories.comparison.german.recommendation}</p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="p-4 rounded-xl border border-amber-900/30 bg-amber-900/15"
-          >
-            <h4 className="text-xs font-semibold text-amber-400 uppercase tracking-wider mb-2">Best For</h4>
-            <ul className="space-y-1">
-              {accessories.comparison.indian.bestFor.map((item) => (
-                <li key={item} className="text-xs text-zinc-400 flex items-start gap-1.5">
-                  <ArrowRight className="w-3 h-3 text-amber-500 mt-0.5 shrink-0" /> {item}
-                </li>
-              ))}
-            </ul>
-            <p className="text-xs text-zinc-500 mt-3 italic">{accessories.comparison.indian.recommendation}</p>
-          </motion.div>
+        <div className="mt-6 glass rounded-xl p-4">
+          <p className="text-sm text-surface-400 leading-relaxed">💡 {accessories.takeaway}</p>
         </div>
-
-        {/* Takeaway */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-6 p-4 rounded-xl bg-zinc-900/40 border border-zinc-800"
-        >
-          <p className="text-sm text-zinc-400 leading-relaxed">💡 {accessories.takeaway}</p>
-        </motion.div>
       </section>
 
-      {/* Section: Sliding vs Swing */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold text-zinc-100 mb-2">{wardrobeSystems.title}</h2>
-          <p className="text-sm text-zinc-500">{wardrobeSystems.summary}</p>
+      {/* Section: Sliding vs Swing — paired capsules + visible ⚠ callout */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+        <h2 className="text-xl font-bold text-white mb-2">{wardrobeSystems.title}</h2>
+        <p className="text-sm text-surface-500 mb-5">{wardrobeSystems.summary}</p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-stretch">
+          {/* Sliding capsule with visible warning */}
+          <InteractiveDataCapsule
+            id="hw-sliding"
+            category="Wardrobe"
+            title={wardrobeSystems.comparison.sliding.label}
+            tagline={wardrobeSystems.comparison.sliding.verdict}
+            imageLabel="Sliding Wardrobe"
+            tierLabel={wardrobeSystems.comparison.sliding.costTier}
+            tags={wardrobeSystems.comparison.sliding.bestFor.map((a) => ({ label: a, variant: "amber" as const }))}
+            quickAnswerContent={
+              <div className="space-y-2">
+                {slidingSafe.map((p) => (
+                  <div key={p.label} className="flex items-start gap-2">
+                    <span className="text-xs font-medium text-surface-300 w-1/2">{p.label}</span>
+                    <span className="text-xs text-surface-400">{p.value}</span>
+                  </div>
+                ))}
+                {/* Risk factors as visible list */}
+                <div className="mt-2 space-y-1">
+                  {slidingRisks.map((r) => (
+                    <div key={r} className="flex items-start gap-1.5 text-xs text-red-400">
+                      <span className="text-red-400 shrink-0">⚠</span> {r}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            }
+            specRows={[
+              { label: "Mechanism", value: wardrobeSystems.comparison.sliding.mechanism },
+              ...slidingSafe,
+              { label: "Critical Condition", value: wardrobeSystems.comparison.sliding.criticalCondition },
+            ]}
+            // Warning callout — always visible at Stage 1/2
+            warningCallout={
+              <div className="warning-banner rounded-xl p-3 flex items-start gap-2">
+                <AlertTriangle className="w-4 h-4 text-red-400 mt-0.5 shrink-0" />
+                <p className="text-xs text-red-300/90">{wardrobeSystems.comparison.sliding.criticalCondition}</p>
+              </div>
+            }
+          />
+
+          {/* Swing capsule */}
+          <InteractiveDataCapsule
+            id="hw-swing"
+            category="Wardrobe"
+            title={wardrobeSystems.comparison.swing.label}
+            tagline={wardrobeSystems.comparison.swing.verdict}
+            imageLabel="Swing Wardrobe"
+            tierLabel={wardrobeSystems.comparison.swing.costTier}
+            tags={wardrobeSystems.comparison.swing.bestFor.map((a) => ({ label: a, variant: "green" as const }))}
+            quickAnswerContent={
+              <div className="space-y-2">
+                {swingSafe.map((p) => (
+                  <div key={p.label} className="flex items-start gap-2">
+                    <span className="text-xs font-medium text-surface-300 w-1/2">{p.label}</span>
+                    <span className="text-xs text-surface-400">{p.value}</span>
+                  </div>
+                ))}
+                <div className="mt-2 space-y-1">
+                  {swingRisks.map((r) => (
+                    <div key={r} className="flex items-start gap-1.5 text-xs text-surface-400">
+                      <CheckCircle2 className="w-3 h-3 text-green-500 mt-0.5 shrink-0" /> {r}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            }
+            specRows={[
+              { label: "Mechanism", value: wardrobeSystems.comparison.swing.mechanism },
+              ...swingSafe,
+              { label: "Condition", value: wardrobeSystems.comparison.swing.criticalCondition },
+            ]}
+            insightCallout={
+              <div className="insight-banner rounded-xl p-3">
+                <p className="text-xs text-amber-300/90">{wardrobeSystems.comparison.swing.criticalCondition}</p>
+              </div>
+            }
+          />
         </div>
 
-        <DualColumn
-          left={slidingProps}
-          right={swingProps}
-          leftTitle={wardrobeSystems.comparison.sliding.label}
-          rightTitle={wardrobeSystems.comparison.swing.label}
-        />
-
-        {/* Risk Factors */}
-        <div className="grid md:grid-cols-2 gap-4 mt-4">
-          <div className="p-4 rounded-xl border border-red-900/30 bg-red-900/15">
-            <h4 className="text-xs font-semibold text-red-400 uppercase tracking-wider mb-2 flex items-center gap-1">
-              <AlertTriangle className="w-3.5 h-3.5" /> Risk Factors — Sliding
-            </h4>
-            <ul className="space-y-1">
-              {slidingRisks.map((f) => (
-                <li key={f} className="text-xs text-zinc-400 flex items-start gap-1.5">
-                  <span className="text-red-400">⚠</span> {f}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-3 p-2 rounded-lg bg-red-900/30">
-              <p className="text-xs text-red-300">{wardrobeSystems.comparison.sliding.criticalCondition}</p>
-            </div>
-          </div>
-
-          <div className="p-4 rounded-xl border border-green-900/30 bg-green-900/15">
-            <h4 className="text-xs font-semibold text-green-400 uppercase tracking-wider mb-2">Swing Advantages</h4>
-            <ul className="space-y-1">
-              {swingRisks.map((f) => (
-                <li key={f} className="text-xs text-zinc-400 flex items-start gap-1.5">
-                  <CheckCircle2 className="w-3 h-3 text-green-500 mt-0.5 shrink-0" /> {f}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-3 p-2 rounded-lg bg-green-900/30">
-              <p className="text-xs text-green-300">{wardrobeSystems.comparison.swing.criticalCondition}</p>
-            </div>
-          </div>
+        <div className="mt-6 glass rounded-xl p-4">
+          <p className="text-sm text-surface-400 leading-relaxed">💡 {wardrobeSystems.takeaway}</p>
         </div>
-
-        {/* Verdict */}
-        <div className="grid md:grid-cols-2 gap-4 mt-4">
-          <div className="p-3 rounded-xl bg-zinc-900/40 border border-zinc-800 text-center">
-            <p className="text-xs text-zinc-400 italic">{wardrobeSystems.comparison.sliding.verdict}</p>
-          </div>
-          <div className="p-3 rounded-xl bg-zinc-900/40 border border-zinc-800 text-center">
-            <p className="text-xs text-zinc-400 italic">{wardrobeSystems.comparison.swing.verdict}</p>
-          </div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-6 p-4 rounded-xl bg-zinc-900/40 border border-zinc-800"
-        >
-          <p className="text-sm text-zinc-400 leading-relaxed">💡 {wardrobeSystems.takeaway}</p>
-        </motion.div>
       </section>
 
       {/* Section: Full-Height Systems */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold text-zinc-100 mb-2">{fullHeightSystems.title}</h2>
-          <p className="text-sm text-zinc-500">{fullHeightSystems.summary}</p>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+        <h2 className="text-xl font-bold text-white mb-2">{fullHeightSystems.title}</h2>
+        <p className="text-sm text-surface-500 mb-5">{fullHeightSystems.summary}</p>
+
+        <div className="glass rounded-xl p-4 mb-6">
+          <p className="text-sm text-surface-300 leading-relaxed">{fullHeightSystems.definition}</p>
         </div>
 
-        <div className="p-4 rounded-xl bg-zinc-900/40 border border-zinc-800 mb-6">
-          <p className="text-sm text-zinc-400 leading-relaxed">{fullHeightSystems.definition}</p>
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-stretch">
+          {/* Advanced capsule */}
+          <InteractiveDataCapsule
+            id="hw-advanced"
+            category="Full-Height System"
+            title={fullHeightSystems.systems.advanced.label}
+            tagline={fullHeightSystems.systems.advanced.description}
+            imageLabel="Advanced Full-Height"
+            tierLabel={fullHeightSystems.systems.advanced.costLevel}
+            quickAnswerContent={
+              <div className="space-y-2">
+                {advancedProps.map((p) => (
+                  <div key={p.label} className="flex items-start gap-2">
+                    <span className="text-xs font-medium text-surface-300 w-1/2">{p.label}</span>
+                    <span className="text-xs text-surface-400">{p.value}</span>
+                  </div>
+                ))}
+              </div>
+            }
+            specRows={advancedProps}
+          />
 
-        <DualColumn
-          left={advancedProps}
-          right={standardProps}
-          leftTitle={fullHeightSystems.systems.advanced.label}
-          rightTitle={fullHeightSystems.systems.standard.label}
-        />
-
-        {/* Cost labels */}
-        <div className="grid md:grid-cols-2 gap-4 mt-4">
-          <div className="p-3 rounded-xl bg-brand-900/20 border border-brand-800/30 text-center">
-            <p className="text-xs text-brand-400 font-mono">{fullHeightSystems.systems.advanced.costLevel}</p>
-          </div>
-          <div className="p-3 rounded-xl bg-zinc-900/40 border border-zinc-800 text-center">
-            <p className="text-xs text-zinc-400 font-mono">{fullHeightSystems.systems.standard.costLevel}</p>
-          </div>
+          {/* Standard capsule */}
+          <InteractiveDataCapsule
+            id="hw-standard"
+            category="Full-Height System"
+            title={fullHeightSystems.systems.standard.label}
+            tagline={fullHeightSystems.systems.standard.description}
+            imageLabel="Standard Full-Height"
+            tierLabel={fullHeightSystems.systems.standard.costLevel}
+            quickAnswerContent={
+              <div className="space-y-2">
+                {standardProps.map((p) => (
+                  <div key={p.label} className="flex items-start gap-2">
+                    <span className="text-xs font-medium text-surface-300 w-1/2">{p.label}</span>
+                    <span className="text-xs text-surface-400">{p.value}</span>
+                  </div>
+                ))}
+              </div>
+            }
+            specRows={standardProps}
+          />
         </div>
 
         {/* Budget Guidance */}
-        <div className="mt-6 p-4 rounded-xl border border-amber-800/30 bg-amber-900/20">
+        <div className="mt-6 insight-banner rounded-xl p-4">
           <h4 className="text-xs font-semibold text-amber-400 uppercase tracking-wider mb-3">Budget Guidance</h4>
           <div className="space-y-2">
             {fullHeightSystems.budgetGuidance.map((g) => (
@@ -373,48 +312,39 @@ export default function HardwarePage() {
                   g.budgetLevel === "low" ? "bg-red-500" : g.budgetLevel === "mid" ? "bg-amber-500" : "bg-green-500"
                 }`} />
                 <div>
-                  <span className="text-xs font-semibold text-zinc-300 capitalize">{g.budgetLevel} budget:</span>
-                  <span className="text-xs text-zinc-500 ml-1">{g.recommendation}</span>
+                  <span className="text-xs font-semibold text-white capitalize">{g.budgetLevel} budget:</span>
+                  <span className="text-xs text-surface-400 ml-1">{g.recommendation}</span>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Safety Warning Banner */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="mt-8 p-5 rounded-2xl border border-red-800/40 bg-gradient-to-r from-red-950/40 to-red-900/20"
-        >
+        {/* Safety Warning — always visible, distinct card */}
+        <div className="mt-8 p-5 rounded-2xl warning-banner border-red-800/40">
           <div className="flex items-start gap-3">
             <AlertOctagon className="w-6 h-6 text-red-400 mt-0.5 shrink-0" />
             <div>
               <h3 className="text-sm font-bold text-red-300 mb-1">⚠ Weight Warning</h3>
               <p className="text-xs text-red-300/80 leading-relaxed">
-                Combining heavy shutters (PU, Lacquered Glass) with sliding systems and budget Indian hardware 
-                creates excessive structural load on tracks. This can cause permanent track deformation, door 
+                Combining heavy shutters (PU, Lacquered Glass) with sliding systems and budget Indian hardware
+                creates excessive structural load on tracks. This can cause permanent track deformation, door
                 sagging, and system failure within 1-2 years. Use our{" "}
-                <a href="/" className="text-brand-400 underline hover:text-brand-300 transition-colors">
+                <a href="/#calculator" className="text-amber-400 underline hover:text-amber-300 transition-colors">
                   Budget Calculator
                 </a>{" "}
                 to check your configuration before finalizing.
               </p>
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Final Takeaway */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-6 p-4 rounded-xl bg-zinc-900/40 border border-zinc-800"
-        >
-          <p className="text-sm text-zinc-400 leading-relaxed">💡 {fullHeightSystems.takeaway}</p>
-        </motion.div>
+        <div className="mt-6 glass rounded-xl p-4">
+          <p className="text-sm text-surface-400 leading-relaxed">💡 {fullHeightSystems.takeaway}</p>
+        </div>
       </section>
+
+      <StickyCtaBar />
     </div>
   );
 }

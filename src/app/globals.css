@@ -12,13 +12,8 @@
   }
 
   body {
-    @apply font-sans text-[#94A3B8] cursor-none;
-    background-color: #05050A;
-  }
-
-  /* Hide default cursor on interactive elements too */
-  a, button, input, select, textarea, label {
-    cursor: none;
+    @apply font-sans text-surface-400;
+    background-color: #0A0A0C;
   }
 
   /* Better number input styling */
@@ -33,20 +28,17 @@
 
   /* Scrollbar styling */
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
   }
   ::-webkit-scrollbar-track {
-    background: #0A0A14;
+    background: #0A0A0C;
   }
   ::-webkit-scrollbar-thumb {
-    background: #2A2A3E;
+    background: #2A2A30;
     border-radius: 3px;
   }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #3A3A50;
-  }
 
-  /* Scrollbar-hide utility */
+  /* Scrollbar-hide */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -55,74 +47,87 @@
     display: none;
   }
 
-  /* Text selection */
+  /* Selection */
   ::selection {
-    background: rgba(99, 102, 241, 0.3);
+    background: rgba(245, 158, 11, 0.25);
     color: #fff;
+  }
+
+  /* Focus rings — visible always */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-amber-400/60;
   }
 }
 
 @layer components {
-  /* Skeleton loader base */
-  .skeleton {
-    @apply bg-white/[0.03] animate-pulse rounded;
+  /* Glass surface — minimum 0.04 opacity for visibility */
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
   }
 
-  /* Glass morphism */
-  .glass {
-    background: rgba(255,255,255,0.02);
-    backdrop-filter: blur(48px);
-    -webkit-backdrop-filter: blur(48px);
-    border: 1px solid rgba(255,255,255,0.05);
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border: 1px solid rgba(255, 255, 255, 0.10);
   }
 
   .glass-hover {
-    transition: all 0.3s;
+    transition: all 0.25s ease;
   }
-
   .glass-hover:hover {
-    background: rgba(255,255,255,0.04);
-    border-color: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
   }
 
-  /* Gradient text utility */
+  /* Gradient text */
   .text-gradient {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    background-image: linear-gradient(135deg, #818CF8 0%, #FF7E67 100%);
+    background-image: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
   }
 
-  /* Glow ring for active states */
-  .glow-ring {
-    @apply ring-1 ring-indigo-500/30 ring-offset-1;
-    --tw-ring-offset-color: #05050A;
-  }
-
-  /* Premium button */
-  .btn-premium {
+  /* Premium amber CTA */
+  .btn-amber {
     position: relative;
     overflow: hidden;
     border-radius: 0.75rem;
     font-weight: 600;
     font-size: 0.875rem;
     padding: 0.75rem 1.5rem;
-    color: white;
-    background: linear-gradient(135deg, #6366F1 0%, #FF7E67 100%);
-    transition: all 0.3s;
+    color: #0A0A0C;
+    background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+    transition: all 0.25s;
+  }
+  .btn-amber:hover {
+    box-shadow: 0 0 24px rgba(245, 158, 11, 0.25);
   }
 
-  .btn-premium:hover {
-    box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+  /* Warning banner */
+  .warning-banner {
+    @apply border border-red-800/30;
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.10) 0%, rgba(239, 68, 68, 0.05) 100%);
   }
 
-  .btn-premium::before {
-    content: '';
-    @apply absolute inset-0 bg-white/10 opacity-0 transition-opacity duration-300;
+  /* Success/insight banner */
+  .insight-banner {
+    @apply border border-amber-800/25;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(217, 119, 6, 0.04) 100%);
   }
 
-  .btn-premium:hover::before {
-    @apply opacity-100;
+  /* Tag pills */
+  .tag-green {
+    @apply px-2.5 py-0.5 rounded-full text-xs bg-emerald-900/30 text-emerald-400 border border-emerald-800/30;
+  }
+  .tag-red {
+    @apply px-2.5 py-0.5 rounded-full text-xs bg-red-900/30 text-red-400 border border-red-800/30;
+  }
+  .tag-amber {
+    @apply px-2.5 py-0.5 rounded-full text-xs bg-amber-900/30 text-amber-400 border border-amber-800/30;
   }
 }
 
@@ -130,12 +135,18 @@
   .text-balance {
     text-wrap: balance;
   }
-
   .perspective-1000 {
     perspective: 1000px;
   }
-
   .preserve-3d {
     transform-style: preserve-3d;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .motion-safe-animate {
+      animation: none !important;
+      transition: none !important;
+    }
   }
 }
