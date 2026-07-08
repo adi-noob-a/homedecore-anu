@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 @layer base {
   html {
@@ -12,8 +12,8 @@
   }
 
   body {
-    @apply font-sans text-surface-400;
-    background-color: #0A0A0C;
+    @apply font-sans text-text-secondary;
+    background-color: #0F172A;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -35,14 +35,13 @@
     width: 5px;
   }
   ::-webkit-scrollbar-track {
-    background: #0A0A0C;
+    background: #0F172A;
   }
   ::-webkit-scrollbar-thumb {
-    background: #2A2A30;
+    background: #334155;
     border-radius: 3px;
   }
 
-  /* Scrollbar-hide */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -51,43 +50,41 @@
     display: none;
   }
 
-  /* Selection */
   ::selection {
-    background: rgba(245, 158, 11, 0.25);
+    background: rgba(251, 191, 36, 0.25);
     color: #fff;
   }
 
-  /* Focus rings — visible always */
   *:focus-visible {
     @apply outline-2 outline-offset-2 outline-amber-400/60;
   }
 }
 
 @layer components {
-  /* Glass surface — minimum 0.04 opacity for visibility */
+  /* Glass surfaces — updated for bg-surface palette */
   .glass {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(30, 41, 59, 0.6);
     backdrop-filter: blur(32px);
     -webkit-backdrop-filter: blur(32px);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(148, 163, 184, 0.08);
   }
 
   .glass-strong {
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(30, 41, 59, 0.85);
     backdrop-filter: blur(32px);
     -webkit-backdrop-filter: blur(32px);
-    border: 1px solid rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(148, 163, 184, 0.12);
   }
 
   .glass-hover {
     transition: all 0.25s ease;
   }
   .glass-hover:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(148, 163, 184, 0.15);
   }
 
-  /* Gradient text */
+  /* Gradient text — Brushed Gold */
   .text-gradient {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -103,37 +100,35 @@
     font-weight: 600;
     font-size: 0.875rem;
     padding: 0.75rem 1.5rem;
-    color: #0A0A0C;
+    color: #0F172A;
     background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
     transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   .btn-amber:hover {
-    box-shadow: 0 0 24px rgba(245, 158, 11, 0.25);
+    box-shadow: 0 0 24px rgba(251, 191, 36, 0.25);
   }
   .btn-amber:active {
     transform: scale(0.97);
   }
 
-  /* Premium CTA (home page hero) */
   .btn-premium {
     position: relative;
     overflow: hidden;
     border-radius: 0.75rem;
     font-weight: 600;
-    font-size: 0.875rem;
-    padding: 0.75rem 1.5rem;
-    color: #0A0A0C;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    color: #0F172A;
     background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
     transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   .btn-premium:hover {
-    box-shadow: 0 0 24px rgba(245, 158, 11, 0.25);
+    box-shadow: 0 0 32px rgba(251, 191, 36, 0.3);
   }
   .btn-premium:active {
     transform: scale(0.97);
   }
 
-  /* Generic button press state — add to all interactive buttons */
   .btn-press {
     transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
@@ -141,7 +136,7 @@
     transform: scale(0.97);
   }
 
-  /* Card hover architecture: lift + shadow */
+  /* Card hover architecture */
   .card-hover {
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -149,10 +144,10 @@
   }
   .card-hover:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
   }
 
-  /* Frosted glass panel (slides up on card hover) */
+  /* Frosted glass panel */
   .frosted-panel {
     position: absolute;
     bottom: 0;
@@ -160,62 +155,69 @@
     right: 0;
     transform: translateY(100%);
     transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(30, 41, 59, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(148, 163, 184, 0.1);
     padding: 0.75rem 1rem;
   }
   .group:hover .frosted-panel {
     transform: translateY(0);
   }
 
-  /* Visual finish swatch — clickable color circles */
+  /* Visual finish swatches */
   .finish-swatch {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.12);
+    border: 2px solid rgba(148, 163, 184, 0.15);
     cursor: pointer;
     transition: border-color 0.2s ease, transform 0.2s ease;
     flex-shrink: 0;
   }
   .finish-swatch:hover {
-    border-color: rgba(245, 158, 11, 0.6);
+    border-color: rgba(251, 191, 36, 0.6);
     transform: scale(1.15);
   }
   .finish-swatch--selected {
-    border-color: #F59E0B;
-    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
+    border-color: #FBBF24;
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.25);
   }
 
-  /* Success state on buttons (checkmark morph) */
   .btn-success {
     background: #059669 !important;
     color: #fff !important;
   }
 
-  /* Warning banner */
+  /* Warning banner — updated for new palette */
   .warning-banner {
-    @apply border border-red-800/30;
-    background: linear-gradient(135deg, rgba(220, 38, 38, 0.10) 0%, rgba(239, 68, 68, 0.05) 100%);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(220, 38, 38, 0.04) 100%);
   }
 
-  /* Success/insight banner */
   .insight-banner {
-    @apply border border-amber-800/25;
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(217, 119, 6, 0.04) 100%);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.06) 0%, rgba(217, 119, 6, 0.03) 100%);
   }
 
   /* Tag pills */
   .tag-green {
-    @apply px-2.5 py-0.5 rounded-full text-xs bg-emerald-900/30 text-emerald-400 border border-emerald-800/30;
+    @apply px-2.5 py-0.5 rounded-full text-xs;
+    background: rgba(16, 185, 129, 0.15);
+    color: #34D399;
+    border: 1px solid rgba(16, 185, 129, 0.2);
   }
   .tag-red {
-    @apply px-2.5 py-0.5 rounded-full text-xs bg-red-900/30 text-red-400 border border-red-800/30;
+    @apply px-2.5 py-0.5 rounded-full text-xs;
+    background: rgba(239, 68, 68, 0.15);
+    color: #F87171;
+    border: 1px solid rgba(239, 68, 68, 0.2);
   }
   .tag-amber {
-    @apply px-2.5 py-0.5 rounded-full text-xs bg-amber-900/30 text-amber-400 border border-amber-800/30;
+    @apply px-2.5 py-0.5 rounded-full text-xs;
+    background: rgba(251, 191, 36, 0.15);
+    color: #FBBF24;
+    border: 1px solid rgba(251, 191, 36, 0.2);
   }
 }
 
@@ -230,7 +232,6 @@
     transform-style: preserve-3d;
   }
 
-  /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     .motion-safe-animate {
       animation: none !important;

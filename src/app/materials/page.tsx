@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Layers, Hash, AlertTriangle, Lightbulb, CheckCircle2, XCircle } from "lucide-react";
-import { InteractiveDataCapsule } from "@/components/InteractiveDataCapsule";
+import { Layers, Hash, AlertTriangle, Lightbulb, CheckCircle2 } from "lucide-react";
+import { CinematicDataCard } from "@/components/CinematicDataCard";
 import { StickyCtaBar } from "@/components/StickyCtaBar";
 import materialsData from "../../../phase-1-deliverables/data/materials.json";
 
@@ -56,6 +56,53 @@ function propertiesToSpecRows(props: Record<string, string>): { label: string; v
     label: k.replace(/([A-Z])/g, " $1").trim(),
     value: v,
   }));
+}
+
+/** Convert a plywood grade object into the universal CinematicCardData shape */
+function plywoodToCardData(grade: PlywoodGrade): Parameters<typeof CinematicDataCard>[0]["data"] {
+  return {
+    id: `ply-${grade.id}`,
+    title: grade.grade,
+    shortSummary: grade.description,
+    badgeText: grade.costLabel,
+    tierLabel: `Tier ${grade.costTier}`,
+    category: "Plywood",
+    imageLabel: grade.grade,
+    pros: grade.applications,
+    cons: grade.limitations,
+    technicalSpecs: [
+      { label: "Grade", value: grade.grade },
+      { label: "Full Name", value: grade.fullName },
+      { label: "Also Known As", value: grade.alsoKnownAs },
+      { label: "Moisture Level", value: grade.moistureLevel },
+      ...propertiesToSpecRows(grade.properties),
+    ],
+    insightText: grade.takeaway,
+    whatsappText: `${grade.grade} (${grade.fullName}): ${grade.description}\nBest for: ${grade.applications.slice(0, 3).join(", ")}\nAvoid: ${grade.limitations.slice(0, 2).join(", ")}`,
+  };
+}
+
+/** Convert an engineered board object into the universal CinematicCardData shape */
+function boardToCardData(board: EngineeredBoard): Parameters<typeof CinematicDataCard>[0]["data"] {
+  return {
+    id: `brd-${board.id}`,
+    title: board.name,
+    shortSummary: board.definition,
+    badgeText: board.bestFor,
+    tierLabel: `Tier ${board.costTier}`,
+    category: "Engineered Board",
+    imageLabel: `${board.name} — ${board.bestFor}`,
+    pros: board.applications,
+    cons: board.limitations,
+    technicalSpecs: [
+      { label: "Type", value: board.type },
+      { label: "Composition", value: board.composition },
+      { label: "Best For", value: board.bestFor },
+      ...propertiesToSpecRows(board.properties),
+    ],
+    insightText: board.takeaway,
+    whatsappText: `${board.name} (${board.fullName}): ${board.definition}\nBest for: ${board.bestFor}\nComposition: ${board.composition}`,
+  };
 }
 
 // ─── Usage Guide (standalone) ───
@@ -192,52 +239,14 @@ export default function MaterialsPage() {
         </div>
       </section>
 
-      {/* Plywood Grades — capsule grid */}
+      {/* Plywood Grades — cinematic card grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         <h2 className="text-xl font-bold text-white mb-5">Plywood Grades</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-stretch">
           {plywoodGrades.grades.map((grade) => (
-            <InteractiveDataCapsule
+            <CinematicDataCard
               key={grade.id}
-              id={`ply-${grade.id}`}
-              category="Plywood"
-              title={grade.grade}
-              tagline={grade.fullName}
-              imageLabel={grade.grade}
-              tierLabel={`Tier ${grade.costTier} — ${grade.costLabel}`}
-              tags={[
-                ...grade.applications.slice(0, 3).map((a) => ({ label: a, variant: "green" as const })),
-                ...grade.limitations.slice(0, 1).map((l) => ({ label: l, variant: "red" as const })),
-              ]}
-              quickAnswerContent={
-                <div className="space-y-3">
-                  <div className="flex flex-wrap gap-1.5">
-                    {grade.applications.map((a) => (
-                      <span key={a} className="tag-green">{a}</span>
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {grade.limitations.map((l) => (
-                      <span key={l} className="tag-red">{l}</span>
-                    ))}
-                  </div>
-                  <p className="text-sm text-surface-400 leading-relaxed">{grade.description}</p>
-                </div>
-              }
-              specRows={[
-                { label: "Grade", value: grade.grade },
-                { label: "Full Name", value: grade.fullName },
-                { label: "Also Known As", value: grade.alsoKnownAs },
-                { label: "Moisture Level", value: grade.moistureLevel },
-                ...propertiesToSpecRows(grade.properties),
-              ]}
-              insightCallout={
-                <div className="insight-banner rounded-xl p-3 flex items-start gap-2">
-                  <Lightbulb className="w-4 h-4 text-amber-400 mt-0.5 shrink-0" />
-                  <p className="text-xs text-amber-300/90">{grade.takeaway}</p>
-                </div>
-              }
-              whatsappText={`${grade.grade} (${grade.fullName}): ${grade.description}\nBest for: ${grade.applications.slice(0, 3).join(", ")}\nAvoid: ${grade.limitations.slice(0, 2).join(", ")}`}
+              data={plywoodToCardData(grade)}
             />
           ))}
         </div>
@@ -248,52 +257,14 @@ export default function MaterialsPage() {
         <UsageGuide rules={plywoodGrades.usageGuide.rules} warning={plywoodGrades.usageGuide.criticalWarning} />
       </section>
 
-      {/* Engineered Boards */}
+      {/* Engineered Boards — cinematic card grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         <h2 className="text-xl font-bold text-white mb-5">{engineeredBoards.title}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-stretch">
           {engineeredBoards.boards.map((board) => (
-            <InteractiveDataCapsule
+            <CinematicDataCard
               key={board.id}
-              id={`brd-${board.id}`}
-              category="Engineered Board"
-              title={board.name}
-              tagline={board.fullName}
-              imageLabel={`${board.name} — ${board.bestFor}`}
-              tierLabel={`Tier ${board.costTier}`}
-              tags={[
-                { label: board.bestFor, variant: "amber" as const },
-                ...board.applications.slice(0, 2).map((a) => ({ label: a, variant: "green" as const })),
-              ]}
-              quickAnswerContent={
-                <div className="space-y-3">
-                  <p className="text-sm text-surface-300 leading-relaxed">{board.definition}</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {board.applications.map((a) => (
-                      <span key={a} className="tag-green">{a}</span>
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {board.limitations.map((l) => (
-                      <span key={l} className="tag-red">{l}</span>
-                    ))}
-                  </div>
-                  <p className="text-xs text-surface-500 italic">{board.composition}</p>
-                </div>
-              }
-              specRows={[
-                { label: "Type", value: board.type },
-                { label: "Composition", value: board.composition },
-                { label: "Best For", value: board.bestFor },
-                ...propertiesToSpecRows(board.properties),
-              ]}
-              insightCallout={
-                <div className="insight-banner rounded-xl p-3 flex items-start gap-2">
-                  <Lightbulb className="w-4 h-4 text-amber-400 mt-0.5 shrink-0" />
-                  <p className="text-xs text-amber-300/90">{board.takeaway}</p>
-                </div>
-              }
-              whatsappText={`${board.name} (${board.fullName}): ${board.definition}\nBest for: ${board.bestFor}\nComposition: ${board.composition}`}
+              data={boardToCardData(board)}
             />
           ))}
         </div>

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Settings, Shield, CheckCircle2, AlertTriangle, Lightbulb, AlertOctagon, Award, Wrench, Star } from "lucide-react";
-import { InteractiveDataCapsule } from "@/components/InteractiveDataCapsule";
+import { CinematicDataCard } from "@/components/CinematicDataCard";
 import { StickyCtaBar } from "@/components/StickyCtaBar";
 import hardwareData from "../../../phase-1-deliverables/data/hardware.json";
 
@@ -58,29 +58,132 @@ function propertiesToSpecRows(props: Record<string, string>): { label: string; v
   }));
 }
 
+// ─── Data adapters ───
+
+function germanToCardData(): Parameters<typeof CinematicDataCard>[0]["data"] {
+  const g = accessories.comparison.german;
+  return {
+    id: "hw-german",
+    title: g.label,
+    shortSummary: g.recommendation,
+    badgeText: "Premium",
+    tierLabel: g.costTier,
+    category: "Hardware",
+    imageLabel: "German Hardware",
+    pros: g.bestFor,
+    technicalSpecs: propertiesToSpecRows(g.properties),
+    whatsappText: `${g.label}: ${g.recommendation}\nBest for: ${g.bestFor.join(", ")}`,
+  };
+}
+
+function indianToCardData(): Parameters<typeof CinematicDataCard>[0]["data"] {
+  const i = accessories.comparison.indian;
+  return {
+    id: "hw-indian",
+    title: i.label,
+    shortSummary: i.recommendation,
+    badgeText: "Budget",
+    tierLabel: i.costTier,
+    category: "Hardware",
+    imageLabel: "Indian Hardware",
+    pros: i.bestFor,
+    technicalSpecs: propertiesToSpecRows(i.properties),
+    whatsappText: `${i.label}: ${i.recommendation}\nBest for: ${i.bestFor.join(", ")}`,
+  };
+}
+
+function slidingToCardData(): Parameters<typeof CinematicDataCard>[0]["data"] {
+  const s = wardrobeSystems.comparison.sliding;
+  const entries = Object.entries(s.properties);
+  const riskArr = entries.find(([k]) => k === "riskFactors");
+  const risks: string[] = riskArr ? (riskArr[1] as string[]) : [];
+  const safe = entries.filter(([k]) => k !== "riskFactors");
+
+  return {
+    id: "hw-sliding",
+    title: s.label,
+    shortSummary: s.verdict,
+    badgeText: "⚠ High Hardware Dependency",
+    tierLabel: s.costTier,
+    category: "Wardrobe",
+    imageLabel: "Sliding Wardrobe",
+    cons: risks,
+    pros: s.bestFor,
+    technicalSpecs: [
+      { label: "Mechanism", value: s.mechanism },
+      ...safe.map(([k, v]) => ({ label: k.replace(/([A-Z])/g, " $1").trim(), value: String(v) })),
+      { label: "Critical Condition", value: s.criticalCondition },
+    ],
+    insightText: s.criticalCondition,
+  };
+}
+
+function swingToCardData(): Parameters<typeof CinematicDataCard>[0]["data"] {
+  const s = wardrobeSystems.comparison.swing;
+  const entries = Object.entries(s.properties);
+  const riskArr = entries.find(([k]) => k === "riskFactors");
+  const risks: string[] = riskArr ? (riskArr[1] as string[]) : [];
+  const safe = entries.filter(([k]) => k !== "riskFactors");
+
+  return {
+    id: "hw-swing",
+    title: s.label,
+    shortSummary: s.verdict,
+    badgeText: "✅ Recommended",
+    tierLabel: s.costTier,
+    category: "Wardrobe",
+    imageLabel: "Swing Wardrobe",
+    pros: [...s.bestFor, ...risks],
+    technicalSpecs: [
+      { label: "Mechanism", value: s.mechanism },
+      ...safe.map(([k, v]) => ({ label: k.replace(/([A-Z])/g, " $1").trim(), value: String(v) })),
+      { label: "Condition", value: s.criticalCondition },
+    ],
+    insightText: s.criticalCondition,
+  };
+}
+
+function advancedToCardData(): Parameters<typeof CinematicDataCard>[0]["data"] {
+  const adv = fullHeightSystems.systems.advanced;
+  return {
+    id: "hw-advanced",
+    title: adv.label,
+    shortSummary: adv.description,
+    badgeText: "Premium",
+    tierLabel: adv.costLevel,
+    category: "Full-Height System",
+    imageLabel: "Advanced Full-Height",
+    technicalSpecs: propertiesToSpecRows(adv.properties),
+  };
+}
+
+function standardToCardData(): Parameters<typeof CinematicDataCard>[0]["data"] {
+  const std = fullHeightSystems.systems.standard;
+  return {
+    id: "hw-standard",
+    title: std.label,
+    shortSummary: std.description,
+    badgeText: "Economical",
+    tierLabel: std.costLevel,
+    category: "Full-Height System",
+    imageLabel: "Standard Full-Height",
+    technicalSpecs: propertiesToSpecRows(std.properties),
+  };
+}
+
 // ─── Staggered animation variants ───
 
 const staggerContainer = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.3,
-    },
+    transition: { staggerChildren: 0.1, delayChildren: 0.3 },
   },
 };
 
 const staggerItem = {
   hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.25, 0.46, 0.45, 0.94],
-    },
-  },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
 };
 
 // ─── Trust Badge ───
@@ -100,24 +203,9 @@ function TrustBadge({ icon: Icon, text }: { icon: React.ElementType; text: strin
 // ─── Main Page ───
 
 export default function HardwarePage() {
-  const germanProps = propertiesToSpecRows(accessories.comparison.german.properties);
-  const indianProps = propertiesToSpecRows(accessories.comparison.indian.properties);
-
-  const slidingEntries = Object.entries(wardrobeSystems.comparison.sliding.properties);
-  const swingEntries = Object.entries(wardrobeSystems.comparison.swing.properties);
-  const slidingRisk = slidingEntries.find(([k]) => k === "riskFactors");
-  const swingRisk = swingEntries.find(([k]) => k === "riskFactors");
-  const slidingRisks: string[] = slidingRisk ? (slidingRisk[1] as string[]) : [];
-  const swingRisks: string[] = swingRisk ? (swingRisk[1] as string[]) : [];
-  const slidingSafe = slidingEntries.filter(([k]) => k !== "riskFactors").map(([k, v]) => ({ label: k.replace(/([A-Z])/g, " $1").trim(), value: String(v) }));
-  const swingSafe = swingEntries.filter(([k]) => k !== "riskFactors").map(([k, v]) => ({ label: k.replace(/([A-Z])/g, " $1").trim(), value: String(v) }));
-
-  const advancedProps = propertiesToSpecRows(fullHeightSystems.systems.advanced.properties);
-  const standardProps = propertiesToSpecRows(fullHeightSystems.systems.standard.properties);
-
   return (
     <div style={{ backgroundColor: "#0A0A0C" }} className="min-h-screen pb-24">
-      {/* ─── Hero Section — Value Proposition Above the Fold ─── */}
+      {/* ─── Hero Section ─── */}
       <section className="relative border-b border-white/[0.06] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-hero pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 relative">
@@ -154,7 +242,7 @@ export default function HardwarePage() {
         </div>
       </section>
 
-      {/* ─── Section: German vs Indian — paired capsules with staggered entrance ─── */}
+      {/* ─── Section: German vs Indian ─── */}
       <motion.section
         variants={staggerContainer}
         initial="hidden"
@@ -169,60 +257,11 @@ export default function HardwarePage() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-stretch">
-          {/* German capsule */}
           <motion.div variants={staggerItem}>
-            <InteractiveDataCapsule
-              id="hw-german"
-              category="Hardware"
-              title={accessories.comparison.german.label}
-              tagline={accessories.comparison.german.recommendation}
-              imageLabel="German Hardware"
-              tierLabel="Premium Tier"
-              tags={accessories.comparison.german.bestFor.slice(0, 3).map((a) => ({ label: a, variant: "green" as const }))}
-              quickAnswerContent={
-                <div className="space-y-2">
-                  {germanProps.map((p) => (
-                    <div key={p.label} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-3 h-3 text-amber-500 mt-1 shrink-0" />
-                      <div>
-                        <span className="text-xs font-medium text-white">{p.label}:</span>
-                        <span className="text-xs text-surface-400 ml-1">{p.value}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              }
-              specRows={germanProps}
-              whatsappText={`${accessories.comparison.german.label}: ${accessories.comparison.german.recommendation}\nBest for: ${accessories.comparison.german.bestFor.join(", ")}`}
-            />
+            <CinematicDataCard data={germanToCardData()} />
           </motion.div>
-
-          {/* Indian capsule */}
           <motion.div variants={staggerItem}>
-            <InteractiveDataCapsule
-              id="hw-indian"
-              category="Hardware"
-              title={accessories.comparison.indian.label}
-              tagline={accessories.comparison.indian.recommendation}
-              imageLabel="Indian Hardware"
-              tierLabel="Budget Tier"
-              tags={accessories.comparison.indian.bestFor.slice(0, 3).map((a) => ({ label: a, variant: "amber" as const }))}
-              quickAnswerContent={
-                <div className="space-y-2">
-                  {indianProps.map((p) => (
-                    <div key={p.label} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-3 h-3 text-amber-500 mt-1 shrink-0" />
-                      <div>
-                        <span className="text-xs font-medium text-white">{p.label}:</span>
-                        <span className="text-xs text-surface-400 ml-1">{p.value}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              }
-              specRows={indianProps}
-              whatsappText={`${accessories.comparison.indian.label}: ${accessories.comparison.indian.recommendation}\nBest for: ${accessories.comparison.indian.bestFor.join(", ")}`}
-            />
+            <CinematicDataCard data={indianToCardData()} />
           </motion.div>
         </div>
 
@@ -231,7 +270,7 @@ export default function HardwarePage() {
         </motion.div>
       </motion.section>
 
-      {/* ─── Section: Sliding vs Swing — paired capsules + visible ⚠ callout ─── */}
+      {/* ─── Section: Sliding vs Swing ─── */}
       <motion.section
         variants={staggerContainer}
         initial="hidden"
@@ -245,86 +284,19 @@ export default function HardwarePage() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-stretch">
-          {/* Sliding capsule with visible warning */}
+          {/* Sliding — warning callout passed via children */}
           <motion.div variants={staggerItem}>
-            <InteractiveDataCapsule
-              id="hw-sliding"
-              category="Wardrobe"
-              title={wardrobeSystems.comparison.sliding.label}
-              tagline={wardrobeSystems.comparison.sliding.verdict}
-              imageLabel="Sliding Wardrobe"
-              tierLabel={wardrobeSystems.comparison.sliding.costTier}
-              tags={wardrobeSystems.comparison.sliding.bestFor.map((a) => ({ label: a, variant: "amber" as const }))}
-              quickAnswerContent={
-                <div className="space-y-2">
-                  {slidingSafe.map((p) => (
-                    <div key={p.label} className="flex items-start gap-2">
-                      <span className="text-xs font-medium text-surface-300 w-1/2">{p.label}</span>
-                      <span className="text-xs text-surface-400">{p.value}</span>
-                    </div>
-                  ))}
-                  {/* Risk factors as visible list */}
-                  <div className="mt-2 space-y-1">
-                    {slidingRisks.map((r) => (
-                      <div key={r} className="flex items-start gap-1.5 text-xs text-red-400">
-                        <span className="text-red-400 shrink-0">⚠</span> {r}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              }
-              specRows={[
-                { label: "Mechanism", value: wardrobeSystems.comparison.sliding.mechanism },
-                ...slidingSafe,
-                { label: "Critical Condition", value: wardrobeSystems.comparison.sliding.criticalCondition },
-              ]}
-              warningCallout={
-                <div className="warning-banner rounded-xl p-3 flex items-start gap-2">
-                  <AlertTriangle className="w-4 h-4 text-red-400 mt-0.5 shrink-0" />
-                  <p className="text-xs text-red-300/90">{wardrobeSystems.comparison.sliding.criticalCondition}</p>
-                </div>
-              }
-            />
+            <CinematicDataCard data={slidingToCardData()}>
+              <div className="warning-banner rounded-xl p-3 flex items-start gap-2">
+                <AlertTriangle className="w-4 h-4 text-red-400 mt-0.5 shrink-0" />
+                <p className="text-xs text-red-300/90">{wardrobeSystems.comparison.sliding.criticalCondition}</p>
+              </div>
+            </CinematicDataCard>
           </motion.div>
 
-          {/* Swing capsule */}
+          {/* Swing */}
           <motion.div variants={staggerItem}>
-            <InteractiveDataCapsule
-              id="hw-swing"
-              category="Wardrobe"
-              title={wardrobeSystems.comparison.swing.label}
-              tagline={wardrobeSystems.comparison.swing.verdict}
-              imageLabel="Swing Wardrobe"
-              tierLabel={wardrobeSystems.comparison.swing.costTier}
-              tags={wardrobeSystems.comparison.swing.bestFor.map((a) => ({ label: a, variant: "green" as const }))}
-              quickAnswerContent={
-                <div className="space-y-2">
-                  {swingSafe.map((p) => (
-                    <div key={p.label} className="flex items-start gap-2">
-                      <span className="text-xs font-medium text-surface-300 w-1/2">{p.label}</span>
-                      <span className="text-xs text-surface-400">{p.value}</span>
-                    </div>
-                  ))}
-                  <div className="mt-2 space-y-1">
-                    {swingRisks.map((r) => (
-                      <div key={r} className="flex items-start gap-1.5 text-xs text-surface-400">
-                        <CheckCircle2 className="w-3 h-3 text-green-500 mt-0.5 shrink-0" /> {r}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              }
-              specRows={[
-                { label: "Mechanism", value: wardrobeSystems.comparison.swing.mechanism },
-                ...swingSafe,
-                { label: "Condition", value: wardrobeSystems.comparison.swing.criticalCondition },
-              ]}
-              insightCallout={
-                <div className="insight-banner rounded-xl p-3">
-                  <p className="text-xs text-amber-300/90">{wardrobeSystems.comparison.swing.criticalCondition}</p>
-                </div>
-              }
-            />
+            <CinematicDataCard data={swingToCardData()} />
           </motion.div>
         </div>
 
@@ -352,47 +324,10 @@ export default function HardwarePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-stretch">
           <motion.div variants={staggerItem}>
-            <InteractiveDataCapsule
-              id="hw-advanced"
-              category="Full-Height System"
-              title={fullHeightSystems.systems.advanced.label}
-              tagline={fullHeightSystems.systems.advanced.description}
-              imageLabel="Advanced Full-Height"
-              tierLabel={fullHeightSystems.systems.advanced.costLevel}
-              quickAnswerContent={
-                <div className="space-y-2">
-                  {advancedProps.map((p) => (
-                    <div key={p.label} className="flex items-start gap-2">
-                      <span className="text-xs font-medium text-surface-300 w-1/2">{p.label}</span>
-                      <span className="text-xs text-surface-400">{p.value}</span>
-                    </div>
-                  ))}
-                </div>
-              }
-              specRows={advancedProps}
-            />
+            <CinematicDataCard data={advancedToCardData()} />
           </motion.div>
-
           <motion.div variants={staggerItem}>
-            <InteractiveDataCapsule
-              id="hw-standard"
-              category="Full-Height System"
-              title={fullHeightSystems.systems.standard.label}
-              tagline={fullHeightSystems.systems.standard.description}
-              imageLabel="Standard Full-Height"
-              tierLabel={fullHeightSystems.systems.standard.costLevel}
-              quickAnswerContent={
-                <div className="space-y-2">
-                  {standardProps.map((p) => (
-                    <div key={p.label} className="flex items-start gap-2">
-                      <span className="text-xs font-medium text-surface-300 w-1/2">{p.label}</span>
-                      <span className="text-xs text-surface-400">{p.value}</span>
-                    </div>
-                  ))}
-                </div>
-              }
-              specRows={standardProps}
-            />
+            <CinematicDataCard data={standardToCardData()} />
           </motion.div>
         </div>
 

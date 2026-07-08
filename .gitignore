@@ -1,21 +1,21 @@
-# ─── Dependencies ───
+# Dependencies
 node_modules/
 .pnp
 .pnp.js
 
-# ─── Build Output ───
+# Build Output
 .next/
 out/
 build/
 dist/
 
-# ─── Environment ───
+# Environment
 .env
 .env.local
 .env.production
 .env.*.local
 
-# ─── IDE & OS ───
+# IDE & OS
 .vscode/
 .idea/
 *.swp
@@ -24,19 +24,26 @@ dist/
 .DS_Store
 Thumbs.db
 
-# ─── Next.js ───
+# Next.js
 *.tsbuildinfo
 next-env.d.ts
 
-# ─── Logs ───
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# ─── Testing ───
+# Testing
 coverage/
 .nyc_output/
 
-# ─── Misc ───
+# Misc
 *.zip
 *.tar.gz
+
+# AI / Skills (dev-only)
+.claude/
+.cursor/
+
+# Temp / Publish stubs
+src/publish/

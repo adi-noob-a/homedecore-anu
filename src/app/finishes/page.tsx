@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Palette, Sparkles, Lightbulb, ArrowRight, CheckCircle2 } from "lucide-react";
-import { InteractiveDataCapsule } from "@/components/InteractiveDataCapsule";
+import { Palette, Sparkles, Lightbulb, ArrowRight } from "lucide-react";
+import { CinematicDataCard } from "@/components/CinematicDataCard";
 import { StickyCtaBar } from "@/components/StickyCtaBar";
 import finishesData from "../../../phase-1-deliverables/data/finishes.json";
 
@@ -23,7 +23,10 @@ interface FinishDetail {
   ducoVsPu?: { ducoAdvantages: string[]; puAdvantages: string[] };
 }
 
-interface CostTier { rank: number; finish: string; id: string; costTier: number; parityWith?: string[]; media?: { icon?: string; card_image?: string }; }
+interface CostTier {
+  rank: number; finish: string; id: string; costTier: number;
+  parityWith?: string[]; media?: { icon?: string; card_image?: string };
+}
 
 type FinishesModule = {
   module: string;
@@ -31,7 +34,9 @@ type FinishesModule = {
     sheetFinishes: { title: string; summary: string; finishes: FinishDetail[] };
     paintFinishes: { title: string; summary: string; finishes: FinishDetail[] };
     specialtyFinishes: { title: string; summary: string; finishes: FinishDetail[] };
-    costHierarchy: { title: string; description: string; hierarchyString: string; note: string; order: CostTier[] };
+    costHierarchy: {
+      title: string; description: string; hierarchyString: string; note: string; order: CostTier[];
+    };
   };
 };
 
@@ -43,6 +48,96 @@ function propertiesToSpecRows(props: Record<string, string>): { label: string; v
     label: k.replace(/([A-Z])/g, " $1").trim(),
     value: v,
   }));
+}
+
+/** Build the "quick answer" extras for finishes that have matte-vs-glossy, acrylic-vs-laminate, or duco-vs-pu */
+function finishQuickAnswerExtra(finish: FinishDetail): React.ReactNode {
+  const hasMatteVsGlossy = !!finish.matteVsGlossy;
+  const hasAcrylicVsLaminate = !!finish.acrylicVsLaminate;
+  const hasDucoVsPu = !!finish.ducoVsPu;
+
+  if (!hasMatteVsGlossy && !hasAcrylicVsLaminate && !hasDucoVsPu) return undefined;
+
+  return (
+    <div className="mt-3 space-y-2">
+      {hasMatteVsGlossy && (
+        <div className="glass rounded-xl p-3">
+          <div className="grid grid-cols-2 gap-2">
+            <div>
+              <span className="text-xs font-semibold text-white">Matte</span>
+              <p className="text-[10px] text-surface-400 mt-1">{finish.matteVsGlossy!.matte.recommendation}</p>
+            </div>
+            <div>
+              <span className="text-xs font-semibold text-white">Glossy</span>
+              <p className="text-[10px] text-surface-400 mt-1">{finish.matteVsGlossy!.glossy.recommendation}</p>
+            </div>
+          </div>
+        </div>
+      )}
+      {hasAcrylicVsLaminate && (
+        <div className="glass rounded-xl p-3">
+          <span className="text-[10px] font-mono uppercase tracking-wider text-amber-400 font-bold">Acrylic vs Laminate</span>
+          <div className="grid grid-cols-2 gap-2 mt-1">
+            <div>
+              {finish.acrylicVsLaminate!.acrylicAdvantages.slice(0, 2).map((a) => (
+                <p key={a} className="text-[9px] text-surface-400 flex items-start gap-1 mt-1">
+                  <span className="text-amber-500 mt-0.5 shrink-0">+</span>{a}
+                </p>
+              ))}
+            </div>
+            <div>
+              {finish.acrylicVsLaminate!.laminateAdvantages.slice(0, 2).map((a) => (
+                <p key={a} className="text-[9px] text-surface-400 flex items-start gap-1 mt-1">
+                  <span className="text-surface-500 mt-0.5 shrink-0">+</span>{a}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+      {hasDucoVsPu && (
+        <div className="glass rounded-xl p-3">
+          <span className="text-[10px] font-mono uppercase tracking-wider text-amber-400 font-bold">DUCO vs PU</span>
+          <div className="grid grid-cols-2 gap-2 mt-1">
+            <div>
+              <span className="text-xs font-semibold text-surface-400">DUCO</span>
+              {finish.ducoVsPu!.ducoAdvantages.map((a) => (
+                <p key={a} className="text-[9px] text-surface-400 mt-1">• {a}</p>
+              ))}
+            </div>
+            <div>
+              <span className="text-xs font-semibold text-amber-400">PU</span>
+              {finish.ducoVsPu!.puAdvantages.map((a) => (
+                <p key={a} className="text-[9px] text-surface-400 mt-1">• {a}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/** Convert a finish detail into the universal CinematicCardData shape */
+function finishToCardData(finish: FinishDetail): Parameters<typeof CinematicDataCard>[0]["data"] {
+  return {
+    id: `fin-${finish.id}`,
+    title: finish.name,
+    shortSummary: finish.simpleExplanation,
+    badgeText: finish.costLabel,
+    tierLabel: `Tier ${finish.costTier}`,
+    category: finish.type,
+    imageLabel: finish.name,
+    pros: finish.applications,
+    cons: finish.limitations,
+    technicalSpecs: [
+      { label: "Type", value: finish.type },
+      { label: "Cost Label", value: finish.costLabel },
+      ...propertiesToSpecRows(finish.properties),
+    ],
+    insightText: finish.takeaway,
+    whatsappText: `${finish.name} (${finish.type}): ${finish.definition}\nKey features: ${Object.values(finish.properties).slice(0, 3).join(", ")}`,
+  };
 }
 
 // ─── Cost Ladder ───
@@ -90,114 +185,24 @@ function CostLadder({ tiers }: { tiers: CostTier[] }) {
 
 // ─── Section Renderer ───
 
-function FinishesGrid({ title, summary, finishes }: { title: string; summary: string; finishes: FinishDetail[] }) {
+function FinishesGrid({
+  title, summary, finishes,
+}: {
+  title: string; summary: string; finishes: FinishDetail[];
+}) {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
       <h2 className="text-xl font-bold text-white mb-2">{title}</h2>
       <p className="text-sm text-surface-500 mb-5">{summary}</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-stretch">
-        {finishes.map((finish) => {
-          const hasMatteVsGlossy = !!finish.matteVsGlossy;
-          const hasAcrylicVsLaminate = !!finish.acrylicVsLaminate;
-          const hasDucoVsPu = !!finish.ducoVsPu;
-
-          return (
-            <InteractiveDataCapsule
-              key={finish.id}
-              id={`fin-${finish.id}`}
-              category={finish.type}
-              title={finish.name}
-              tagline={finish.simpleExplanation}
-              imageLabel={finish.name}
-              tierLabel={`Tier ${finish.costTier} — ${finish.costLabel}`}
-              tags={[
-                ...finish.applications.slice(0, 3).map((a) => ({ label: a, variant: "green" as const })),
-                ...finish.limitations.slice(0, 1).map((l) => ({ label: l, variant: "red" as const })),
-              ]}
-              quickAnswerContent={
-                <div className="space-y-3">
-                  <p className="text-sm text-surface-300 leading-relaxed">{finish.definition}</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {finish.applications.map((a) => (
-                      <span key={a} className="tag-green">{a}</span>
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {finish.limitations.map((l) => (
-                      <span key={l} className="tag-red">{l}</span>
-                    ))}
-                  </div>
-                  {hasMatteVsGlossy && (
-                    <div className="glass rounded-xl p-3">
-                      <div className="grid grid-cols-2 gap-2">
-                        <div>
-                          <span className="text-xs font-semibold text-white">Matte</span>
-                          <p className="text-[10px] text-surface-400 mt-1">{finish.matteVsGlossy!.matte.recommendation}</p>
-                        </div>
-                        <div>
-                          <span className="text-xs font-semibold text-white">Glossy</span>
-                          <p className="text-[10px] text-surface-400 mt-1">{finish.matteVsGlossy!.glossy.recommendation}</p>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                  {hasAcrylicVsLaminate && (
-                    <div className="glass rounded-xl p-3">
-                      <div className="grid grid-cols-2 gap-2">
-                        <div>
-                          <span className="text-xs font-semibold text-amber-400">Acrylic</span>
-                          {finish.acrylicVsLaminate!.acrylicAdvantages.slice(0, 2).map((a) => (
-                            <p key={a} className="text-[9px] text-surface-400 flex items-start gap-1 mt-1">
-                              <CheckCircle2 className="w-2.5 h-2.5 text-amber-500 mt-0.5 shrink-0" />{a}
-                            </p>
-                          ))}
-                        </div>
-                        <div>
-                          <span className="text-xs font-semibold text-surface-400">Laminate</span>
-                          {finish.acrylicVsLaminate!.laminateAdvantages.slice(0, 2).map((a) => (
-                            <p key={a} className="text-[9px] text-surface-400 flex items-start gap-1 mt-1">
-                              <CheckCircle2 className="w-2.5 h-2.5 text-surface-500 mt-0.5 shrink-0" />{a}
-                            </p>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                  {hasDucoVsPu && (
-                    <div className="glass rounded-xl p-3">
-                      <div className="grid grid-cols-2 gap-2">
-                        <div>
-                          <span className="text-xs font-semibold text-surface-400">DUCO</span>
-                          {finish.ducoVsPu!.ducoAdvantages.map((a) => (
-                            <p key={a} className="text-[9px] text-surface-400 mt-1">• {a}</p>
-                          ))}
-                        </div>
-                        <div>
-                          <span className="text-xs font-semibold text-amber-400">PU</span>
-                          {finish.ducoVsPu!.puAdvantages.map((a) => (
-                            <p key={a} className="text-[9px] text-surface-400 mt-1">• {a}</p>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              }
-              specRows={[
-                { label: "Type", value: finish.type },
-                { label: "Cost Label", value: finish.costLabel },
-                ...propertiesToSpecRows(finish.properties),
-              ]}
-              insightCallout={
-                <div className="insight-banner rounded-xl p-3 flex items-start gap-2">
-                  <Lightbulb className="w-4 h-4 text-amber-400 mt-0.5 shrink-0" />
-                  <p className="text-xs text-amber-300/90">{finish.takeaway}</p>
-                </div>
-              }
-              whatsappText={`${finish.name} (${finish.type}): ${finish.definition}\nKey features: ${Object.values(finish.properties).slice(0, 3).join(", ")}`}
-            />
-          );
-        })}
+        {finishes.map((finish) => (
+          <CinematicDataCard
+            key={finish.id}
+            data={finishToCardData(finish)}
+          >
+            {finishQuickAnswerExtra(finish)}
+          </CinematicDataCard>
+        ))}
       </div>
     </section>
   );
