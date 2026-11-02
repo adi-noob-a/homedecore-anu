@@ -47,3 +47,6 @@ coverage/
 
 # Temp / Publish stubs
 src/publish/
+
+# Vercel
+.vercel
