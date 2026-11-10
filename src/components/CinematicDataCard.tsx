@@ -2,8 +2,10 @@
 
 import { useState, useRef, useCallback, type ReactNode, type MouseEvent } from "react";
 import { motion, AnimatePresence, type PanInfo } from "framer-motion";
-import { X, ChevronDown, FileText, MessageCircle, Lightbulb } from "lucide-react";
+import { X, ChevronDown, FileText, MessageCircle, Lightbulb, Box } from "lucide-react";
 import { AssetPlaceholder } from "./AssetPlaceholder";
+import { getProductModel } from "@/lib/productModels";
+import { useProductViewer } from "@/components/product-viewer/ProductViewerProvider";
 
 /* ─── Types ─── */
 
@@ -43,6 +45,14 @@ export function CinematicDataCard({
     id, title, shortSummary, badgeText, pros, cons, technicalSpecs,
     imageLabel, category, tierLabel, insightText, whatsappText,
   } = data;
+
+  const viewer = useProductViewer();
+  const canViewIn3D = Boolean(viewer && getProductModel(id));
+  const open3D = (event: MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    viewer?.open(id);
+  };
 
   // ─── State ───
   const [stage, setStage] = useState<1 | 2>(1);
@@ -173,12 +183,25 @@ export function CinematicDataCard({
               </div>
             </div>
 
-            {/* Expand indicator */}
-            <div className="flex items-center gap-1.5 mt-3 text-xs text-surface-500 transition-colors group-hover:text-surface-400">
-              {stage === 2 ? (
-                <><ChevronDown className="w-3.5 h-3.5 rotate-180" /> Less</>
-              ) : (
-                <><ChevronDown className="w-3.5 h-3.5" /> Quick details</>
+            {/* Expand indicator + 3D entry */}
+            <div className="mt-3 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-1.5 text-xs text-surface-500 transition-colors group-hover:text-surface-400">
+                {stage === 2 ? (
+                  <><ChevronDown className="w-3.5 h-3.5 rotate-180" /> Less</>
+                ) : (
+                  <><ChevronDown className="w-3.5 h-3.5" /> Quick details</>
+                )}
+              </div>
+              {canViewIn3D && (
+                <button
+                  type="button"
+                  onClick={open3D}
+                  aria-haspopup="dialog"
+                  className="inline-flex min-h-[32px] items-center gap-1.5 rounded-lg border border-amber-400/30 bg-amber-400/10 px-2.5 py-1.5 text-[11px] font-semibold text-amber-300 transition-colors hover:bg-amber-400/20"
+                >
+                  <Box className="h-3.5 w-3.5" aria-hidden />
+                  View in 3D
+                </button>
               )}
             </div>
           </div>
@@ -280,6 +303,7 @@ export function CinematicDataCard({
             fullSpecContent={fullSpecContent}
             insightText={insightText}
             whatsappText={whatsappText}
+            onView3D={canViewIn3D ? () => viewer?.open(id) : undefined}
             onClose={handleStage3Close}
           />
         )}
@@ -294,7 +318,7 @@ export function CinematicDataCard({
 ─── */
 
 function Stage3DeepDive({
-  id, title, specRows, fullSpecContent, insightText, whatsappText, onClose,
+  id, title, specRows, fullSpecContent, insightText, whatsappText, onView3D, onClose,
 }: {
   id: string;
   title: string;
@@ -302,6 +326,7 @@ function Stage3DeepDive({
   fullSpecContent?: ReactNode;
   insightText?: string;
   whatsappText?: string;
+  onView3D?: () => void;
   onClose: () => void;
 }) {
   const [dragY, setDragY] = useState(0);
@@ -460,7 +485,19 @@ function Stage3DeepDive({
 
         {/* Actions */}
         <div className="px-5 sm:px-8 pb-6 sm:pb-8 mt-6 flex flex-wrap gap-3">
+          {onView3D && (
+            <button
+              type="button"
+              onClick={onView3D}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium
+                         bg-amber-400/10 text-amber-300 hover:bg-amber-400/20 border border-amber-400/30 transition-all"
+            >
+              <Box className="w-4 h-4" />
+              View in 3D
+            </button>
+          )}
           <button
+            type="button"
             onClick={() => window.print()}
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium
                        bg-white/[0.06] text-surface-300 hover:bg-white/[0.10] hover:text-white transition-all"

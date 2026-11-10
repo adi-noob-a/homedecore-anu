@@ -12,6 +12,13 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     "phase-1-deliverables/**",
   ]),
+  {
+    files: ["src/components/product-viewer/**/*.{ts,tsx}"],
+    rules: {
+      // react-three-fiber attaches three.js props (args, roughness, metalness, …) through JSX.
+      "react/no-unknown-property": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;
