@@ -3,6 +3,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { CompareProvider } from "@/components/CompareModeProvider";
+import { ProductViewerProvider } from "@/components/product-viewer/ProductViewerProvider";
 
 export const metadata: Metadata = {
   title: "Interior Design Hub — Design Without Guesswork",
@@ -24,7 +25,7 @@ export default function RootLayout({
         {/* pt-16 accounts for fixed header height (h-16 = 64px) */}
         <div className="pt-16">
           <CompareProvider>
-            {children}
+            <ProductViewerProvider>{children}</ProductViewerProvider>
           </CompareProvider>
         </div>
       </body>

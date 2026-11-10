@@ -11,9 +11,11 @@ A content-rich decision-support platform for Indian homeowners planning interior
 | Layer | Technology | Version |
 |-------|-----------|---------|
 | Framework | [Next.js](https://nextjs.org/) | ^16.2.10 |
+| UI runtime | [React](https://react.dev/) | ^19.2.3 |
 | Language | [TypeScript](https://www.typescriptlang.org/) | ^5.3.0 |
 | Styling | [Tailwind CSS](https://tailwindcss.com/) | ^3.4.0 |
 | Animation | [Framer Motion](https://www.framer.com/motion/) | ^11.18.2 |
+| 3D | [three.js](https://threejs.org/) + [@react-three/fiber](https://r3f.docs.pmnd.rs/) 9 + [@react-three/drei](https://github.com/pmndrs/drei) 10 | three ^0.170, fiber ^9.8, drei ^10.7 |
 | Icons | [Lucide React](https://lucide.dev/) | ^0.350.0 |
 | PDF Export | [html2pdf.js](https://ekoopmans.github.io/html2pdf.js/) | ^0.14.0 |
 | Database | [Supabase](https://supabase.com/) (@supabase/supabase-js) | ^2.108.1 |
@@ -39,7 +41,8 @@ interior-design-platform/
 │       ├── hardware.json          # German/Indian, Sliding/Swing, Full-height
 │       ├── materials.json         # Plywood grades, engineered boards, thickness
 │       └── vendor.json            # Vendor selection & red flags
-├── public/                        # Static assets (empty — all images are placeholders)
+├── public/
+│   └── models/                    # Optional GLB/GLTF product models (see README below)
 ├── src/
 │   ├── app/                       # Next.js App Router pages
 │   │   ├── layout.tsx             # Root layout — navbar, scroll bar, compare provider
@@ -62,7 +65,8 @@ interior-design-platform/
 │   │   ├── CompareModeProvider.tsx    # Pin-to-compare context + floating table
 │   │   ├── ComparisonMatrix.tsx   # Tabbed side-by-side comparison (5 comparisons)
 │   │   ├── InteractiveDataCapsule.tsx  # 3-stage progressive disclosure card
-│   │   ├── CinematicDataCard.tsx  # Cinematic 3-stage card with tilt & modal
+│   │   ├── CinematicDataCard.tsx  # Cinematic 3-stage card with tilt, modal, View in 3D
+│   │   ├── product-viewer/        # Shared WebGL modal (lazy, one canvas at a time)
 │   │   ├── ExpandableCard.tsx     # Simple expand/collapse card
 │   │   ├── HardwareGuard.tsx      # Hardware config warning system
 │   │   ├── AssetPlaceholder.tsx   # Image/video placeholder with shimmer
@@ -73,6 +77,7 @@ interior-design-platform/
 │   │       └── StepIndicator.tsx  # Wizard step dots
 │   ├── lib/
 │   │   ├── types/index.ts         # All TypeScript types & interfaces
+│   │   ├── productModels.ts       # 3D catalog: card id → GLB path or procedural placeholder
 │   │   ├── data/index.ts          # Data loaders, calculator engine, constants
 │   │   ├── hooks/useCalculatorState.ts  # Calculator state machine + submit
 │   │   └── supabaseClient.ts      # Supabase client + lead submission
@@ -194,7 +199,8 @@ Leads submitted to a `calculations_ledger` table. Requires `NEXT_PUBLIC_SUPABASE
 3-stage progressive disclosure card:
 - **Stage 1:** Thumbnail, title, badges, tags. Entry animation via `whileInView`.
 - **Stage 2:** Inline expand — pros/cons, insight callout, WhatsApp share, "Deep Dive" button.
-- **Stage 3:** Full-screen modal (desktop centered, mobile bottom sheet with drag-to-dismiss). Contains spec table, print/PDF, WhatsApp share.
+- **Stage 3:** Full-screen modal (desktop centered, mobile bottom sheet with drag-to-dismiss). Contains spec table, print/PDF, WhatsApp share, and View in 3D when the card has a catalog entry.
+- **View in 3D:** Always-visible control on materials, hardware, and finishes cards. Opens one shared viewer (orbit, modest zoom, idle auto-rotate). The card id must exist in `src/lib/productModels.ts`.
 
 Props: `id`, `title`, `shortSummary`, `badgeText`, `pros[]`, `cons[]`, `technicalSpecs[]`, `insightText`, `whatsappText`, `imageLabel`, `tierLabel`, `category`
 
@@ -223,6 +229,46 @@ Reactive warning system that detects dangerous combinations:
 - Heavy finish + Sliding + Indian → structural failure risk
 - Heavy finish + Swing + Indian → hinge sagging risk
 Animated shake on new warnings. "Upgrade to German" quick-action button.
+
+---
+
+## 3D product viewer
+
+Product cards on `/materials`, `/hardware`, and `/finishes` open a single viewer instead of embedding a canvas in every card. That keeps one WebGL context, stays usable on a phone (drag to orbit, pinch or the on-screen buttons to zoom), and leaves static generation alone — the three.js chunk is loaded with `next/dynamic` and `ssr: false` only after View in 3D is pressed.
+
+Idle auto-rotate pauses while dragging and is disabled when `prefers-reduced-motion: reduce` is set. If WebGL is missing or the context is lost, the dialog stays open with a flat color swatch and a short explanation. A GLB that 404s falls back to the same procedural shape.
+
+There are no shipped models. Each entry in `src/lib/productModels.ts` has `modelUrl: null` and a `placeholder`:
+
+| Placeholder | Used for |
+| --- | --- |
+| `plywood` | MR / BWR / BWP slabs with visible plies |
+| `fibreboard`, `particle`, `blockboard` | HDHMR, MDF, particle board, blockboard |
+| `bar-pull`, `knob` | German bar pull, Indian knob |
+| `sliding`, `swing`, `wardrobe` | Wardrobe systems |
+| `swatch`, `glass`, `rattan` | Laminate, acrylic, DUCO, PU, lacquered glass, rattan |
+
+Colors and roughness come from that same catalog, so a stand-in still matches the product.
+
+### Add a real GLB or GLTF
+
+1. Export Y-up. Any scale is fine — the viewer measures the mesh and frames it. Prefer a binary `.glb` under a few megabytes, with PBR materials packed in the file.
+2. Save it under `public/models/`, for example `public/models/fin-laminate.glb`. If you export a `.gltf`, keep its `.bin` and textures in that same folder.
+3. Set `modelUrl` on the matching product. The `id` must be the card id (`ply-mr-grade`, `brd-hdhmr`, `hw-german`, `fin-laminate`, …):
+
+```ts
+{
+  id: "fin-laminate",
+  modelUrl: "/models/fin-laminate.glb",
+  // placeholder, color, and roughness stay as the fallback
+}
+```
+
+4. Refresh `next dev`, or rebuild for production. You do not need to touch the page components.
+
+To add a new card later, give `CinematicDataCard` an `id` and add a matching object to `PRODUCT_MODELS`. Leave `modelUrl` null until the file exists.
+
+The app declares React 19. Next 16 aliases browser `react` / `react-dom` to its own compiled React 19 build (`__CLIENT_INTERNALS_…`). Fiber 8’s reconciler still reads the React 18 secret (`__SECRET_INTERNALS_….ReactCurrentBatchConfig`) and crashes as soon as the viewer chunk loads. Fiber 9 and Drei 10 speak the React 19 internals, and their peer range (`react >=19 <19.4`) matches that runtime. Lucide is on 0.469 so its peer dependency allows React 19.
 
 ---
 
